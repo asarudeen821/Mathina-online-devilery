@@ -123,12 +123,12 @@ const UPIPaymentModal = ({ isOpen, amount, onSuccess, onClose }) => {
                 <p className="text-xs text-purple-700 font-semibold mb-2">Scan to Pay using any UPI app</p>
                 <div className="bg-white p-2 rounded-lg shadow-sm">
                   <img
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(`upi://pay?pa=paytm.s151bx7@pty&pn=Mathina FreshHub&am=${amount}&cu=INR`)}`}
-                    alt="Scan to pay"
-                    className="w-32 h-32"
+                    src="/images/payment-qr.jpg"
+                    alt="Scan to pay via UPI"
+                    className="w-36 h-36 object-contain rounded"
                   />
                 </div>
-                <p className="text-[10px] text-gray-500 mt-2 font-mono">paytm.s151bx7@pty</p>
+                <p className="text-[10px] text-gray-500 mt-2 font-mono">CF05100492@indianbk</p>
               </div>
 
               <div className="relative flex py-2 items-center">

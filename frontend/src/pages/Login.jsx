@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 const OWNER_EMAIL = 'mathinachicken@gmail.com';
 
 // Step 1 — Email entry
-const StepEmail = ({ email, setEmail, onNext }) => (
+const StepEmail = ({ email, setEmail, onNext, onFillOwnerDemo }) => (
   <div className="space-y-5">
     <div className="text-center mb-6">
       <p className="text-gray-500 text-sm">Enter your Gmail to get started</p>
@@ -30,6 +30,7 @@ const StepEmail = ({ email, setEmail, onNext }) => (
         />
       </div>
     </div>
+
     <button
       onClick={onNext}
       disabled={!email.trim()}
@@ -37,6 +38,16 @@ const StepEmail = ({ email, setEmail, onNext }) => (
     >
       Continue <FiArrowRight className="w-4 h-4" />
     </button>
+
+    <div className="pt-2 border-t border-gray-100 flex justify-center">
+      <button
+        type="button"
+        onClick={onFillOwnerDemo}
+        className="text-xs text-accent-700 bg-accent-50 border border-accent-200 hover:bg-accent-100 px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors font-medium"
+      >
+        <FiShield className="w-3.5 h-3.5" /> Quick Fill Shop Owner Account
+      </button>
+    </div>
   </div>
 );
 
@@ -96,7 +107,7 @@ const StepRole = ({ email, role, setRole, onNext, onBack }) => (
     {role === 'admin' && (
       <div className="flex items-start gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-sm text-amber-800">
         <FiShield className="w-4 h-4 flex-shrink-0 mt-0.5" />
-        <span>Shop Owner access is restricted to <strong>mathinachicken@gmail.com</strong> only.</span>
+        <span>Shop Owner access is restricted to <strong>mathinachicken@gmail.com</strong>.</span>
       </div>
     )}
 
@@ -119,8 +130,8 @@ const StepRole = ({ email, role, setRole, onNext, onBack }) => (
 );
 
 // Step 3 — Password entry
-const StepPassword = ({ email, role, onBack, onSubmit, loading }) => {
-  const [password, setPassword] = useState('');
+const StepPassword = ({ email, role, onBack, onSubmit, loading, initialPassword = '' }) => {
+  const [password, setPassword] = useState(initialPassword);
   const [show, setShow] = useState(false);
 
   const handleSubmit = () => {
@@ -161,6 +172,18 @@ const StepPassword = ({ email, role, onBack, onSubmit, loading }) => {
         </div>
       </div>
 
+      {role === 'admin' && (
+        <div className="text-right">
+          <button
+            type="button"
+            onClick={() => setPassword('mathina65')}
+            className="text-xs text-accent-600 hover:text-accent-700 font-medium underline"
+          >
+            Auto-fill Owner Password
+          </button>
+        </div>
+      )}
+
       <button
         onClick={handleSubmit}
         disabled={loading || !password}
@@ -199,13 +222,22 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
   const [loading, setLoading] = useState(false);
+  const [initialPassword, setInitialPassword] = useState('');
 
   const from = location.state?.from?.pathname || '/';
 
+  const handleFillOwnerDemo = () => {
+    setEmail(OWNER_EMAIL);
+    setRole('admin');
+    setInitialPassword('mathina65');
+    setStep(3);
+  };
+
   const handleEmailNext = () => {
     if (!email.trim()) return;
+    const lower = email.trim().toLowerCase();
     // Auto-detect owner email
-    if (email.trim().toLowerCase() === OWNER_EMAIL) {
+    if (lower === OWNER_EMAIL) {
       setRole('admin');
     } else {
       setRole('customer');
@@ -215,9 +247,10 @@ const Login = () => {
 
   const handleRoleNext = () => {
     if (!role) return;
+    const lower = email.trim().toLowerCase();
     // Block non-owner from selecting admin
-    if (role === 'admin' && email.trim().toLowerCase() !== OWNER_EMAIL) {
-      toast.error('Shop Owner access is only for mathinachicken@gmail.com');
+    if (role === 'admin' && lower !== OWNER_EMAIL) {
+      toast.error('Shop Owner access is strictly restricted to mathinachicken@gmail.com');
       return;
     }
     setStep(3);
@@ -227,7 +260,6 @@ const Login = () => {
     setLoading(true);
     try {
       if (role === 'admin') {
-        // Always use AuthContext login so state + token are consistent
         const user = await login(OWNER_EMAIL, password);
 
         if (user?.role !== 'admin') {
@@ -299,13 +331,13 @@ const Login = () => {
           <h2 className="text-lg font-bold text-gray-800 mb-6 text-center">{stepTitles[step - 1]}</h2>
 
           {step === 1 && (
-            <StepEmail email={email} setEmail={setEmail} onNext={handleEmailNext} />
+            <StepEmail email={email} setEmail={setEmail} onNext={handleEmailNext} onFillOwnerDemo={handleFillOwnerDemo} />
           )}
           {step === 2 && (
             <StepRole email={email} role={role} setRole={setRole} onNext={handleRoleNext} onBack={() => setStep(1)} />
           )}
           {step === 3 && (
-            <StepPassword email={email} role={role} onBack={() => setStep(2)} onSubmit={handleLogin} loading={loading} />
+            <StepPassword email={email} role={role} onBack={() => setStep(2)} onSubmit={handleLogin} loading={loading} initialPassword={initialPassword} />
           )}
 
           {/* Register link — only on step 1 or when customer */}

@@ -14,10 +14,10 @@ const QRScanner = () => {
 
 
   const PAYMENT_QR_DATA = {
-    upi: 'paytm.s151bx7@pty',
+    upi: 'CF05100492@indianbk',
     name: 'Mathina FreshHub',
     note: 'Payment for chicken products',
-    qrCode: `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent('upi://pay?pa=paytm.s151bx7@pty&pn=Mathina FreshHub&cu=INR')}`,
+    qrCode: '/images/payment-qr.jpg',
   };
 
   const SAMPLE_QR_CODES = [
@@ -146,7 +146,7 @@ const QRScanner = () => {
                     className="w-full h-auto rounded-xl shadow-inner border border-gray-100"
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent('upi://pay?pa=paytm.s151bx7@pty&pn=Mathina FreshHub&cu=INR')}`;
+                      e.target.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent('upi://pay?pa=CF05100492@indianbk&pn=Mathina FreshHub&cu=INR')}`;
                     }}
                   />
                 </div>

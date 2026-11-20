@@ -1,6 +1,4 @@
-import express from 'express';
 import dotenv from 'dotenv';
-import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
@@ -8,93 +6,18 @@ import morgan from 'morgan';
 dotenv.config();
 
 import connectDB from './config/db.js';
-import { errorHandler, notFound } from './middleware/error.js';
-
-// Route imports
-import authRoutes from './routes/authRoutes.js';
-import productRoutes from './routes/productRoutes.js';
-import orderRoutes from './routes/orderRoutes.js';
-import subscriptionRoutes from './routes/subscriptionRoutes.js';
-import aiRoutes from './modules/ai/ai.routes.js';
-import qrRoutes from './routes/qrRoutes.js';
-import dashboardRoutes from './routes/dashboardRoutes.js';
-import chatRoutes from './routes/chatRoutes.js';
-import utilsRoutes from './routes/utilsRoutes.js';
-import paymentRoutes from './routes/paymentRoutes.js';
-import notificationRoutes from './routes/notificationRoutes.js';
-import feedbackRoutes from './routes/feedbackRoutes.js';
-import deliveryRoutes from './routes/deliveryRoutes.js';
-import priceScheduleRoutes from './routes/priceScheduleRoutes.js';
-import couponRoutes from './routes/couponRoutes.js';
-import aiDashboardRoutes from './routes/aiDashboardRoutes.js';
-import hierarchicalPricingRoutes from './routes/hierarchicalPricingRoutes.js';
+import app from './app.js';
 
 // Connect to database
 connectDB();
 
-// Initialize Express app
-const app = express();
-
-// Security middleware
+// Security middleware (only for standalone server, not serverless)
 app.use(helmet());
-
-// CORS configuration
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      // Allow requests with no origin (e.g., mobile apps, curl)
-      if (!origin) return callback(null, true);
-      const allowed = new Set([
-        process.env.FRONTEND_URL || 'http://localhost:5173',
-        'http://localhost:5174',
-        'http://localhost:5175',
-        'http://localhost:5176',
-        'http://localhost:5177',
-      ]);
-      return allowed.has(origin) ? callback(null, true) : callback(null, false);
-    },
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
-);
-
-// Body parser middleware
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Logging middleware (development only)
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-
-// Health check endpoint
-app.get('/health', (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: 'CluckFresh Hub API is running',
-    timestamp: new Date().toISOString(),
-  });
-});
-
-// API Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/subscriptions', subscriptionRoutes);
-app.use('/api/ai', aiRoutes);
-app.use('/api/qr', qrRoutes);
-app.use('/api/dashboard', dashboardRoutes);
-app.use('/api/chat', chatRoutes);
-app.use('/api/utils', utilsRoutes);
-app.use('/api/payment', paymentRoutes);
-app.use('/api/notifications', notificationRoutes);
-app.use('/api/feedback', feedbackRoutes);
-app.use('/api/delivery', deliveryRoutes);
-app.use('/api/price-schedules', priceScheduleRoutes);
-app.use('/api/coupons', couponRoutes);
-app.use('/api/dashboard/ai', aiDashboardRoutes);
-app.use('/api/hierarchical-pricing', hierarchicalPricingRoutes);
 
 // Root endpoint
 app.get('/', (req, res) => {
@@ -116,10 +39,6 @@ app.get('/', (req, res) => {
     },
   });
 });
-
-// Error handling
-app.use(notFound);
-app.use(errorHandler);
 
 // Start server
 const PORT = process.env.PORT || 5000;

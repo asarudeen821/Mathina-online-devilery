@@ -133,6 +133,14 @@ const AdminPriceScheduler = () => {
 
       toast.success(`✅ ${response.data.message}`);
       await fetchData();
+
+      // Broadcast update across customer pages and open tabs
+      window.dispatchEvent(
+        new CustomEvent('shop-products-updated', {
+          detail: { action: 'schedules-applied' },
+        })
+      );
+      localStorage.setItem('mathina_shop_updated', Date.now().toString());
     } catch (error) {
       console.error('Apply error:', error);
       toast.error('Failed to apply schedules');

@@ -212,7 +212,7 @@ const AdminProducts = () => {
                             <div className="text-sm font-bold text-gray-900">{product.name}</div>
                             <div className="text-xs text-gray-500 line-clamp-1">{product.description}</div>
                             {product.subCategory && (
-                              <span className="text-[10px] text-primary-600 font-semibold bg-primary-50 px-1.5 py-0.2 rounded mt-0.5 inline-block">
+                              <span className="text-[10px] text-primary-600 font-semibold bg-primary-50 px-1.5 py-0.5 rounded mt-0.5 inline-block">
                                 {product.subCategory}
                               </span>
                             )}
@@ -276,7 +276,8 @@ const AdminProducts = () => {
                       </div>
                     </td>
                   </tr>
-                ))}
+                );
+              })}
               </tbody>
             </table>
           </div>

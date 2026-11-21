@@ -68,7 +68,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-100">
+    <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group border border-slate-200/80 hover:border-red-300/80 relative flex flex-col justify-between">
       {/* Image */}
       <div className="relative overflow-hidden h-48">
         <Link to={`/products/${product._id}`}>
@@ -175,18 +175,18 @@ const ProductCard = ({ product }) => {
         )}
 
         {/* Action Buttons */}
-        <div className="space-y-2">
-          {/* Buy Now Button - Primary Action */}
+        <div className="space-y-2 mt-3">
+          {/* Buy Now Button - Primary Action with Shimmer */}
           <button
             onClick={handleBuyNow}
             disabled={product.stock === 0}
-            className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-sm transition-all ${
+            className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-sm transition-all active:scale-98 ${
               product.stock === 0
-                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                : 'bg-gradient-to-r from-accent-600 to-accent-700 hover:from-accent-700 hover:to-accent-800 text-white shadow-md hover:shadow-lg'
+                ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                : 'btn-shimmer shadow-md hover:shadow-red-500/25'
             }`}
           >
-            <FiZap className="w-4 h-4" />
+            <FiZap className="w-4 h-4 text-amber-200" />
             {product.stock === 0 ? 'Out of Stock' : `Buy Now — ₹${selectedWeight ? selectedWeight.price : product.price}`}
           </button>
 
@@ -194,14 +194,14 @@ const ProductCard = ({ product }) => {
           <button
             onClick={handleAddToCart}
             disabled={product.stock === 0}
-            className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-sm transition-all ${
+            className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-sm transition-all active:scale-98 ${
               product.stock === 0
-                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                : 'bg-primary-600 hover:bg-primary-700 text-white shadow-sm hover:shadow-md'
+                ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs hover:shadow-emerald-500/20'
             }`}
           >
             <FiShoppingCart className="w-4 h-4" />
-            {product.stock === 0 ? 'Out of Stock' : `Add to Cart — ₹${selectedWeight ? selectedWeight.price : product.price}`}
+            {product.stock === 0 ? 'Out of Stock' : `Add to Cart`}
           </button>
         </div>
       </div>

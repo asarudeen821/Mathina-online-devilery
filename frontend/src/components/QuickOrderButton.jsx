@@ -113,7 +113,7 @@ const QuickOrderButton = () => {
       (i) => `• ${i.cut.name} — ${i.weight} x${i.qty} = ₹${i.cut.prices[i.weight] * i.qty}`
     );
     return [
-      `🐔 *Order from Mathina FreshHub*`,
+      `🐔 *Order from Mathina Chicken Center*`,
       ``,
       `👤 Name: ${customerName || 'Not provided'}`,
       `📞 Phone: ${customerPhone || 'Not provided'}`,
@@ -167,11 +167,11 @@ const QuickOrderButton = () => {
         {/* Order via WhatsApp/Call modal */}
         <button
           onClick={openModal}
-          className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-700 text-white px-5 py-3 rounded-full shadow-2xl hover:from-green-700 hover:to-green-800 transition-all font-bold animate-bounce"
+          className="flex items-center gap-2.5 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-700 text-white px-5 py-3 rounded-full shadow-2xl hover:shadow-green-500/40 hover:scale-105 transition-all duration-300 font-bold group ring-4 ring-white/70"
           title="Order via Call / WhatsApp"
         >
-          <FiShoppingBag className="w-5 h-5" />
-          Order by Call
+          <FiShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform" />
+          <span>Quick Order</span>
         </button>
       </div>
 

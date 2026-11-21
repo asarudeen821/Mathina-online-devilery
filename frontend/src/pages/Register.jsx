@@ -63,7 +63,7 @@ const Register = () => {
     try {
       const { confirmPassword, ...registerData } = formData;
       await register(registerData);
-      toast.success('Account created! Welcome to Mathina FreshHub 🍗');
+      toast.success('Account created! Welcome to Mathina Chicken Center 🍗');
       navigate('/');
     } catch {
       // error handled in context
@@ -81,7 +81,7 @@ const Register = () => {
           <div className="inline-flex items-center justify-center w-14 h-14 bg-primary-600 rounded-2xl mb-3 shadow-lg">
             <GiChickenOven className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">Mathina FreshHub</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Mathina Chicken Center</h1>
           <p className="text-gray-400 text-sm mt-1">Create your account</p>
         </div>
 
@@ -119,7 +119,7 @@ const Register = () => {
                 </div>
                 <div className="text-center">
                   <p className="font-bold text-gray-800 group-hover:text-accent-700">Shop Owner</p>
-                  <p className="text-xs text-gray-400 mt-1">Manage Mathina FreshHub</p>
+                  <p className="text-xs text-gray-400 mt-1">Manage Mathina Chicken Center</p>
                 </div>
                 <span className="text-xs bg-accent-100 text-accent-700 px-3 py-1 rounded-full font-medium">
                   Go to Login
@@ -148,7 +148,7 @@ const Register = () => {
               </button>
               <div>
                 <h2 className="text-xl font-bold text-gray-800">Customer Registration</h2>
-                <p className="text-xs text-gray-400">Join Mathina FreshHub · Cuddalore</p>
+                <p className="text-xs text-gray-400">Join Mathina Chicken Center · Cuddalore</p>
               </div>
               <div className="ml-auto bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
                 <FiUser className="w-3 h-3" /> Customer

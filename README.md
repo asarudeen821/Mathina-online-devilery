@@ -205,7 +205,7 @@ The application will be available at: `http://localhost:5173`
 ## 👥 User Roles & Credentials
 
 ### Admin Account
-- **Email:** `MathinaFreshHub@gmail.com`
+- **Email:** `mathinachickencenter@gmail.com`
 - **Password:** `Admin@123`
 
 ### Customer Account
@@ -391,7 +391,7 @@ Built with ❤️ for CluckFresh Hub - Chennai's premier chicken marketplace
 
 For issues and questions:
 - Create an issue on GitHub
-- Email: MathinaFreshHub@gmail.com
+- Email: mathinachickencenter@gmail.com
 - Phone: +91 98765 43210
 
 ---

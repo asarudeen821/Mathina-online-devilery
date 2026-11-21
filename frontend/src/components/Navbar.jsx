@@ -53,12 +53,17 @@ const Navbar = () => {
           <div className="flex items-center gap-8">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="bg-gradient-to-br from-indigo-600 to-indigo-700 p-2 rounded-lg shadow-sm group-hover:shadow-md transition-all">
-                <GiChickenOven className="w-5 h-5 text-white" />
+              <div className="bg-gradient-to-br from-red-600 via-rose-600 to-amber-500 p-2.5 rounded-xl shadow-md group-hover:shadow-red-500/25 group-hover:scale-105 transition-all duration-300 ring-2 ring-red-100">
+                <GiChickenOven className="w-5 h-5 text-white transform group-hover:rotate-6 transition-transform" />
               </div>
               <div className="hidden sm:block">
-                <span className="text-lg font-bold text-slate-900 block leading-tight">Mathina FreshHub</span>
-                <span className="text-[10px] text-slate-500 font-medium tracking-wide uppercase">Fresh Chicken Platform</span>
+                <span className="text-lg font-bold bg-gradient-to-r from-slate-900 via-red-950 to-slate-900 bg-clip-text text-transparent block leading-tight tracking-tight">
+                  Mathina Chicken Center
+                </span>
+                <span className="text-[10px] text-emerald-600 font-semibold tracking-wide flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  100% Halal & Fresh Daily
+                </span>
               </div>
             </Link>
 

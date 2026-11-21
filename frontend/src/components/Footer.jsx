@@ -13,7 +13,7 @@ const Footer = () => {
               <div className="bg-primary-600 p-2 rounded-xl">
                 <GiChickenOven className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold">Mathina FreshHub</span>
+              <span className="text-xl font-bold">Mathina Chicken Center</span>
             </Link>
             <p className="text-dark-400 text-sm">
               Fresh chicken cuts delivered to your doorstep in Cuddalore.
@@ -108,7 +108,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <FiMail className="w-5 h-5 text-primary-500" />
-                <span className="text-gray-400 text-sm">MathinaFreshHub@gmail.com</span>
+                <span className="text-gray-400 text-sm">mathinachickencenter@gmail.com</span>
               </li>
             </ul>
             <div className="mt-4">
@@ -124,7 +124,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm text-center md:text-left">
-              © {new Date().getFullYear()} Mathina FreshHub. All rights reserved. | Owner: Shajan A.J. | 📞 +91 77080 32726
+              © {new Date().getFullYear()} Mathina Chicken Center. All rights reserved. | Owner: Shajan A.J. | 📞 +91 77080 32726
             </p>
             <div className="flex items-center gap-4 mt-4 md:mt-0">
               {/* UPI Badge */}

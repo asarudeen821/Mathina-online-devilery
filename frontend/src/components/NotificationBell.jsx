@@ -97,7 +97,7 @@ const NotificationBell = () => {
             <p className="text-gray-600 mb-2 text-sm">{deliveryPopup.message}</p>
             <div className="bg-green-50 border border-green-200 rounded-xl p-3 mb-6">
               <p className="text-green-700 text-sm font-medium">
-                ✅ Your fresh chicken from Mathina FreshHub has arrived!
+                ✅ Your fresh chicken from Mathina Chicken Center has arrived!
               </p>
             </div>
             <div className="space-y-2">
@@ -197,7 +197,7 @@ const NotificationBell = () => {
             {/* Footer */}
             <div className="px-4 py-3 bg-gray-50 border-t text-center">
               <p className="text-xs text-gray-400">
-                🔄 Updates every 10 seconds · Mathina FreshHub
+                🔄 Updates every 10 seconds · Mathina Chicken Center
               </p>
             </div>
           </div>

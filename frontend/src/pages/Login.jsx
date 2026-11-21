@@ -306,7 +306,7 @@ const Login = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-600 rounded-2xl mb-4 shadow-lg">
             <GiChickenOven className="w-9 h-9 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">Mathina FreshHub</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Mathina Chicken Center</h1>
           <p className="text-gray-400 text-sm mt-1">Fresh Chicken · Cuddalore</p>
         </div>
 

@@ -8,22 +8,47 @@ import { productAPI } from '../utils/api';
 
 const Home = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [latestProducts, setLatestProducts] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchFeaturedProducts();
-  }, []);
-
-  const fetchFeaturedProducts = async () => {
+  const fetchAllData = async () => {
     try {
-      const { data } = await productAPI.getFeatured();
-      setFeaturedProducts(data.data);
+      const [featRes, allRes] = await Promise.allSettled([
+        productAPI.getFeatured(),
+        productAPI.getAll({ limit: 12, sortBy: 'createdAt', sortOrder: 'desc' }),
+      ]);
+
+      if (featRes.status === 'fulfilled' && featRes.value?.data?.data) {
+        setFeaturedProducts(featRes.value.data.data);
+      }
+      if (allRes.status === 'fulfilled' && allRes.value?.data?.data) {
+        setLatestProducts(allRes.value.data.data);
+        setTotalCount(allRes.value.data.count || allRes.value.data.data.length);
+      }
     } catch (error) {
-      console.error('Failed to fetch featured products:', error);
+      console.error('Failed to fetch home products:', error);
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchAllData();
+
+    // Real-time synchronization when shop owner creates or updates a product
+    const handleShopUpdate = () => {
+      fetchAllData();
+    };
+
+    window.addEventListener('shop-products-updated', handleShopUpdate);
+    window.addEventListener('storage', handleShopUpdate);
+
+    return () => {
+      window.removeEventListener('shop-products-updated', handleShopUpdate);
+      window.removeEventListener('storage', handleShopUpdate);
+    };
+  }, []);
 
   const features = [
     {
@@ -110,27 +135,30 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Hero Section - Modern SaaS Style */}
-      <section className="gradient-primary text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-red-700 via-rose-700 to-amber-700 text-white relative overflow-hidden">
+        {/* Decorative background glow */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-400/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/20">
-                <FiZap className="w-4 h-4 text-amber-300" />
-                <span>Fresh Chicken Platform</span>
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-white/20 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="text-amber-200">100% Halal & Fresh Daily</span>
               </div>
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
-                Mathina FreshHub
-                <span className="block text-indigo-200 text-2xl lg:text-3xl mt-2 font-medium">Cuddalore's Premium Chicken Delivery</span>
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight tracking-tight">
+                Mathina Chicken Center
+                <span className="block text-amber-200 text-2xl lg:text-3xl mt-2 font-medium">Cuddalore's Trusted Chicken Store</span>
               </h1>
-              <p className="text-lg lg:text-xl mb-8 text-indigo-100 max-w-xl">
-                Farm-fresh chicken cuts processed daily. 11+ premium cuts delivered to your doorstep.
-                Quality you can taste, convenience you can trust.
+              <p className="text-lg lg:text-xl mb-8 text-rose-100 max-w-xl leading-relaxed">
+                Farm-fresh chicken processed daily right in front of you. 11+ chef-crafted cuts delivered fresh or cut to order at our shop counter.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/products" className="btn-lg bg-white text-indigo-700 hover:bg-slate-50 font-bold shadow-lg">
-                  Browse Products <FiArrowRight className="w-5 h-5" />
+                <Link to="/products" className="btn-shimmer btn-lg rounded-xl flex items-center justify-center gap-2 shadow-xl hover:shadow-red-500/30">
+                  Browse Fresh Cuts <FiArrowRight className="w-5 h-5" />
                 </Link>
-                <Link to="/subscriptions" className="btn-lg border-2 border-white/30 text-white hover:bg-white/10 font-semibold">
+                <Link to="/subscriptions" className="btn-lg border-2 border-white/40 text-white hover:bg-white/15 backdrop-blur-sm rounded-xl font-semibold transition-all">
                   View Plans
                 </Link>
               </div>
@@ -206,6 +234,48 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* ═══════ Shop Owner Live Updates & Fresh Arrivals Section ═══════ */}
+      {latestProducts && latestProducts.length > 0 && (
+        <section className="py-14 bg-gradient-to-b from-slate-50 via-rose-50/20 to-white border-y border-slate-200/80 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+              <div>
+                <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold mb-3 border border-emerald-300 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                  <span>Shop Owner Live Counter Updates</span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-3">
+                  🔥 Today's Fresh Shop Updates & New Cuts
+                </h2>
+                <p className="text-slate-600 text-sm mt-1 max-w-2xl">
+                  Real-time stock, live counter additions, and custom chicken cuts updated directly by Mathina Chicken Center butchery.
+                </p>
+              </div>
+
+              <Link
+                to="/products"
+                className="inline-flex items-center gap-2 text-sm font-bold text-red-600 hover:text-red-700 bg-white border border-red-200 px-4 py-2 rounded-xl shadow-sm hover:shadow group transition-all"
+              >
+                <span>View All In Store ({totalCount || latestProducts.length}+ Items)</span>
+                <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {latestProducts.slice(0, 4).map((product) => (
+                <div key={product._id} className="relative group">
+                  <div className="absolute -top-2.5 right-3 z-10 bg-gradient-to-r from-red-600 to-amber-600 text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full shadow-md flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                    <span>New Arrival</span>
+                  </div>
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Chicken Lollipop Showcase Section */}
       <ChickenLollipopShowcase />
@@ -297,7 +367,7 @@ const Home = () => {
               <div className="absolute inset-0 bg-primary-600 rounded-full blur-xl opacity-20 animate-pulse"></div>
               <img
                 src="/brand-logo.svg"
-                alt="Mathina FreshHub Logo"
+                alt="Mathina Chicken Center Logo"
                 className="relative w-32 h-32 md:w-40 md:h-40 drop-shadow-2xl hover:scale-105 transition-transform duration-300"
               />
             </div>
@@ -305,10 +375,10 @@ const Home = () => {
             {/* Brand Name */}
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                Mathina FreshHub
+                Mathina Chicken Center
               </h2>
               <p className="text-lg text-gray-600 font-medium">
-                Fresh Chicken · Quality Assured
+                Fresh Chicken · Quality Assured · Halal Certified
               </p>
             </div>
 
@@ -316,7 +386,7 @@ const Home = () => {
             <div className="max-w-2xl text-center">
               <p className="text-gray-600 leading-relaxed">
                 Your trusted source for fresh, organic, and halal-certified chicken in Cuddalore. 
-                Farm-to-table freshness with AI-powered recipe suggestions.
+                Farm-to-table freshness with custom cuts made on demand.
               </p>
             </div>
 
@@ -349,7 +419,7 @@ const Home = () => {
                 📍 Erusappan Pallivasal Street, Cuddalore OT - 607003
               </p>
               <p>
-                📞 +91 77080 32726 | ✉️ MathinaFreshHub@gmail.com
+                📞 +91 77080 32726 | ✉️ mathinachickencenter@gmail.com
               </p>
             </div>
           </div>

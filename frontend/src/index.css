@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ═══════════════════════════════════════════════════════
-   Mathina FreshHub - Modern SaaS Design System
+   Mathina Chicken Center - Modern SaaS Design System
    Clean, Professional, Enterprise-grade UI
    ═══════════════════════════════════════════════════════ */
 
@@ -424,5 +424,88 @@
 
   .tagline {
     @apply text-xl lg:text-2xl font-semibold text-slate-700;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     REACT BITS & MODERN SHOP UI INNOVATIONS
+     Eye-catching animations, glowing borders & buttons
+     ═══════════════════════════════════════════════════════ */
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 15px rgba(225, 29, 72, 0.35), 0 0 30px rgba(245, 158, 11, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(225, 29, 72, 0.6), 0 0 45px rgba(245, 158, 11, 0.4);
+    }
+  }
+
+  @keyframes scanSweep {
+    0% { top: 0%; opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { top: 96%; opacity: 0; }
+  }
+
+  .btn-shimmer {
+    position: relative;
+    background: linear-gradient(90deg, #dc2626 0%, #f97316 25%, #ef4444 50%, #f59e0b 75%, #dc2626 100%);
+    background-size: 200% auto;
+    color: #ffffff;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-shimmer:hover {
+    background-position: right center;
+    box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.4), 0 8px 10px -6px rgba(245, 158, 11, 0.3);
+    transform: translateY(-2px);
+  }
+  .btn-shimmer:active {
+    transform: translateY(0);
+  }
+
+  .btn-glow {
+    position: relative;
+    animation: pulseGlow 3s infinite ease-in-out;
+    transition: all 0.3s ease;
+  }
+  .btn-glow:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  .gradient-text-flame {
+    background: linear-gradient(135deg, #dc2626 0%, #ea580c 50%, #d97706 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-card-dark {
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .scanner-line {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #22c55e, #10b981, transparent);
+    box-shadow: 0 0 12px #10b981, 0 0 24px #22c55e;
+    border-radius: 9999px;
+    animation: scanSweep 2.5s infinite linear;
   }
 }

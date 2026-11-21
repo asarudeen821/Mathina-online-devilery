@@ -8,7 +8,7 @@ const KNOWLEDGE_BASE = [
   // ── GREETINGS ──────────────────────────────────────────────
   {
     patterns: ['hello', 'hi', 'hey', 'good morning', 'good evening'],
-    response: `👋 Hello! Welcome to Mathina FreshHub! I'm your AI assistant. I can help you with:
+    response: `👋 Hello! Welcome to Mathina Chicken Center! I'm your AI assistant. I can help you with:
 
 🍗 Product recommendations
 🍳 Cooking recipes & tips
@@ -22,7 +22,7 @@ What would you like to know?`,
   // ── PRICES ─────────────────────────────────────────────────
   {
     patterns: ['price', 'cost', 'how much', 'rate', 'kg price', 'today price'],
-    response: `💰 *Today's Chicken Prices at Mathina FreshHub*
+    response: `💰 *Today's Chicken Prices at Mathina Chicken Center*
 
 | Cut | Price |
 |-----|-------|
@@ -68,7 +68,7 @@ What would you like to know?`,
   // ── PRODUCTS ───────────────────────────────────────────────
   {
     patterns: ['product', 'chicken', 'what do you sell', 'available', 'cuts'],
-    response: `🍗 *Mathina FreshHub Products*
+    response: `🍗 *Mathina Chicken Center Products*
 
 **Chicken Cuts Available:**
 🔪 Cube Cut - For stir fry & noodles
@@ -153,7 +153,7 @@ Visit our Products page to see full range! 🛒`,
 7. Serve with raita!
 
 ⏱️ Total time: 75 mins
-💡 Use Big Curry Cut from Mathina FreshHub for best results!`,
+💡 Use Big Curry Cut from Mathina Chicken Center for best results!`,
   },
 
   // ── FRESHNESS ──────────────────────────────────────────────
@@ -184,13 +184,13 @@ Visit our Products page to see full range! 🛒`,
   // ── CONTACT ────────────────────────────────────────────────
   {
     patterns: ['contact', 'phone', 'call', 'support', 'help', 'whatsapp'],
-    response: `📞 *Contact Mathina FreshHub*
+    response: `📞 *Contact Mathina Chicken Center*
 
 **Shop Owner:** Shajan A.J.
 
 **Phone:** +91 77080 32726
 **WhatsApp:** +91 80566 94908
-**Email:** MathinaFreshHub@gmail.com
+**Email:** mathinachickencenter@gmail.com
 
 **Address:**
 Erusappan Pallivasal Street

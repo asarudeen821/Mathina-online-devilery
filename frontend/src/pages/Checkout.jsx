@@ -472,21 +472,21 @@ const Checkout = () => {
                   )}
 
                   <div className="border-t pt-3">
-                    <div className="flex justify-between text-lg font-bold">
-                      <span>Total</span>
-                      <span className="text-primary-600">₹{total}</span>
+                    <div className="flex justify-between text-xl font-black">
+                      <span className="text-slate-800">Total</span>
+                      <span className="text-red-600">₹{total}</span>
                     </div>
                   </div>
 
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full btn-primary mt-6"
+                    className="w-full btn-shimmer py-3.5 rounded-xl font-bold text-base shadow-xl hover:shadow-red-500/30 mt-6 active:scale-98 transition-all flex items-center justify-center gap-2"
                   >
                     {loading ? (
                       <div className="spinner w-6 h-6 border-2 border-white border-t-transparent"></div>
                     ) : (
-                      `Place Order - ₹${total}`
+                      `Place Order • ₹${total}`
                     )}
                   </button>
                 </div>

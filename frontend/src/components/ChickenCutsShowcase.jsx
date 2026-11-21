@@ -167,11 +167,6 @@ const CutCard = ({ cut, dbProduct }) => {
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!user) {
-      toast.error('Please login to order products');
-      navigate('/login');
-      return;
-    }
     const targetProduct = getProductObject();
     addToCart(targetProduct, 1, selectedWeight);
     toast.success(`Added ${fmtWeight(selectedWeight.weight)} ${cut.name} to cart!`);
@@ -279,15 +274,15 @@ const CutCard = ({ cut, dbProduct }) => {
           {/* Buy Now */}
           <button
             onClick={handleBuyNow}
-            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-accent-600 to-accent-700 hover:from-accent-700 hover:to-accent-800 text-white py-2.5 rounded-xl font-semibold text-sm transition-all shadow-md hover:shadow-lg"
+            className="w-full flex items-center justify-center gap-2 btn-shimmer py-2.5 rounded-xl font-bold text-sm transition-all shadow-md hover:shadow-red-500/25 active:scale-98"
           >
-            <FiZap className="w-4 h-4 animate-pulse" /> Buy Now
+            <FiZap className="w-4 h-4 text-amber-200" /> Buy Now
           </button>
           
           {/* Add to Cart */}
           <button
             onClick={handleAddToCart}
-            className="w-full flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white py-2.5 rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md"
+            className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl font-semibold text-sm transition-all shadow-xs hover:shadow-emerald-500/20 active:scale-98"
           >
             <FiShoppingCart className="w-4 h-4" /> Add to Cart
           </button>
@@ -303,13 +298,25 @@ const ChickenCutsShowcase = () => {
   useEffect(() => {
     const fetchDbProducts = async () => {
       try {
-        const { data } = await productAPI.getAll({ category: 'chicken-cuts' });
+        const { data } = await productAPI.getAll({ category: 'chicken-cuts', limit: 50 });
         setDbProducts(data.data || []);
       } catch (err) {
         console.error('Showcase: Failed to fetch chicken cuts from MongoDB', err);
       }
     };
     fetchDbProducts();
+
+    const handleUpdate = () => {
+      fetchDbProducts();
+    };
+
+    window.addEventListener('shop-products-updated', handleUpdate);
+    window.addEventListener('storage', handleUpdate);
+
+    return () => {
+      window.removeEventListener('shop-products-updated', handleUpdate);
+      window.removeEventListener('storage', handleUpdate);
+    };
   }, []);
 
   return (

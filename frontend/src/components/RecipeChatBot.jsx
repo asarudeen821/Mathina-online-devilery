@@ -47,7 +47,7 @@ const RecipeChatBot = () => {
   const [messages, setMessages] = useState([
     {
       role: 'bot',
-      text: `👋 *Welcome to Mathina FreshHub AI!*\n\nI'm your chicken recipe assistant 🍗\n\nAsk me anything:\n• "How to cook dragon chicken?"\n• "Biryani recipe"\n• "Chicken tikka recipe"\n• "Today's prices"\n\n💡 *Navigation Commands:*\n• "Open products" - Browse products\n• "Open QR scanner" - Scan codes\n• "View my cart" - Check cart\n• "Show my orders" - Track orders\n\nOr tap a suggestion below! 👇`,
+      text: `👋 *Welcome to Mathina Chicken Center AI!*\n\nI'm your chicken recipe assistant 🍗\n\nAsk me anything:\n• "How to cook dragon chicken?"\n• "Biryani recipe"\n• "Chicken tikka recipe"\n• "Today's prices"\n\n💡 *Navigation Commands:*\n• "Open products" - Browse products\n• "Open QR scanner" - Scan codes\n• "View my cart" - Check cart\n• "Show my orders" - Track orders\n\nOr tap a suggestion below! 👇`,
       time: new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }),
     },
   ]);

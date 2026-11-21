@@ -7,7 +7,6 @@ import { CartProvider } from './context/CartContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
-import RecipeChatBot from './components/RecipeChatBot';
 import QuickOrderButton from './components/QuickOrderButton';
 
 // Pages
@@ -202,7 +201,6 @@ function App() {
               }}
             />
             <ChatWidget />
-            <RecipeChatBot />
             <QuickOrderButton />
           </div>
         </Router>

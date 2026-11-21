@@ -60,7 +60,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     success: true,
-    message: 'Mathina FreshHub API is running',
+    message: 'Mathina Chicken Center API is running',
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV || 'development',
   });
@@ -89,7 +89,7 @@ app.use('/api/hierarchical-pricing', hierarchicalPricingRoutes);
 app.get('/api', (req, res) => {
   res.json({
     success: true,
-    message: 'Welcome to Mathina FreshHub API',
+    message: 'Welcome to Mathina Chicken Center API',
     version: '1.0.0',
     endpoints: {
       auth: '/api/auth',

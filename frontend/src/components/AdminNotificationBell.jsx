@@ -234,7 +234,7 @@ const AdminNotificationBell = () => {
             {/* Footer */}
             <div className="px-4 py-3 bg-gray-50 border-t text-center">
               <p className="text-xs text-gray-400">
-                🔄 Updates every 10 seconds · Mathina FreshHub Admin
+                🔄 Updates every 10 seconds · Mathina Chicken Center Admin
               </p>
             </div>
           </div>

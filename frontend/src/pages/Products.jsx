@@ -27,6 +27,21 @@ const Products = () => {
     fetchProducts();
   }, [filters]);
 
+  // Real-time listener for shop owner updates
+  useEffect(() => {
+    const handleShopUpdate = () => {
+      fetchProducts();
+    };
+
+    window.addEventListener('shop-products-updated', handleShopUpdate);
+    window.addEventListener('storage', handleShopUpdate);
+
+    return () => {
+      window.removeEventListener('shop-products-updated', handleShopUpdate);
+      window.removeEventListener('storage', handleShopUpdate);
+    };
+  }, [filters]);
+
   const fetchProducts = async () => {
     setLoading(true);
     try {

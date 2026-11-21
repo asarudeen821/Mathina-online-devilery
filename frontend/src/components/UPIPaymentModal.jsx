@@ -1,8 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { FiX, FiCheck, FiSmartphone, FiLoader } from 'react-icons/fi';
+import { FiX, FiCheck, FiSmartphone, FiLoader, FiCopy, FiExternalLink, FiShield } from 'react-icons/fi';
+import QRCode from 'react-qr-code';
+import toast from 'react-hot-toast';
 
 // UPI ID validation regex
 const UPI_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+$/;
+const MERCHANT_UPI_ID = 'CF05100492@indianbk';
+const MERCHANT_NAME = 'Mathina Chicken Center';
 
 const STEPS = { INPUT: 'input', PROCESSING: 'processing', SUCCESS: 'success' };
 
@@ -119,16 +123,58 @@ const UPIPaymentModal = ({ isOpen, amount, onSuccess, onClose }) => {
           {/* STEP: INPUT */}
           {step === STEPS.INPUT && (
             <div className="space-y-4">
-              <div className="flex flex-col items-center justify-center p-4 bg-purple-50 rounded-xl border border-purple-100 mb-2">
-                <p className="text-xs text-purple-700 font-semibold mb-2">Scan to Pay using any UPI app</p>
-                <div className="bg-white p-2 rounded-lg shadow-sm">
-                  <img
-                    src="/images/payment-qr.jpg"
-                    alt="Scan to pay via UPI"
-                    className="w-36 h-36 object-contain rounded"
-                  />
+              {/* Marketing-Grade Smart UPI QR Container */}
+              <div className="flex flex-col items-center justify-center p-4 bg-gradient-to-b from-purple-50 to-indigo-50/50 rounded-2xl border border-purple-200/70 shadow-inner">
+                {/* Merchant Pill */}
+                <div className="flex items-center gap-1.5 bg-purple-100/90 text-purple-800 text-[11px] font-semibold px-3 py-1 rounded-full mb-3 shadow-xs border border-purple-200">
+                  <FiShield className="w-3.5 h-3.5 text-purple-600" />
+                  <span>Official Merchant: {MERCHANT_NAME}</span>
                 </div>
-                <p className="text-[10px] text-gray-500 mt-2 font-mono">CF05100492@indianbk</p>
+
+                {/* Vector QR Code with high error correction */}
+                <div className="bg-white p-3.5 rounded-2xl shadow-md border-2 border-purple-300/60 relative group">
+                  <QRCode
+                    value={`upi://pay?pa=${MERCHANT_UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR`}
+                    size={148}
+                    level="H"
+                    fgColor="#0f172a"
+                  />
+                  {/* Center emblem */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <span className="bg-white text-purple-700 font-bold text-[10px] px-1.5 py-0.5 rounded shadow border border-purple-200">
+                      MCC
+                    </span>
+                  </div>
+                </div>
+
+                {/* Amount encoded tag */}
+                <p className="text-[11px] text-purple-700 font-medium mt-2 flex items-center gap-1">
+                  <span>Pre-filled ₹{amount}</span> • <span>Scan with any UPI app</span>
+                </p>
+
+                {/* UPI ID with 1-click copy */}
+                <div className="flex items-center gap-2 mt-2 bg-white/90 px-3 py-1.5 rounded-lg border border-purple-200 shadow-2xs">
+                  <span className="text-xs text-gray-700 font-mono font-medium">{MERCHANT_UPI_ID}</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigator.clipboard.writeText(MERCHANT_UPI_ID);
+                      toast.success('UPI ID copied to clipboard!');
+                    }}
+                    className="text-purple-600 hover:text-purple-800 p-1 hover:bg-purple-50 rounded transition-colors"
+                    title="Copy UPI ID"
+                  >
+                    <FiCopy className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                {/* Direct Mobile Pay Link */}
+                <a
+                  href={`upi://pay?pa=${MERCHANT_UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR`}
+                  className="mt-2 text-[11px] text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-1 hover:underline"
+                >
+                  <FiExternalLink className="w-3 h-3" /> Pay directly via UPI App on mobile
+                </a>
               </div>
 
               <div className="relative flex py-2 items-center">

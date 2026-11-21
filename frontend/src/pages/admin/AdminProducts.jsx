@@ -14,6 +14,7 @@ const AdminProducts = () => {
     name: '',
     description: '',
     category: 'chicken-cuts',
+    subCategory: '',
     price: '',
     stock: '',
     freshnessTag: 'fresh',
@@ -21,6 +22,7 @@ const AdminProducts = () => {
     organic: false,
     antibioticFree: false,
     isFeatured: false,
+    imageUrl: '',
   });
 
   useEffect(() => {
@@ -45,13 +47,15 @@ const AdminProducts = () => {
         name: product.name || '',
         description: product.description || '',
         category: product.category || 'chicken-cuts',
+        subCategory: product.subCategory || '',
         price: product.price || '',
         stock: product.stock || '',
         freshnessTag: product.freshnessTag || 'fresh',
-        halalCertified: product.halalCertified || true,
+        halalCertified: product.halalCertified !== undefined ? product.halalCertified : true,
         organic: product.organic || false,
         antibioticFree: product.antibioticFree || false,
         isFeatured: product.isFeatured || false,
+        imageUrl: product.images?.[0]?.url || '',
       });
     } else {
       setEditingProduct(null);
@@ -59,6 +63,7 @@ const AdminProducts = () => {
         name: '',
         description: '',
         category: 'chicken-cuts',
+        subCategory: '',
         price: '',
         stock: '',
         freshnessTag: 'fresh',
@@ -66,6 +71,7 @@ const AdminProducts = () => {
         organic: false,
         antibioticFree: false,
         isFeatured: false,
+        imageUrl: '',
       });
     }
     setShowModal(true);
@@ -74,15 +80,48 @@ const AdminProducts = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const payload = {
+        name: formData.name,
+        description: formData.description,
+        category: formData.category,
+        price: Number(formData.price),
+        stock: Number(formData.stock),
+        freshnessTag: formData.freshnessTag,
+        halalCertified: Boolean(formData.halalCertified),
+        organic: Boolean(formData.organic),
+        antibioticFree: Boolean(formData.antibioticFree),
+        isFeatured: Boolean(formData.isFeatured),
+      };
+
+      if (formData.category === 'chicken-cuts' && formData.subCategory) {
+        payload.subCategory = formData.subCategory;
+      }
+      if (formData.imageUrl && formData.imageUrl.trim()) {
+        payload.images = [{ url: formData.imageUrl.trim() }];
+      } else if (editingProduct?.images?.length > 0) {
+        payload.images = editingProduct.images;
+      }
+
+      let savedProduct;
       if (editingProduct) {
-        await productAPI.update(editingProduct._id, formData);
+        const res = await productAPI.update(editingProduct._id, payload);
+        savedProduct = res?.data?.data || payload;
         toast.success('Product updated successfully');
       } else {
-        await productAPI.create(formData);
+        const res = await productAPI.create(payload);
+        savedProduct = res?.data?.data || payload;
         toast.success('Product created successfully');
       }
       setShowModal(false);
       fetchProducts();
+
+      // Broadcast update across customer pages and open tabs
+      window.dispatchEvent(
+        new CustomEvent('shop-products-updated', {
+          detail: { product: savedProduct, action: editingProduct ? 'update' : 'create' },
+        })
+      );
+      localStorage.setItem('mathina_shop_updated', Date.now().toString());
     } catch (error) {
       toast.error('Failed to save product');
     }
@@ -95,6 +134,14 @@ const AdminProducts = () => {
       await productAPI.delete(id);
       toast.success('Product deleted successfully');
       fetchProducts();
+
+      // Broadcast deletion across customer pages
+      window.dispatchEvent(
+        new CustomEvent('shop-products-updated', {
+          detail: { id, action: 'delete' },
+        })
+      );
+      localStorage.setItem('mathina_shop_updated', Date.now().toString());
     } catch (error) {
       toast.error('Failed to delete product');
     }
@@ -149,21 +196,34 @@ const AdminProducts = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {products.map((product) => (
-                  <tr key={product._id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4">
-                      <div className="flex items-center">
-                        <div>
-                          <div className="text-sm font-medium text-gray-900">{product.name}</div>
-                          <div className="text-sm text-gray-500 line-clamp-1">{product.description}</div>
+                {products.map((product) => {
+                  const thumb = product.images?.[0]?.url || '/images/products/chicken-breast-boneless.png';
+                  return (
+                    <tr key={product._id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4">
+                        <div className="flex items-center space-x-3">
+                          <img
+                            src={thumb}
+                            alt={product.name}
+                            className="w-10 h-10 object-cover rounded-lg border border-gray-200 flex-shrink-0"
+                            onError={(e) => { e.target.src = '/images/products/chicken-breast-boneless.png'; }}
+                          />
+                          <div>
+                            <div className="text-sm font-bold text-gray-900">{product.name}</div>
+                            <div className="text-xs text-gray-500 line-clamp-1">{product.description}</div>
+                            {product.subCategory && (
+                              <span className="text-[10px] text-primary-600 font-semibold bg-primary-50 px-1.5 py-0.2 rounded mt-0.5 inline-block">
+                                {product.subCategory}
+                              </span>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 capitalize">
-                        {product.category}
-                      </span>
-                    </td>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 capitalize">
+                          {product.category}
+                        </span>
+                      </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       ₹{product.price}
                     </td>
@@ -288,6 +348,70 @@ const AdminProducts = () => {
                         required
                         className="input-field"
                       />
+                    </div>
+                  </div>
+
+                  {formData.category === 'chicken-cuts' && (
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Cut Type (SubCategory)
+                      </label>
+                      <select
+                        value={formData.subCategory || ''}
+                        onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
+                        className="input-field"
+                      >
+                        <option value="">General / Counter Cut</option>
+                        <option value="curry-cut">Curry Cut (Classic Bone-in)</option>
+                        <option value="small-curry-cut">Small Curry Cut</option>
+                        <option value="big-curry-cut">Big Curry Cut / Biryani Cut</option>
+                        <option value="cube-cut">Cube Cut (Boneless)</option>
+                        <option value="dragon-cut">Dragon Cut</option>
+                        <option value="butterfly-cut">Butterfly Cut</option>
+                        <option value="65-piece">Chicken 65 Pieces</option>
+                        <option value="finger-cut">Finger Cut</option>
+                        <option value="julienne-cut">Julienne Cut</option>
+                        <option value="lollipop">Chicken Lollipop</option>
+                        <option value="wings">Chicken Wings</option>
+                        <option value="legs">Drumsticks / Legs</option>
+                        <option value="breast">Boneless Breast</option>
+                        <option value="whole">Whole Chicken</option>
+                        <option value="thighs-boneless">Boneless Thighs</option>
+                      </select>
+                    </div>
+                  )}
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Image URL (Optional)
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.imageUrl}
+                      onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                      placeholder="e.g. /images/products/chicken-breast-boneless.png"
+                      className="input-field"
+                    />
+                    <div className="flex gap-2 mt-2 overflow-x-auto pb-1 text-xs">
+                      {[
+                        { label: 'Boneless Breast', url: '/images/products/chicken-breast-boneless.png' },
+                        { label: 'Diced Cubes', url: '/images/products/chicken-breast-diced.png' },
+                        { label: 'Drumsticks', url: '/images/products/chicken-drumsticks-raw.png' },
+                        { label: 'Butterfly', url: '/images/products/chicken-breast-butterfly.png' },
+                        { label: 'Strips', url: '/images/products/chicken-breast-strips.png' },
+                        { label: 'Lollipop', url: '/images/products/chicken-lollipop-drumstick.png' },
+                        { label: 'Marinated', url: '/images/products/chicken-leg-marinated.png' },
+                        { label: 'Whole', url: '/images/products/whole-chicken-seasoned.png' },
+                      ].map((preset, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => setFormData({ ...formData, imageUrl: preset.url })}
+                          className="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded whitespace-nowrap text-[11px] font-medium"
+                        >
+                          {preset.label}
+                        </button>
+                      ))}
                     </div>
                   </div>
 

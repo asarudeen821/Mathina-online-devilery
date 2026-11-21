@@ -79,7 +79,7 @@ const OrderFeedback = () => {
         <div className="bg-white rounded-2xl shadow-lg p-10 text-center max-w-md w-full">
           <FiCheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Feedback Submitted!</h2>
-          <p className="text-gray-600 mb-6">Thank you for helping us improve. Your feedback means a lot to Shajan A.J. and the Mathina FreshHub team!</p>
+          <p className="text-gray-600 mb-6">Thank you for helping us improve. Your feedback means a lot to Shajan A.J. and the Mathina Chicken Center team!</p>
           <button onClick={() => navigate('/orders')} className="btn-primary px-8">
             Back to Orders
           </button>

@@ -133,9 +133,9 @@ const Cart = () => {
 
                 <button
                   onClick={() => navigate('/checkout')}
-                  className="w-full btn-primary mt-6"
+                  className="w-full btn-shimmer py-3.5 rounded-xl font-bold text-base shadow-xl hover:shadow-red-500/30 mt-6 active:scale-98 transition-all flex items-center justify-center gap-2"
                 >
-                  Proceed to Checkout
+                  Proceed to Checkout • ₹{total}
                 </button>
 
                 <Link

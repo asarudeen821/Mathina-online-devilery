@@ -229,13 +229,13 @@ const handleGreetingIntent = (userName, language) => {
 
   if (userName) {
     return isTamil
-      ? `வணக்கம் ${userName}! 🙏 Mathina FreshHub-க்கு வரவேற்கிறோம். இன்று என்ன வாங்க விரும்புகிறீர்கள்?`
-      : `Hello ${userName}! 🙏 Welcome to Mathina FreshHub. What would you like to order today?`;
+      ? `வணக்கம் ${userName}! 🙏 Mathina Chicken Center-க்கு வரவேற்கிறோம். இன்று என்ன வாங்க விரும்புகிறீர்கள்?`
+      : `Hello ${userName}! 🙏 Welcome to Mathina Chicken Center. What would you like to order today?`;
   }
 
   return isTamil
-    ? 'வணக்கம்! 🙏 Mathina FreshHub-க்கு வரவேற்கிறோம். எப்படி உதவ முடியும்?'
-    : 'Hello! 🙏 Welcome to Mathina FreshHub. How can I help you today?';
+    ? 'வணக்கம்! 🙏 Mathina Chicken Center-க்கு வரவேற்கிறோம். எப்படி உதவ முடியும்?'
+    : 'Hello! 🙏 Welcome to Mathina Chicken Center. How can I help you today?';
 };
 
 /**
@@ -265,7 +265,7 @@ const generateWithOpenAI = async (messages) => {
 const generateWithGemini = async (message, products = [], language = 'english') => {
   const productList = products.map(p => `${p.name} (${p.category}): ₹${p.price}/kg`).join(', ');
   const langNote = language === 'tamil' ? ' Respond in Tamil or Tanglish.' : '';
-  const prompt = `You are the AI assistant for Mathina FreshHub, a chicken marketplace in Chennai. Help with recipes, products, delivery, and orders. Be concise and friendly.${langNote}
+  const prompt = `You are the AI assistant for Mathina Chicken Center, a chicken marketplace in Chennai. Help with recipes, products, delivery, and orders. Be concise and friendly.${langNote}
 
 Available products: ${productList || 'Fresh chicken cuts, eggs, marinades'}
 
@@ -335,7 +335,7 @@ const getFallbackResponse = (userMessage) => {
   const fallbacks = [
     "Thanks for your message! I'm having trouble connecting to my AI brain right now 🧠. For immediate assistance, please call our support team!",
     "Oops! Something went wrong on my end. Please try again in a moment, or contact our customer support for help.",
-    "I'm experiencing technical difficulties. For urgent queries, please reach out to our team at support@mathinafreshhub.com",
+    "I'm experiencing technical difficulties. For urgent queries, please reach out to our team at support@mathinachickencenter.com",
   ];
 
   // Add context-aware fallback

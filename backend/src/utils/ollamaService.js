@@ -74,7 +74,7 @@ class OllamaService {
   buildSystemPrompt(context = {}) {
     const { products = [], categories = [] } = context;
 
-    let prompt = `You are an AI assistant for CluckFresh Hub (also known as Mathina FreshHub), a fresh chicken marketplace in Chennai.
+    let prompt = `You are an AI assistant for CluckFresh Hub (also known as Mathina Chicken Center), a fresh chicken marketplace in Chennai.
 
 🎯 YOUR ROLE:
 - Help users choose chicken products
@@ -149,7 +149,7 @@ Respond in a friendly, conversational tone. If asked about something outside you
 
     // Contact/Support
     if (lowerMessage.includes('contact') || lowerMessage.includes('support') || lowerMessage.includes('help')) {
-      return "Need help? Contact us at MathinaFreshHub@gmail.com or call +91 98765 43210. We're here Mon-Sun, 6 AM - 10 PM! 📞";
+      return "Need help? Contact us at mathinachickencenter@gmail.com or call +91 98765 43210. We're here Mon-Sun, 6 AM - 10 PM! 📞";
     }
 
     // Default response

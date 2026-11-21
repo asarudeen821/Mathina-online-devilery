@@ -46,7 +46,7 @@ export const ensureAdminUser = async () => {
         pincode: '607003',
       },
       shopDetails: {
-        shopName: 'Mathina FreshHub',
+        shopName: 'Mathina Chicken Center',
         shopAddress: 'Erusappan Pallivasal Street, Cuddalore OT',
         licenseNumber: 'TN-CUD-2024-001',
       },

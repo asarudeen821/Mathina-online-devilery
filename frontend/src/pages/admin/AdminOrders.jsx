@@ -10,7 +10,7 @@ const PIPELINE = [
   { step: 2, status: 'confirmed',        label: 'Confirmed',        icon: FiCheck,   color: 'blue',    msg: '✅ Your order has been confirmed! We are preparing your fresh chicken. 🐔' },
   { step: 3, status: 'processing',       label: 'Processing',       icon: FiPackage, color: 'purple',  msg: '🔪 Your chicken is being freshly cut and packed right now!' },
   { step: 4, status: 'out-for-delivery', label: 'Out for Delivery', icon: FiTruck,   color: 'indigo',  msg: '🚚 Your order is on the way! Our delivery person is heading to your address.' },
-  { step: 5, status: 'delivered',        label: 'Delivered',        icon: FiCheck,   color: 'green',   msg: '🎉 Your order has been delivered! Enjoy your fresh chicken from Mathina FreshHub. Thank you! 🍗' },
+  { step: 5, status: 'delivered',        label: 'Delivered',        icon: FiCheck,   color: 'green',   msg: '🎉 Your order has been delivered! Enjoy your fresh chicken from Mathina Chicken Center. Thank you! 🍗' },
 ];
 
 const STEP_COLORS = {
@@ -137,7 +137,7 @@ const AdminOrders = () => {
             orderId: order._id,
             userId: order.user._id,
             type: next.status,
-            title: `Order ${next.label} — Mathina FreshHub`,
+            title: `Order ${next.label} — Mathina Chicken Center`,
             message: next.msg,
           });
         } catch {}
@@ -166,7 +166,7 @@ const AdminOrders = () => {
             orderId: order._id,
             userId: order.user._id,
             type: 'cancelled',
-            title: 'Order Cancelled — Mathina FreshHub',
+            title: 'Order Cancelled — Mathina Chicken Center',
             message: '❌ Your order has been cancelled. Please contact us at +91 77080 32726 for help.',
           });
         } catch {}
@@ -187,7 +187,7 @@ const AdminOrders = () => {
         orderId: selectedOrder._id,
         userId: selectedOrder.user._id,
         type: 'update',
-        title: 'Message from Mathina FreshHub 🐔',
+        title: 'Message from Mathina Chicken Center 🐔',
         message: customMsg.trim(),
       });
       toast.success('Message sent to customer!');

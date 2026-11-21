@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────
-// Mathina FreshHub — Enhanced SLM Chatbot Engine
+// Mathina Chicken Center — Enhanced SLM Chatbot Engine
 // Works 100% on the frontend — no backend required
 // Features: Step-by-step cooking instructions for ANY food
 // ─────────────────────────────────────────────────────────────
@@ -200,7 +200,7 @@ const KNOWLEDGE_BASE = [
 5. Layer chicken, veggies & roll tightly 🌯
 
 ⏱️ Total time: 30 mins (+ marination)
-💡 Tip: Shawarma Slices from Mathina FreshHub are pre-cut thin — saves prep time!`,
+💡 Tip: Shawarma Slices from Mathina Chicken Center are pre-cut thin — saves prep time!`,
   },
 
   // ── CHICKEN TIKKA ───────────────────────────────────────────
@@ -258,7 +258,7 @@ const KNOWLEDGE_BASE = [
 6. Gently mix before serving 🍛
 
 ⏱️ Total time: 1.5 hours
-💡 Tip: Big Curry Cut from Mathina FreshHub gives the best biryani flavor — bone-in pieces add richness!`,
+💡 Tip: Big Curry Cut from Mathina Chicken Center gives the best biryani flavor — bone-in pieces add richness!`,
   },
 
   // ── CHICKEN CURRY ───────────────────────────────────────────
@@ -314,7 +314,7 @@ const KNOWLEDGE_BASE = [
 5. Squeeze lemon juice & serve immediately 🍋
 
 ⏱️ Total time: 40 mins
-💡 Tip: Mathina FreshHub's Chicken 65 Pieces are pre-cut to the perfect bite size!`,
+💡 Tip: Mathina Chicken Center's Chicken 65 Pieces are pre-cut to the perfect bite size!`,
   },
 
   // ── LOLLIPOP ────────────────────────────────────────────────
@@ -375,7 +375,7 @@ const KNOWLEDGE_BASE = [
 7. Serve with lemon wedges & salad 🥗
 
 ⏱️ Total time: 20 mins (+ marination)
-💡 Butterfly Cut from Mathina FreshHub is perfect for grilling — cooks evenly!`,
+💡 Butterfly Cut from Mathina Chicken Center is perfect for grilling — cooks evenly!`,
   },
 
   // ── WINGS ───────────────────────────────────────────────────
@@ -558,7 +558,7 @@ const KNOWLEDGE_BASE = [
   // ── PRICES ──────────────────────────────────────────────────
   {
     patterns: ['price', 'cost', 'how much', 'rate', 'kg price', 'today price', 'current price'],
-    response: `💰 *Today's Chicken Prices at Mathina FreshHub*
+    response: `💰 *Today's Chicken Prices at Mathina Chicken Center*
 
 | Cut | Price |
 |-----|-------|
@@ -600,14 +600,14 @@ const KNOWLEDGE_BASE = [
   // ── SHOP INFO ───────────────────────────────────────────────
   {
     patterns: ['shop', 'address', 'location', 'where', 'contact', 'phone', 'owner', 'shajan'],
-    response: `### 🏢 Corporate Profile: Mathina FreshHub
+    response: `### 🏢 Corporate Profile: Mathina Chicken Center
 
 | Attribute | Specification |
 | :--- | :--- |
 | **Lead Partner** | Shajan A.J. |
 | **Operations** | Cuddalore OT, Tamil Nadu - 607003 |
 | **Direct Voice** | +91 77080 32726 |
-| **Enterprise Support** | MathinaFreshHub@gmail.com |
+| **Enterprise Support** | mathinachickencenter@gmail.com |
 | **Operating Cycle** | 06:00 - 22:00 IST |
 
 **Compliance:** 
@@ -687,14 +687,14 @@ const KNOWLEDGE_BASE = [
   // ── GREETING ────────────────────────────────────────────────
   {
     patterns: ['hello', 'hi', 'hey', 'good morning', 'good evening', 'vanakkam', 'namaste'],
-    response: `👋 *Welcome to Mathina FreshHub!*
+    response: `👋 *Welcome to Mathina Chicken Center!*
 I'm your AI Executive Chef. How can I help you in the kitchen today? 👨‍🍳
 
 I can help you with:
 • 🍳 **Recipes** — Dragon Chicken, Biryani, Shawarma, Tikka & more
 • 💰 **Prices** — Today's kg rates for all cuts
 • 📞 **Contact** — Call or WhatsApp for orders
-• 📧 **Support** — Reach us at MathinaFreshHub@gmail.com
+• 📧 **Support** — Reach us at mathinachickencenter@gmail.com
 • 🔪 **Cuts Guide** — Which cut for which dish
 • 🚚 **Delivery** — Timing & areas
 • 📞 **Contact** — Shop info & ordering
@@ -711,12 +711,305 @@ I can help you with:
     response: `😊 You're welcome! Happy cooking! 🍗
 
 Feel free to ask anytime:
-• More recipes 🍳
-• Prices & availability 💰
-• Delivery info 🚚
+• How to order or track orders 📦
+• 11+ Cuts guide & recipe advice 🍳
+• Daily prices & live shop updates 💰
+• Delivery status & payment options 🚚
 
-📞 To order: +91 77080 32726
+📞 To order by phone: +91 77080 32726
 📱 WhatsApp: +91 80566 94908`,
+  },
+
+  // ── HOW TO ORDER ON THE PLATFORM ──────────────────────────────
+  {
+    patterns: [
+      'how to order',
+      'how do i order',
+      'how to buy',
+      'order chicken',
+      'place an order',
+      'ordering process',
+      'how to use website',
+      'steps to order',
+      'buy chicken online',
+      'how to checkout',
+    ],
+    response: `📦 **How to Order on Mathina Chicken Center (Step-by-Step Guide)**
+
+Ordering fresh, 100% Halal chicken online is quick and effortless:
+
+1. **Browse Cuts & Categories:**
+   • Visit our [Products Page](/products) or explore "Shop by Cut" on the Home page.
+   • Choose from 11+ chef-crafted cuts (Curry Cut, Cube Cut, Dragon Cut, Lollipop, Chicken 65, etc.) or Live Chicken.
+
+2. **Select Weight & Quantity:**
+   • Choose your desired pack size: **250g, 500g, or 1kg** (or custom per kg).
+   • Transparent per-kg pricing is updated daily.
+
+3. **Choose Checkout Method:**
+   • ⚡ **Buy Now:** Instant 1-click express checkout for single items.
+   • 🛒 **Add to Cart:** Add multiple cuts, eggs, or marinades and checkout together.
+
+4. **Review Cart & Enter Details:**
+   • Open [Cart](/cart) to review your items.
+   • Apply coupon **MATHINA2024** for 15% off Biryani & Big Curry Cut.
+   • Enter your Cuddalore delivery address and mobile number.
+
+5. **Select Payment:**
+   • 📲 **UPI Instant Pay:** Scan our Indian Bank QR code using Google Pay, PhonePe, Paytm, or BHIM.
+   • 💵 **Cash on Delivery (COD):** Pay cash at your doorstep upon delivery.
+
+6. **Order Placed & Live Tracking:**
+   • You receive an instant Order Confirmation with live tracking on [My Orders](/orders)!`,
+  },
+
+  // ── ORDER TRACKING & LIVE UPDATES ─────────────────────────────
+  {
+    patterns: [
+      'track order',
+      'track my order',
+      'where is my order',
+      'check update',
+      'order status',
+      'order updates',
+      'how to track',
+      'cancel order',
+      'how to cancel',
+      'reorder',
+    ],
+    response: `🚚 **How to Track Your Order & Live Status Updates**
+
+Stay updated every step of the way from butchery block to your kitchen:
+
+📍 **Where to Track:**
+• Navigate to **[My Orders](/orders)** from the top menu or profile.
+• Click on any active order to see its live visual progress tracker.
+
+🔄 **Order Status Pipeline:**
+1. 🟡 **Pending:** Order received and logged at Mathina Chicken Center counter.
+2. 🔵 **Confirmed:** Butchery manager verified stock and accepted your order.
+3. 🟣 **Processing:** Your bird is being freshly slaughtered, custom-cut to precision, hygienically washed, and vacuum-sealed.
+4. 🟠 **Out for Delivery:** Dispatched in a temperature-controlled insulated cold box with our delivery partner.
+5. 🟢 **Delivered:** Handed over safely at your doorstep!
+
+🔔 **Live Notifications:**
+• The **Notification Bell** on the top navigation bar rings with real-time updates as your order progresses.
+
+❌ **Cancellation & Changes:**
+• You can cancel an order directly from the order page while the status is **Pending** or **Confirmed** (before butchery cutting starts).
+• For immediate modifications, call our counter directly: **+91 77080 32726**.`,
+  },
+
+  // ── FARM-TO-TABLE QR TRACEABILITY ─────────────────────────────
+  {
+    patterns: [
+      'qr scan',
+      'qr code',
+      'traceability',
+      'farm to table',
+      'scan qr',
+      'trace my chicken',
+      'where is chicken from',
+      'batch code',
+      'slaughter date',
+      'halal verification',
+    ],
+    response: `🔍 **Farm-to-Table QR Traceability System**
+
+At Mathina Chicken Center, we believe in 100% radical transparency for the food you and your family eat:
+
+📲 **How to Scan:**
+1. Head to our **[QR Scanner Page](/qr-scan)**.
+2. Allow camera access, or upload a photo of the QR code printed on your meat packet.
+3. You can also scan the QR standee at our shop counter!
+
+📋 **What Information Does It Reveal?**
+• 🌾 **Farm of Origin:** Certified biosafety poultry farm in Tamil Nadu where the bird was raised.
+• 🩺 **Veterinary Clearance:** Zero antibiotics, zero growth hormones, 100% natural grain feed.
+• 🔪 **Slaughter Timestamp:** Exact date and time the chicken was processed today.
+• 🕌 **Halal Certification:** Verified hand-slaughtered Halal compliance record.
+• ❄️ **Cold-Chain Log:** Verification that your chicken was kept at 0°C–4°C uninterrupted.
+
+🛡️ *Mathina Guarantee:* Freshness isn't just a claim — it is verifiable proof with every bite!`,
+  },
+
+  // ── PAYMENTS & SMART UPI ──────────────────────────────────────
+  {
+    patterns: [
+      'payment',
+      'how to pay',
+      'upi',
+      'google pay',
+      'phonepe',
+      'paytm',
+      'cash on delivery',
+      'cod',
+      'qr pay',
+      'bank details',
+      'payment methods',
+    ],
+    response: `💳 **Payment Methods at Mathina Chicken Center**
+
+We offer fast, zero-fee, secure payment options for all customers:
+
+1. **Smart UPI QR Code (Recommended):**
+   • **Bank:** Indian Bank
+   • **Official VPA:** \`CF05100492@indianbk\`
+   • **Beneficiary Name:** Mathina Chicken Center
+   • Scan our dynamic counter standee or in-app modal using:
+     - Google Pay (GPay)
+     - PhonePe
+     - Paytm
+     - BHIM UPI / CRED / Amazon Pay
+   • Features 1-click amount presets (₹150, ₹250, ₹500, ₹1000) and instant UPI ID copy!
+
+2. **Mobile Direct UPI Deep-Link:**
+   • On mobile devices, simply tap **"Pay via UPI App"** in the payment modal to open your favorite UPI app directly with amount prefilled.
+
+3. **Cash on Delivery (COD):**
+   • Prefer to pay at your doorstep? Choose Cash on Delivery at checkout with zero extra fees!`,
+  },
+
+  // ── SUBSCRIPTIONS & WEEKLY PLANS ──────────────────────────────
+  {
+    patterns: [
+      'subscription',
+      'subscriptions',
+      'weekly plan',
+      'monthly plan',
+      'recurring order',
+      'subscribe',
+      'meal plan',
+      'protein plan',
+    ],
+    response: `📅 **Mathina Chicken Center Subscription Plans**
+
+Never worry about running out of fresh chicken again! Automate your weekly protein delivery:
+
+✨ **Available Plans on [Subscriptions](/subscriptions):**
+• 🍗 **Weekly Essentials Plan:** 1kg or 2kg fresh Curry Cut delivered every Sunday morning before 8 AM.
+• 💪 **High-Protein Fitness Plan:** Boneless Breast or Butterfly Cut delivered 3x weekly (Mon / Wed / Fri) for gym enthusiasts and athletes.
+• 👑 **Family Feast Plan:** Custom mix of Biryani Cut, Chicken Lollipop, and Soup Bones delivered on your preferred days.
+
+🎁 **Subscriber Benefits:**
+• **10% - 15% Flat Discount** locked in against spot market price spikes.
+• **Free Priority Morning Delivery** on every scheduled drop.
+• **Total Flexibility:** Pause, skip a week, change cuts, or cancel anytime from your profile with zero cancellation fees!`,
+  },
+
+  // ── FESTIVAL OFFERS & COUPONS ─────────────────────────────────
+  {
+    patterns: [
+      'coupon',
+      'coupons',
+      'offer',
+      'offers',
+      'discount',
+      'promo code',
+      'voucher',
+      'mathina2024',
+      'festival offer',
+      'deal',
+    ],
+    response: `🎉 **Current Offers & Festival Coupon Codes**
+
+Save extra on your fresh poultry orders today:
+
+🏷️ **Promo Code:** \`MATHINA2024\`
+• **Benefit:** 15% Instant Discount on Biryani Cut & Big Curry Cut.
+• **How to Use:** Enter code \`MATHINA2024\` on the [Cart](/cart) or [Checkout](/checkout) page and click Apply!
+
+🚚 **Free Shipping Offer:**
+• Enjoy **Free Delivery** on all orders above ₹500 across Cuddalore!
+
+🍗 **Bulk / Event Orders:**
+• Catering for weddings, functions, or biryani feasts? Contact us at **+91 77080 32726** for special wholesale counter rates.`,
+  },
+
+  // ── 11+ CHICKEN CUTS GUIDE ────────────────────────────────────
+  {
+    patterns: [
+      'chicken cuts',
+      'cuts guide',
+      'all cuts',
+      'which cut',
+      'cuts available',
+      'butterfly cut',
+      'cube cut',
+      'dragon cut',
+      'julienne cut',
+      'types of cuts',
+      'cuts info',
+    ],
+    response: `🔪 **Complete Guide to Mathina's 11+ Chef-Crafted Cuts**
+
+Every chicken dish demands a specific butcher cut for optimal tenderness and flavor absorption:
+
+1. 🍲 **Curry Cut (Bone-in):** Classic medium chunks with marrow bones. Perfect for traditional South Indian gravies, Chettinad chicken, and salna.
+2. 🧊 **Cube Cut (Boneless):** Neatly diced 1-inch boneless breast cubes. Ideal for Butter Chicken, Tikka Masala, and quick stir-fry.
+3. 🐉 **Dragon Cut:** Long drumstick-style marinated strips. Best for Indo-Chinese crispy Dragon Chicken, chilli chicken, and starters.
+4. 🦋 **Butterfly Cut:** Boneless breast split evenly like wings. Best for pan-searing, grilling, schnitzel, and tawa roast.
+5. 🥢 **Julienne Cut:** Ultra-thin uniform strips. Cooks in just 3–4 minutes! Best for Hakka noodles, fried rice, wraps, and Asian stir-fries.
+6. 🍭 **Chicken Lollipop:** Frenched wing drumettes with meat pushed to the top and bone wrapped. The ultimate party appetizer!
+7. 🌶️ **Chicken 65 Pieces:** Bite-sized tender pieces pre-cut to absorb spicy marinades. Crunchiest deep fry results.
+8. 🍟 **Finger Cut:** Slender tender strips for homemade chicken nuggets, crispy tenders, and kids' snacks.
+9. 🍗 **Wings & Drumsticks:** Juicy, succulent bone-in portions for BBQ grills, tandoor, and spicy hot wings.
+10. 🐔 **Whole Fresh Chicken:** Cleaned, gutted, and dressed whole bird (1.2kg – 1.8kg). Ideal for rotisserie oven roast or special Sunday family meals.
+11. 🐓 **Live Chicken & Custom Cuts:** Selected live birds weighed and butchered fresh to order right at our shop counter!
+
+👉 Browse and order any cut now on our **[Products Page](/products)**!`,
+  },
+
+  // ── SHOP OWNER & ADMIN PORTAL ─────────────────────────────────
+  {
+    patterns: [
+      'shop owner',
+      'admin',
+      'admin portal',
+      'how to add product',
+      'update product',
+      'china chicken',
+      'live chicken',
+      'price manager',
+      'price scheduler',
+      'store management',
+    ],
+    response: `⚙️ **Shop Owner & Admin Management Portal**
+
+Mathina Chicken Center includes a full enterprise management dashboard for store owners and butcher staff:
+
+🔐 **Staff & Admin Access:**
+• Sign in via **[Admin Login](/login)** or register butchery managers at **[Admin Registration](/admin/register)**.
+
+📦 **Dynamic Product Management ([/admin/products](/admin/products)):**
+• **Add New Product:** Create items with custom cut names, descriptions (e.g. "china chicken", special counter cuts), categories (\`chicken-cuts\`, \`live-chicken\`, \`eggs\`, \`marinades\`), prices, and stock.
+• **Instant Live Sync:** The moment a shop owner adds or updates a product, it **instantly reflects on the customer Home page and Products page** in real-time without requiring a page reload!
+
+💰 **Live Price Manager & Price Scheduler:**
+• Adjust daily market price per kg across cuts at **[/admin/prices](/admin/prices)**.
+• Schedule automatic morning price updates at **[/admin/price-scheduler](/admin/price-scheduler)**.
+
+📋 **Order Fulfillment & Customer Feedback:**
+• Track active orders and dispatch riders in **[/admin/orders](/admin/orders)**.
+• Read real customer ratings and reviews in **[/admin/feedback](/admin/feedback)**.`,
+  },
+
+  // ── CUSTOMER REVIEWS & FEEDBACK ───────────────────────────────
+  {
+    patterns: [
+      'feedback',
+      'reviews',
+      'ratings',
+      'review order',
+      'customer rating',
+    ],
+    response: `⭐ **Customer Reviews & Feedback System**
+
+We take immense pride in delivering top-quality poultry to your kitchen:
+
+• **Rate Your Order:** After your delivery arrives, head to **[My Orders](/orders)** and tap **"Leave Feedback"**.
+• **Rating Scale:** Rate from 1 to 5 stars on Meat Freshness, Cleanliness of Cut, and Delivery Speed.
+• **Management Review:** Our shop owner reads every review directly in the Admin portal to ensure our butchery standards never drop!`,
   },
 ];
 
@@ -852,9 +1145,24 @@ export const NAVIGATION_ROUTES = {
 // ── NAVIGATION DETECTION ──────────────────────────────────────
 export const detectNavigation = (message) => {
   const msg = message.toLowerCase().trim();
-  
+
+  // If user is asking an informational question, DO NOT hijack with auto-navigation
+  const questionWords = ['how', 'what', 'why', 'where', 'when', 'who', 'tell', 'explain', 'guide', 'steps', 'help', 'can you', 'does', 'is', 'info', 'check'];
+  const isQuestion = questionWords.some(w => msg.startsWith(w) || msg.includes(' ' + w + ' '));
+  if (isQuestion) return null;
+
   for (const [key, route] of Object.entries(NAVIGATION_ROUTES)) {
-    if (route.patterns.some(pattern => msg.includes(pattern) || msg.includes(pattern.replace(' ', '')))) {
+    // Only match explicit navigation requests like "open cart", "go to cart", or exact route names
+    const isExplicitNav = route.patterns.some(pattern => 
+      msg === pattern || 
+      msg === `open ${pattern}` || 
+      msg === `go to ${pattern}` || 
+      msg === `show ${pattern}` ||
+      msg.startsWith(`open ${pattern}`) ||
+      msg.startsWith(`navigate to ${pattern}`)
+    );
+
+    if (isExplicitNav) {
       return {
         type: 'navigation',
         route: route.path,
@@ -863,7 +1171,7 @@ export const detectNavigation = (message) => {
       };
     }
   }
-  
+
   return null; // No navigation detected
 };
 
@@ -909,11 +1217,21 @@ export const slmRespond = (userMessage) => {
     }
   }
 
-  // Find best matching knowledge entry
+  // Find best matching knowledge entry (prioritize the most specific pattern match)
+  let bestEntry = null;
+  let longestMatchLength = 0;
+
   for (const entry of KNOWLEDGE_BASE) {
-    if (entry.patterns.some((p) => msg.includes(p))) {
-      return entry.response;
+    for (const p of entry.patterns) {
+      if (msg.includes(p) && p.length > longestMatchLength) {
+        longestMatchLength = p.length;
+        bestEntry = entry;
+      }
     }
+  }
+
+  if (bestEntry) {
+    return bestEntry.response;
   }
 
   // Fuzzy fallback — check partial word matches
@@ -926,45 +1244,42 @@ export const slmRespond = (userMessage) => {
     }
   }
 
-  // Default fallback with enhanced suggestions
-  return `🤔 I didn't quite understand that. But I can help you cook ANYTHING! 🍳
+  // Default fallback with enhanced suggestions formatted like Claude / ChatGPT
+  return `👋 **Mathina AI Assistant at your service!** 🍗
 
-**Just ask me:**
-• "How to cook [any dish]?" - I'll give step-by-step recipe
-• "How to make [any food]?" - Full cooking instructions
-• "[dish] recipe" - Complete ingredients & method
-• "Grill/Fry/Bake [food]" - Specific cooking method
+I'm your intelligent butchery and culinary concierge for **Mathina Chicken Center**. Here are the most popular topics I can assist you with right now:
 
-**Popular Requests:**
-🍗 "How to cook chicken biryani?"
-🌯 "How to make shawarma?"
-🍢 "Chicken tikka recipe"
-🥘 "How to cook mutton curry?"
-🐟 "Fish fry recipe"
-🥗 "How to make vegetable stir fry?"
+📦 **Store & Ordering Guidance:**
+• *"How to order?"* — Step-by-step cut selection, weights, and express checkout
+• *"Track my order"* — Live butchery cutting, packaging, and rider updates
+• *"How does QR code work?"* — Farm-to-table Halal & freshness verification
+• *"Payment methods"* — Indian Bank UPI QR, mobile deep link, and Cash on Delivery
+• *"Subscription plans"* — Automated weekly protein deliveries & savings
 
-**Or ask about:**
-💰 Today's prices at Mathina FreshHub
-🚚 Delivery information
-📞 Shop contact details
+🍗 **Cuts & Master Recipes:**
+• *"11+ Cuts Guide"* — Discover which cut is best for Biryani, Gravies, Grills, or Fries
+• *"How to cook [dish]?"* — Step-by-step recipe for Biryani, 65, Dragon Chicken, Shawarma, Tikka, Mutton, Fish, Veg
+• *"Today's prices"* — Live price per kg for all cuts
 
-*Type your cooking question and I'll guide you step-by-step!* 👨‍🍳`;
+🏪 **Butchery Details & Fast Contact:**
+• **Location:** Cuddalore OT, Tamil Nadu (Open daily 6:00 AM – 10:00 PM)
+• **Call / WhatsApp:** **+91 77080 32726**
+
+*Ask me any question or tap a suggestion chip below to begin!* 👨‍🍳`;
 };
 
 // Quick suggestion chips
 export const QUICK_SUGGESTIONS = [
-  { label: '🍳 Any Recipe', query: 'How to cook?' },
+  { label: '📦 How to Order', query: 'How to order chicken online?' },
+  { label: '🚚 Track Order', query: 'How to track my order?' },
+  { label: '🔍 QR Traceability', query: 'How does QR code traceability work?' },
+  { label: '💳 Payment & UPI', query: 'What payment methods are available?' },
+  { label: '🍗 11+ Cuts Guide', query: 'Tell me about all chicken cuts' },
+  { label: '🏷️ Promo Coupon', query: 'What is the festival discount coupon?' },
+  { label: '📅 Weekly Plans', query: 'How do subscriptions work?' },
   { label: '🐉 Dragon Chicken', query: 'How to cook dragon chicken?' },
-  { label: '🌯 Shawarma', query: 'How to make chicken shawarma?' },
-  { label: '🍢 Chicken Tikka', query: 'How to cook chicken tikka?' },
-  { label: '🍛 Biryani', query: 'How to make chicken biryani?' },
-  { label: '🌶️ Chicken 65', query: 'How to make chicken 65?' },
-  { label: '🍭 Lollipop', query: 'How to make chicken lollipop?' },
-  { label: '🔥 Grilled', query: 'How to grill chicken?' },
-  { label: '🥘 Mutton Curry', query: 'How to cook mutton curry?' },
-  { label: '🐟 Fish Fry', query: 'How to make fish fry?' },
-  { label: '🥗 Veg Stir Fry', query: 'How to cook vegetable stir fry?' },
-  { label: '🍳 Egg Curry', query: 'How to make egg curry?' },
+  { label: '🍛 Biryani Recipe', query: 'How to make chicken biryani?' },
+  { label: '🍭 Lollipop Cut', query: 'How to make chicken lollipop?' },
   { label: '💰 Today Prices', query: 'What are today chicken prices?' },
-  { label: '🚚 Delivery', query: 'Delivery information' },
+  { label: '🏪 Shop & Owner', query: 'Where is Mathina Chicken Center located?' },
 ];

@@ -87,7 +87,7 @@ const AdminRegister = () => {
             <FiShield className="w-8 h-8 text-accent-600" />
           </div>
           <h2 className="text-3xl font-bold text-gray-900">Shop Owner Registration</h2>
-          <p className="mt-2 text-gray-600">Register as admin to manage Mathina FreshHub</p>
+          <p className="mt-2 text-gray-600">Register as admin to manage Mathina Chicken Center</p>
         </div>
 
         {/* Admin Alert */}
@@ -134,7 +134,7 @@ const AdminRegister = () => {
                       value={formData.shopName}
                       onChange={handleChange}
                       className="input-field pl-4"
-                      placeholder="Mathina FreshHub"
+                      placeholder="Mathina Chicken Center"
                     />
                   </div>
                 </div>

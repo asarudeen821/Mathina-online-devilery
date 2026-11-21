@@ -1,10 +1,10 @@
 /**
- * AI Prompt Templates for Mathina FreshHub Chatbot
+ * AI Prompt Templates for Mathina Chicken Center Chatbot
  * Enhanced for Hybrid AI System with Multilingual Support
  */
 
 export const SYSTEM_PROMPT = `
-You are the AI assistant for Mathina FreshHub, a premium chicken and eggs marketplace in Chennai.
+You are the AI assistant for Mathina Chicken Center, a premium chicken and eggs marketplace in Chennai.
 
 ## Your Role
 - Help customers choose chicken products and cuts

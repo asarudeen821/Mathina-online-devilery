@@ -266,16 +266,16 @@ const ChickenLollipopShowcase = () => {
                 {/* Buy Now Button - Primary */}
                 <button
                   onClick={handleBuyNow}
-                  className="w-full bg-gradient-to-r from-accent-600 to-accent-700 hover:from-accent-700 hover:to-accent-800 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3"
+                  className="w-full btn-shimmer py-4 rounded-xl font-bold text-lg shadow-xl hover:shadow-red-500/30 transition-all flex items-center justify-center gap-3 active:scale-98"
                 >
-                  <FiZap className="w-5 h-5" />
+                  <FiZap className="w-5 h-5 text-amber-200" />
                   Buy Now — ₹{product.prices[selectedWeight]}
                 </button>
 
                 {/* Add to Cart Button - Secondary */}
                 <button
                   onClick={handleAddToCart}
-                  className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white py-4 rounded-xl font-bold text-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-3"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-bold text-lg shadow-md hover:shadow-emerald-500/25 transition-all flex items-center justify-center gap-3 active:scale-98"
                 >
                   <FiShoppingCart className="w-5 h-5" />
                   Add to Cart — ₹{product.prices[selectedWeight]}

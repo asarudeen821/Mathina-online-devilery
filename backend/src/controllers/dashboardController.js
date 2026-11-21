@@ -538,7 +538,7 @@ export const getAIInsights = async (req, res) => {
     };
 
     // Build AI prompt
-    const prompt = `You are a business analyst for Mathina FreshHub, a chicken shop in Cuddalore, Tamil Nadu.
+    const prompt = `You are a business analyst for Mathina Chicken Center, a chicken shop in Cuddalore, Tamil Nadu.
 
 Business data for the last ${period}:
 - Revenue: ₹${metrics.totalRevenue.toLocaleString()}

@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Git
+.git/
+.gitignore
+
+# Environment files (injected at runtime)
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build output (not needed for Docker build context)
+dist/
+build/
+
+# Documentation
+*.md
+
+# Editor / IDE
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+Thumbs.db
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore

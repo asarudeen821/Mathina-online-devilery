@@ -348,6 +348,14 @@ const AdminPriceManager = () => {
 
       toast.success(`✅ ${product.name} price updated to ₹${pricePerKg}/kg`);
       setEditingId(null);
+
+      // Broadcast real-time price update across customer pages and open tabs
+      window.dispatchEvent(
+        new CustomEvent('shop-products-updated', {
+          detail: { productId: pid, price: pricePerKg },
+        })
+      );
+      localStorage.setItem('mathina_shop_updated', Date.now().toString());
     } catch (error) {
       console.error('Failed to update price:', error);
       const errorMsg = error.response?.data?.message || error.message || 'Failed to update price';

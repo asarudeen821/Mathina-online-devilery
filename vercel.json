@@ -1,7 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "npm run build --workspace=frontend",
+  "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
+  "installCommand": "npm install --prefix backend && npm install --prefix frontend",
   "functions": {
     "api/**/*.js": {
       "memory": 1024,

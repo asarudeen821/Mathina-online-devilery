@@ -500,58 +500,6 @@ export const LanguageProvider = ({ children }) => {
     }
   }, [clearAllGoogleTranslateCookies, setGoogleTransCookie, triggerRestoreOriginal]);
 
-  // Continuous background listener to permanently suppress Google Translate's top banner & body offset
-  useEffect(() => {
-    const suppressGoogleBanner = () => {
-      // 1. Reset body and html top margin and positioning
-      if (document.body) {
-        if (document.body.style.top && document.body.style.top !== '0px') {
-          document.body.style.setProperty('top', '0px', 'important');
-          document.body.style.setProperty('margin-top', '0px', 'important');
-          document.body.style.setProperty('position', 'static', 'important');
-        }
-      }
-      if (document.documentElement) {
-        document.documentElement.style.setProperty('margin-top', '0px', 'important');
-        document.documentElement.style.setProperty('padding-top', '0px', 'important');
-      }
-
-      // 2. Hide top banner frames and wrappers (without deleting background worker)
-      const bannerFrames = document.querySelectorAll(
-        'body > .skiptranslate, body > div.skiptranslate, body > iframe.skiptranslate, iframe[class*="skiptranslate"], .VIpgJd-ZVi9od-ORHb-OEVmcd, .VIpgJd-ZVi9od-ORHb, .goog-te-banner-frame, iframe.goog-te-banner-frame, .VIpgJd-ZVi9od-aZ2wEe-wOHMyf, .VIpgJd-ZVi9od-aZ2wEe-OiiCO, .goog-te-balloon-frame, #goog-gt-tt, #goog-gt-vt, .goog-tooltip, .goog-te-spinner-pos'
-      );
-      bannerFrames.forEach((el) => {
-        try {
-          el.style.setProperty('display', 'none', 'important');
-          el.style.setProperty('visibility', 'hidden', 'important');
-          el.style.setProperty('height', '0px', 'important');
-          el.style.setProperty('width', '0px', 'important');
-          el.style.setProperty('opacity', '0', 'important');
-          el.style.setProperty('pointer-events', 'none', 'important');
-          el.style.setProperty('position', 'absolute', 'important');
-          el.style.setProperty('top', '-9999px', 'important');
-          el.style.setProperty('z-index', '-999999', 'important');
-        } catch (e) {}
-      });
-    };
-
-    suppressGoogleBanner();
-    const observer = new MutationObserver(suppressGoogleBanner);
-    observer.observe(document.documentElement, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['style', 'class'],
-    });
-
-    const interval = setInterval(suppressGoogleBanner, 200);
-
-    return () => {
-      observer.disconnect();
-      clearInterval(interval);
-    };
-  }, []);
-
   // Initialize and synchronise Google Translate on first mount
   useEffect(() => {
     // If not already defined by index.html, safeguard-attach init

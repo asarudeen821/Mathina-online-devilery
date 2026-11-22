@@ -34,59 +34,49 @@ const app = express();
 // CORS configuration — allow Vercel frontend + local dev + production
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // Allow requests with no origin (e.g., mobile apps, curl, same-origin serverless)
-      if (!origin) return callback(null, true);
-      // Allow localhost, *.vercel.app, and custom domains
-      if (
-        origin.endsWith('.vercel.app') ||
-        origin.includes('localhost') ||
-        origin.includes('127.0.0.1') ||
-        !process.env.NODE_ENV ||
-        process.env.NODE_ENV === 'production'
-      ) {
-        return callback(null, true);
-      }
-      return callback(null, true);
-    },
+    origin: true,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   })
 );
+app.options('*', cors());
 
 // Body parser middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: 'Mathina Chicken Center API is running',
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development',
+// Mount all API routes with and without /api prefix for robust serverless compatibility
+const mountAllRoutes = (prefix = '') => {
+  app.use(`${prefix}/auth`, authRoutes);
+  app.use(`${prefix}/products`, productRoutes);
+  app.use(`${prefix}/orders`, orderRoutes);
+  app.use(`${prefix}/subscriptions`, subscriptionRoutes);
+  app.use(`${prefix}/ai`, aiRoutes);
+  app.use(`${prefix}/qr`, qrRoutes);
+  app.use(`${prefix}/dashboard`, dashboardRoutes);
+  app.use(`${prefix}/chat`, chatRoutes);
+  app.use(`${prefix}/utils`, utilsRoutes);
+  app.use(`${prefix}/payment`, paymentRoutes);
+  app.use(`${prefix}/notifications`, notificationRoutes);
+  app.use(`${prefix}/feedback`, feedbackRoutes);
+  app.use(`${prefix}/delivery`, deliveryRoutes);
+  app.use(`${prefix}/price-schedules`, priceScheduleRoutes);
+  app.use(`${prefix}/coupons`, couponRoutes);
+  app.use(`${prefix}/dashboard/ai`, aiDashboardRoutes);
+  app.use(`${prefix}/hierarchical-pricing`, hierarchicalPricingRoutes);
+  app.get(`${prefix}/health`, (req, res) => {
+    res.status(200).json({
+      success: true,
+      message: 'Mathina Chicken Center API is running',
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || 'development',
+    });
   });
-});
+};
 
-// API Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/subscriptions', subscriptionRoutes);
-app.use('/api/ai', aiRoutes);
-app.use('/api/qr', qrRoutes);
-app.use('/api/dashboard', dashboardRoutes);
-app.use('/api/chat', chatRoutes);
-app.use('/api/utils', utilsRoutes);
-app.use('/api/payment', paymentRoutes);
-app.use('/api/notifications', notificationRoutes);
-app.use('/api/feedback', feedbackRoutes);
-app.use('/api/delivery', deliveryRoutes);
-app.use('/api/price-schedules', priceScheduleRoutes);
-app.use('/api/coupons', couponRoutes);
-app.use('/api/dashboard/ai', aiDashboardRoutes);
-app.use('/api/hierarchical-pricing', hierarchicalPricingRoutes);
+mountAllRoutes('/api');
+mountAllRoutes('');
 
 // Root API status endpoint
 const apiStatusHandler = (req, res) => {

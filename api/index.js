@@ -28,7 +28,11 @@ const ensureDbConnected = async () => {
 export default async function handler(req, res) {
   // Respond immediately to CORS preflight OPTIONS without blocking on DB
   if (req.method === 'OPTIONS') {
-    return app(req, res);
+    return new Promise((resolve) => {
+      res.on('finish', resolve);
+      res.on('close', resolve);
+      app(req, res);
+    });
   }
 
   try {
@@ -40,6 +44,11 @@ export default async function handler(req, res) {
       error: process.env.NODE_ENV === 'development' ? error.message : undefined,
     });
   }
-  // Delegate to Express
-  return app(req, res);
+
+  // Delegate to Express and ensure the serverless runtime holds until response completes
+  return new Promise((resolve) => {
+    res.on('finish', resolve);
+    res.on('close', resolve);
+    app(req, res);
+  });
 }

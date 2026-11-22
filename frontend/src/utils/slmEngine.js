@@ -233,32 +233,131 @@ const KNOWLEDGE_BASE = [
 
   // ── BIRYANI ─────────────────────────────────────────────────
   {
-    patterns: ['biryani', 'chicken biryani', 'how to make biryani', 'biryani recipe', 'biryani cut'],
-    response: `🍛 *Chicken Biryani Recipe*
+    patterns: [
+      'biryani',
+      'briyani',
+      'biriyani',
+      'chicken biryani',
+      'chicken briyani',
+      'how to make biryani',
+      'how to cook biryani',
+      'how to cock briyani',
+      'how to cook briyani',
+      'how to make briyani',
+      'biryani recipe',
+      'briyani recipe',
+      'dum biryani',
+      'biryani cut',
+      'biriyani recipe',
+    ],
+    response: `🍛 *Master Chef Chicken Biryani Recipe*
+
+**Recommended Cut:** 🍲 **Mathina Big Curry Cut / Biryani Cut** (Bone-in cuts lock in rich marrow juices during dum cooking!)
 
 **Ingredients (serves 4-5):**
-• 1 kg Big Curry Cut / Biryani Cut chicken
-• 2 cups basmati rice (soaked 30 mins)
-• 2 large onions (thinly sliced, fried golden)
-• 1 cup yogurt
+• 1 kg Mathina Big Curry Cut / Biryani Cut chicken
+• 2 cups aged Basmati Rice (soaked 30 mins)
+• 2 large onions (thinly sliced & fried golden - birista)
+• 1 cup fresh yogurt (curd)
 • 2 tbsp ginger-garlic paste
-• 1 tsp biryani masala
-• ½ tsp turmeric
-• Whole spices: bay leaf, cardamom, cloves, cinnamon
-• Fresh mint & coriander
-• Saffron in warm milk (optional)
-• Ghee 2 tbsp
+• 1.5 tbsp biryani masala powder
+• 1 tsp red chilli powder & 1/2 tsp turmeric
+• Whole spices: bay leaf, 3 green cardamoms, 4 cloves, 1 inch cinnamon, 1 star anise
+• 1/2 cup fresh mint & chopped coriander leaves
+• Warm saffron milk (a pinch of saffron in 3 tbsp warm milk)
+• 3 tbsp Pure Desi Ghee + 2 tbsp oil
+• Juice of 1/2 lemon + Salt to taste
 
-**Steps:**
-1. Marinate chicken with yogurt, ginger-garlic, spices — 1 hour
-2. Cook marinated chicken in a pot until 70% done
-3. Parboil rice with whole spices until 70% cooked
-4. Layer: chicken → rice → fried onions → mint → saffron milk
-5. Seal pot with foil/dough, cook on low flame 25-30 mins (dum)
-6. Gently mix before serving 🍛
+**Master Chef Step-by-Step Instructions:**
+1. **The Marination:** Marinate Mathina Biryani Cut chicken with yogurt, ginger-garlic paste, biryani masala, chilli powder, turmeric, half of the fried onions, mint, coriander, lemon juice, and salt. Rest for at least 45-60 minutes.
+2. **Sear Chicken:** Heat 2 tbsp ghee/oil in a heavy handi. Sauté marinated chicken on high heat for 6-8 minutes until 70% cooked. Turn off flame.
+3. **Parboil Basmati Rice:** In a large pot of rolling boiling water with whole spices and salt, boil soaked basmati rice until exactly 70% cooked (grain breaks into 3 pieces when pressed). Drain water immediately.
+4. **Dum Layering:** Spread the semi-cooked rice evenly over the chicken layer in the handi. Top with remaining golden fried onions, fresh mint leaves, saffron milk, and 1 tbsp ghee.
+5. **Slow Dum Cooking:** Seal handi tightly with foil or heavy lid. Place on a preheated tawa on low flame for 25-30 minutes for slow dum cooking.
+6. **Rest & Fluff:** Rest for 10 minutes before opening. Gently fluff with a flat spatula from bottom to top so rice grains remain intact!
+7. **Serve:** Serve hot with chilled onion raita and chicken salna! 🍛
 
-⏱️ Total time: 1.5 hours
-💡 Tip: Big Curry Cut from Mathina Chicken Center gives the best biryani flavor — bone-in pieces add richness!`,
+⏱️ **Total Time:** 1.5 hours | **Difficulty:** Master Chef
+💡 **Chef Tip:** Bone-in Big Curry Cut from Mathina Chicken Center is specifically butchered into generous portions that don't dry out or shred under prolonged dum heat!`,
+  },
+
+  // ── BUTTER CHICKEN (MURGH MAKHANI) ───────────────────────────
+  {
+    patterns: [
+      'butter chicken',
+      'murgh makhani',
+      'makhani chicken',
+      'how to cook butter chicken',
+      'butter chicken recipe',
+      'how to make butter chicken',
+      'butter chicken gravy',
+    ],
+    response: `🥘 *Restaurant-Style Butter Chicken (Murgh Makhani) Recipe*
+
+**Recommended Cut:** 🧊 **Mathina Boneless Cube Cut** (100% tender breast cubes)
+
+**Ingredients (serves 4):**
+• 500g Mathina Boneless Cube Cut Chicken
+• 3 tbsp butter + 1 tbsp oil
+• 4 ripe red tomatoes (pureed) & 1 medium onion (finely chopped)
+• 12 whole cashews (soaked in warm water & ground to smooth paste)
+• 1.5 tbsp ginger-garlic paste
+• 1 tbsp Kashmiri red chilli powder (for rich color without burning heat)
+• 1 tsp garam masala & 1/2 tsp turmeric
+• 2 tbsp fresh dairy cream
+• 1 tsp kasuri methi (dried fenugreek leaves, crushed)
+• 2 tbsp yogurt + salt to taste
+
+**Master Chef Step-by-Step Instructions:**
+1. **Marinate:** Mix chicken cubes with 2 tbsp yogurt, 1 tbsp ginger-garlic paste, 1 tsp chilli powder, and salt. Marinate for 20 minutes.
+2. **Sear Chicken:** Heat 1 tbsp butter in a pan. Sear chicken cubes on high heat for 6-8 minutes until lightly charred and 80% cooked. Set aside.
+3. **Build the Gravy:** In the same pan, melt 2 tbsp butter. Sauté onions and remaining ginger-garlic paste until golden. Add tomato puree, Kashmiri chilli powder, turmeric, and salt. Cook until butter separates from the sides (8-10 mins).
+4. **Velvety Makhani Sauce:** Stir in the smooth cashew paste and 1/2 cup water. Simmer on low heat for 5 minutes until the gravy turns silky smooth.
+5. **Simmer Chicken:** Add the seared chicken cubes, garam masala, and crushed kasuri methi into the gravy. Simmer for 6-8 minutes so the chicken absorbs the rich buttery sauce.
+6. **Finish with Cream:** Drizzle 2 tbsp fresh cream and top with a small cube of butter. Serve steaming hot with garlic butter naan or jeera rice! 🥘
+
+⏱️ **Cook Time:** 25 mins | **Difficulty:** Medium
+💡 **Chef Tip:** Mathina Boneless Cube Cut is pre-trimmed of fat and sinew, soaking up the makhani sauce like a sponge!`,
+  },
+
+  // ── CHETTINAD PEPPER CHICKEN / PEPPER FRY ─────────────────────
+  {
+    patterns: [
+      'pepper chicken',
+      'chicken pepper fry',
+      'chettinad chicken',
+      'how to cook pepper chicken',
+      'pepper chicken recipe',
+      'milagu chicken',
+      'chettinad pepper chicken',
+      'pepper fry recipe',
+    ],
+    response: `🌶️ *Authentic Chettinad Pepper Chicken Fry (Milagu Kozhi Varuval)*
+
+**Recommended Cut:** 🍲 **Mathina Small Curry Cut (Bone-in)** (Traditional bone-in chunks release rich gelatin & marrow)
+
+**Ingredients (serves 4):**
+• 500g Mathina Small Curry Cut Chicken
+• 2 tbsp whole black peppercorns (freshly roasted & coarsely pounded)
+• 1 tbsp fennel seeds (saunf) + 1 tsp cumin seeds
+• 12 shallots (small onions / chinna vengayam, sliced)
+• 2 sprigs fresh curry leaves
+• 1.5 tbsp ginger-garlic paste
+• 1/2 tsp turmeric powder & 1 tsp coriander powder
+• 3 tbsp gingelly (sesame) oil
+• Salt to taste
+
+**Master Chef Step-by-Step Instructions:**
+1. **Fresh Pepper Roast:** Dry roast black peppercorns, fennel seeds, and cumin seeds in a pan for 2 mins until fragrant. Coarsely crush in a mortar or spice grinder (key for authentic peppery punch!).
+2. **Sauté Aromatics:** Heat gingelly oil in a heavy iron kadai. Add fresh curry leaves and sliced shallots. Sauté until translucent and golden.
+3. **Sear the Meat:** Add ginger-garlic paste and sauté for 1 minute. Add Mathina Small Curry Cut chicken, turmeric powder, and salt. Sauté on high flame for 5 minutes to sear in the juices.
+4. **Simmer:** Cover with a lid and cook on medium-low flame for 12-15 minutes. The chicken will release its natural flavorful broth.
+5. **Pepper Masala Roast:** Uncover the pan. Add the freshly ground pepper spice mix and coriander powder.
+6. **Dark Dry Roast:** Toss continuously on medium-high flame for 5-7 minutes until the gravy completely clings to the chicken pieces and turns dark, aromatic, and glossy.
+7. **Serve:** Garnish with crispy fried curry leaves. Serve piping hot with steamed white rice, rasam, or parotta! 🍗
+
+⏱️ **Cook Time:** 25 mins | **Spice Level:** Bold & Peppery 🔥
+💡 **Chef Tip:** Bone-in Small Curry Cut from Mathina Chicken Center infuses the marrow juices straight into the dry pepper roast!`,
   },
 
   // ── CHICKEN CURRY ───────────────────────────────────────────
@@ -486,9 +585,220 @@ const KNOWLEDGE_BASE = [
 💡 Double coat (flour→egg→breadcrumbs→egg→breadcrumbs) for extra crunch!`,
   },
 
+  // ── NATTU KOZHI SOUP (COUNTRY CHICKEN SOUP) ───────────────────
+  {
+    patterns: [
+      'nattu kozhi soup',
+      'country chicken soup',
+      'chicken soup',
+      'how to cook chicken soup',
+      'soup recipe',
+      'nattu kozhi rasam',
+      'village soup',
+      'cold fever soup',
+      'healthy soup',
+      'bone broth',
+    ],
+    response: `🥣 **Authentic Nattu Kozhi Chicken Soup Recipe (Immunity Booster)**
+
+**Recommended Cut:** 🐓 **Mathina Country Chicken (Nattu Kozhi) or Soup Bones**
+
+**Ingredients (serves 4):**
+• 400g Mathina Country Chicken (bone-in pieces with joints)
+• 1 large onion or 10 shallots (chinna vengayam), crushed
+• 1 ripe tomato, chopped
+• 1.5 tbsp freshly crushed black pepper & cumin seeds
+• 1 tbsp ginger-garlic paste
+• 1/2 tsp turmeric powder & fresh curry leaves
+• 1 tbsp sesame oil (nallennai)
+• 4 cups water & salt to taste
+• Fresh coriander leaves for garnish
+
+**Master Chef Step-by-Step Instructions:**
+1. **Temper Aromatics:** Heat 1 tbsp sesame oil in a pressure cooker. Add crushed shallots, ginger-garlic paste, and curry leaves. Sauté for 1 minute until fragrant.
+2. **Add Spices & Tomato:** Add chopped tomato, turmeric powder, and half of the crushed black pepper-cumin powder. Sauté until tomato softens.
+3. **Sear the Meat:** Add Mathina Country Chicken pieces and sear on high heat for 2 minutes to seal in flavor.
+4. **Pressure Cook:** Pour in 4 cups of water and salt. Cover and pressure cook on medium flame for **5–6 whistles** (country chicken has firmer meat and needs extra time to extract deep bone marrow nutrients).
+5. **Simmer & Pepper Finish:** Allow steam to release naturally. Open, stir in the remaining crushed black pepper for that fiery throat-soothing punch, and simmer for 2 minutes.
+6. **Serve:** Garnish with fresh coriander leaves. Drink hot as a healing broth for cold, cough, and body aches! 🥣
+
+⏱️ **Cook Time:** 25 mins | 💡 **Chef Tip:** Never discard the bone marrow; it provides pure natural collagen and immune-strengthening minerals!`,
+  },
+
+  // ── GYM DIET / HIGH-PROTEIN GRILLED CHICKEN BREAST ───────────
+  {
+    patterns: [
+      'gym chicken',
+      'diet chicken',
+      'fitness chicken',
+      'high protein recipe',
+      'grilled chicken breast',
+      'how to cook chicken breast',
+      'healthy chicken recipe',
+      'chicken for weight loss',
+      'chicken for muscle building',
+      'protein diet',
+      'lemon herb chicken',
+      'gym',
+      'fitness',
+      'workout',
+      'bodybuilding',
+      'high protein',
+      'lean protein',
+      'macros',
+    ],
+    response: `💪 **Master Chef High-Protein Grilled Chicken Breast (Gym & Fitness Meal Prep)**
+
+**Recommended Cut:** 🦋 **Mathina Butterfly Cut or Boneless Breast** (Lean, zero-fat prime protein!)
+
+**Nutritional Macros (approx. per 200g serving):**
+• 🏋️ **Protein:** ~46g – 50g
+• 🥑 **Fat:** < 3.5g
+• ⚡ **Carbs:** 0g | **Calories:** ~220 kcal
+
+**Ingredients (serves 1–2):**
+• 250g Mathina Butterfly Cut Boneless Breast
+• 1 tbsp olive oil or light spray
+• 1 tbsp fresh lemon juice
+• 1 tsp garlic paste or garlic powder
+• 1 tsp mixed herbs (oregano, thyme, rosemary)
+• 1/2 tsp crushed black pepper & pinch of pink salt
+• 1/2 tsp smoked paprika (optional, for golden color)
+
+**Master Chef Step-by-Step Instructions:**
+1. **Marinate (15 mins):** Rub chicken breast with olive oil, lemon juice, garlic, mixed herbs, black pepper, and salt.
+2. **Pan-Sear on High Heat:** Heat a cast-iron grill pan or non-stick skillet on medium-high until smoking hot.
+3. **Grill Evenly:** Place the butterflied chicken flat on the pan. Sear undisturbed for **3.5 to 4 minutes** on side one until golden grill lines appear.
+4. **Flip & Finish:** Flip over and cook for **3 minutes** on side two. Do NOT overcook — lean breast dries out if cooked past 74°C internal temperature!
+5. **The Golden Rest (Vital):** Transfer to a cutting board and **rest for 4 minutes** before slicing. This redistributes internal juices so the chicken remains super juicy and succulent!
+6. **Serve:** Slice diagonally and serve with steamed broccoli, brown rice, or a garden salad. 🥗
+
+⏱️ **Cook Time:** 8 mins | 💡 **Chef Tip:** The Butterfly Cut ensures uniform thickness from end to end, preventing dry overcooked edges!`,
+  },
+
+  // ── CHICKEN SHAWARMA & WRAPS ──────────────────────────────────
+  {
+    patterns: [
+      'shawarma',
+      'chicken shawarma',
+      'how to make shawarma',
+      'shawarma recipe',
+      'chicken roll',
+      'chicken wrap',
+      'kathi roll',
+    ],
+    response: `🌯 **Master Chef Chicken Shawarma & Roll Recipe**
+
+**Recommended Cut:** 🧊 **Mathina Boneless Breast Cubes or Julienne Cut**
+
+**Ingredients (serves 3-4):**
+• 350g Mathina Boneless Chicken
+• 3 tbsp thick yogurt
+• 1 tbsp lemon juice
+• 1 tbsp garlic paste
+• 1 tsp cumin, coriander & paprika powder
+• 1/2 tsp cinnamon & black pepper
+• 4 pita breads or rumali rotis
+• Toum (garlic sauce) or mayonnaise & pickled cucumbers / onions
+
+**Master Chef Step-by-Step Instructions:**
+1. **Middle-Eastern Marinade:** Mix chicken with yogurt, lemon juice, garlic paste, spices, and 1 tbsp olive oil. Marinate 1 hour.
+2. **Pan-Roast Char:** Heat a heavy tawa on high. Cook marinated chicken for 6–7 minutes until charred and cooked through. Shred coarsely with a chef knife.
+3. **Assemble Wrap:** Warm the pita or rumali roti on a hot pan. Spread a generous layer of garlic toum.
+4. **Fill & Roll:** Add shredded shawarma chicken, sliced pickled cucumbers, tomatoes, and French fries (optional!). Roll tightly and toast for 1 minute on tawa.
+5. **Serve:** Cut diagonally and serve with extra garlic dip! 🌯
+
+⏱️ **Cook Time:** 15 mins | 💡 **Chef Tip:** A pinch of ground cinnamon in the marinade provides that unmistakable authentic Arabian street shawarma flavor!`,
+  },
+
+  // ── CHICKEN NOODLES (HAKKA & STREET STYLE) ───────────────────
+  {
+    patterns: [
+      'chicken noodles',
+      'chicken noodle',
+      'how to cook chicken noodle',
+      'how to cook chicken noodles',
+      'how to make chicken noodle',
+      'how to make chicken noodles',
+      'chicken chowmein',
+      'hakka noodles',
+      'chicken noodle recipe',
+      'chicken noodles recipe',
+      'noodles recipe',
+      'how to cook noodles',
+      'how to make noodles',
+      'street style noodles',
+      'noodles chicken',
+      'noodle chicken',
+    ],
+    response: `🍜 **Master Chef Chicken Noodles Recipe (Hakka & Street Style)**
+
+**Recommended Cut:** 🥢 **Mathina Julienne Cut** (Ultra-thin uniform breast strips that flash-cook in 3 minutes!)
+
+**Ingredients (serves 3-4):**
+• 250g Mathina Julienne Cut Chicken (thin tender strips)
+• 200g Hakka noodles or egg noodles (boiled al dente)
+• 1 cup shredded vegetables (cabbage, carrots, capsicum)
+• 2 tbsp finely chopped garlic & spring onions
+• 1.5 tbsp dark soy sauce
+• 1 tbsp green chilli sauce or red chilli paste
+• 1 tsp vinegar
+• 1 tsp freshly crushed black pepper
+• 1 tsp cornflour (for velvety chicken)
+• 2 tbsp sesame oil or vegetable oil
+• Salt to taste
+
+**Master Chef Step-by-Step Instructions:**
+1. **Prep the Noodles:** Boil noodles in salted water until 80% done (firm to bite). Drain immediately and rinse under cold water. Toss with 1 tsp oil so strands don't stick.
+2. **Velvet the Chicken:** Toss Mathina Julienne chicken strips with 1 tsp soy sauce, 1/2 tsp pepper, pinch of salt, and 1 tsp cornflour. Rest for 10 minutes.
+3. **Sear the Chicken:** Heat 1 tbsp oil in a smoking-hot wok. Flash-sear chicken strips on high heat for 3-4 minutes until golden and tender. Remove and set aside.
+4. **Flash Stir-Fry Veggies:** In the same hot wok, add 1 tbsp oil and sauté minced garlic for 30 seconds. Add cabbage, carrots, and capsicum; toss on maximum heat for 2 minutes (keep them crunchy!).
+5. **Combine & Sauce:** Add boiled noodles and cooked chicken julienne into the wok.
+6. **The Flavor Drizzle:** Pour soy sauce, chilli sauce, vinegar, crushed black pepper, and salt around the edges of the hot wok.
+7. **The Wok Hei Toss:** Toss and stir-fry vigorously on high heat for 2 minutes until every noodle strand is glossy, smoky, and infused with sauce!
+8. **Garnish & Serve:** Sprinkle freshly chopped green spring onions and serve piping hot! 🍜
+
+⏱️ **Cook Time:** 15 mins | **Prep Time:** 15 mins
+💡 **Chef Tip:** Mathina Julienne Cut is pre-sliced by our butchers into uniform thin strips so the chicken remains super juicy and never turns chewy!`,
+  },
+
+  // ── CHICKEN FRIED RICE ───────────────────────────────────────
+  {
+    patterns: [
+      'chicken fried rice',
+      'fried rice',
+      'how to cook chicken fried rice',
+      'fried rice recipe',
+      'chicken rice recipe',
+      'how to make chicken fried rice',
+    ],
+    response: `🍚 **Restaurant-Style Chicken Fried Rice Recipe**
+
+**Recommended Cut:** 🧊 **Mathina Boneless Cube Cut or Julienne Cut**
+
+**Ingredients (serves 3-4):**
+• 200g Mathina Boneless Cube Cut or Julienne Cut Chicken
+• 3 cups cold cooked Basmati or Jasmine rice
+• 2 eggs (whisked with pinch of salt)
+• 1 cup finely diced carrots, beans, and capsicum
+• 2 tbsp minced garlic & chopped spring onions
+• 1.5 tbsp soy sauce & 1 tsp crushed black pepper
+• 2 tbsp oil & salt to taste
+
+**Master Chef Step-by-Step Instructions:**
+1. **Scramble Eggs:** Heat 1 tbsp oil in a hot wok. Lightly scramble eggs for 1 minute; remove and set aside.
+2. **Sear Chicken:** Add 1 tbsp oil, stir-fry chicken cubes for 3-4 minutes until tender and cooked through; set aside.
+3. **Sauté Veggies:** In the same smoking-hot wok, sauté minced garlic and diced veggies on high flame for 2 minutes (keep crisp).
+4. **Toss Rice & Chicken:** Add cold cooked rice, cooked chicken, and scrambled eggs into the wok.
+5. **Season:** Drizzle soy sauce, crushed black pepper, and salt. Toss vigorously on maximum heat for 2-3 minutes so grains separate and absorb smoky wok aroma.
+6. **Serve:** Garnish with green spring onions and serve hot with chilli chicken! 🍚
+
+⏱️ **Cook Time:** 15 mins | **Tip:** Use refrigerated leftover rice for the best non-sticky grains!`,
+  },
+
   // ── JULIENNE CUT ────────────────────────────────────────────
   {
-    patterns: ['julienne cut', 'julienne chicken', 'thin chicken strips', 'how to cook julienne', 'chicken noodles', 'chicken fried rice'],
+    patterns: ['julienne cut', 'julienne chicken', 'thin chicken strips', 'how to cook julienne'],
     response: `🥢 *Julienne Chicken Stir Fry Recipe*
 
 **Ingredients (serves 3-4):**
@@ -670,6 +980,241 @@ const KNOWLEDGE_BASE = [
 4. 🧂 Season generously — chicken needs salt!`,
   },
 
+  // ── PERSONAL ASSISTANT: PORTION & GUEST MEAT CALCULATOR ─────────
+  {
+    patterns: [
+      'how much chicken for',
+      'how many kg for',
+      'how much to order for',
+      'portion size',
+      'serving size',
+      'how much chicken do i need',
+      'chicken for 2 people',
+      'chicken for 4 people',
+      'chicken for 5 people',
+      'chicken for 6 people',
+      'chicken for 10 people',
+      'chicken for guests',
+      'how much biryani cut for 1kg rice',
+      'rice to chicken ratio',
+      'how much chicken for party',
+      'portion calculator',
+    ],
+    response: `⚖️ **Personal Assistant: Chicken Portion & Weight Calculator**
+
+As your personal culinary assistant, here is our precise butcher & chef formula for planning your order:
+
+### 1. General Rule of Thumb per Person:
+| Dish Type | Meat Cut | Recommended Weight / Person |
+| :--- | :--- | :--- |
+| **Biryani (Dum / Handi)** | Big Curry / Biryani Cut | **250g – 300g** (Bone-in) |
+| **Curry / Gravy / Salna** | Small / Classic Curry Cut | **200g – 250g** (Bone-in) |
+| **Boneless Stir-Fry / Tikka** | Boneless Breast Cubes | **150g – 180g** (Boneless) |
+| **Starters (65 / Lollipops)** | 65 Cut / Lollipops | **3–4 pieces** per guest |
+
+---
+
+### 2. Fast Party & Family Quick Calculations:
+• 👨‍👩‍👧 **For 2 People (Lunch/Dinner):**
+  - Curry/Gravy: **500g** Curry Cut
+  - Boneless / Stir-fry: **350g** Cubes or Julienne Cut
+• 👨‍👩‍👧‍👦 **For 4–5 People (Family Feast):**
+  - Biryani: **1 kg – 1.25 kg** Biryani Cut
+  - Curry: **1 kg** Curry Cut
+• 👥 **For 6–8 People (Small Gathering):**
+  - Order **1.5 kg – 2 kg** Big Curry Cut
+• 🥳 **For 10–12 Guests (Party / Event):**
+  - Order **2.5 kg – 3 kg** Biryani Cut + **1 kg** Chicken 65 / Lollipops for appetizers!
+
+---
+
+### 3. Golden Dum Biryani Rice-to-Meat Ratio:
+• **The 1:1.25 Golden Ratio:** For **1 kg basmati or seeraga samba rice**, use **1.25 kg Mathina Biryani Cut chicken**.
+• This ensures every single serving gets generous, tender, juicy meat portions without running out!
+
+👉 Ready to order? Head to our **[Products Page](/products)** to select your exact weight! 📦`,
+  },
+
+  // ── PERSONAL ASSISTANT: RUBBERY / DRY CHICKEN TROUBLESHOOTING ───
+  {
+    patterns: [
+      'rubbery chicken',
+      'dry chicken',
+      'hard chicken',
+      'chewy chicken',
+      'why is chicken hard',
+      'how to make chicken soft',
+      'tender chicken',
+      'soft chicken',
+      'chicken not soft',
+      'chicken too dry',
+      'why is my chicken rubbery',
+      'chicken tough',
+      'rubbery',
+      'tough',
+      'chewy',
+      'chicken rubbery',
+      'chicken dry',
+      'chicken hard',
+      'hard meat',
+      'make chicken soft',
+      'tenderize',
+      'stringy chicken',
+      'why is my cooked chicken rubbery',
+    ],
+    response: `🩺 **Personal Kitchen Doctor: Why Is My Chicken Rubbery & How to Fix It!**
+
+Don't worry — this is the most common kitchen problem, and as your personal chef, I'll explain exactly what happened and how to guarantee melt-in-your-mouth tenderness every time:
+
+### 1. The 4 Big Reasons Chicken Turns Rubbery or Tough:
+1. 🔥 **Overcooking Past 74°C (165°F):** Lean chicken breast dries out in seconds once moisture evaporates.
+2. 🧊 **Cooking Directly from the Fridge:** Putting ice-cold raw chicken into a hot pan shocks the muscle fibers, causing them to seize and turn rubbery.
+3. 🔪 **Skipping the Resting Phase:** Cutting chicken immediately after cooking lets all the internal flavorful juices spill onto the board instead of staying in the meat!
+4. 🧂 **Over-Marinating in Pure Lemon Juice or Vinegar:** High-acid marinades for more than 2 hours "chemically cook" the surface, turning meat stringy and chalky.
+
+---
+
+### 2. Master Chef Rules for Super Soft Chicken:
+• ✅ **The 20-Minute Room Temp Rule:** Take chicken out of the fridge 20 minutes before cooking so it heats evenly.
+• 🥛 **Use Yogurt (Curd) for Marination:** Lactic acid in yogurt tenderizes muscle fibers gently without breaking them down.
+• 🥢 **Wok-Hei Velveting for Boneless (Chinese Secret):** Toss 250g breast strips with **1 tsp cornflour + 1 tsp soy sauce + 1 egg white** for 10 mins before searing. The cornflour forms a microscopic shield that locks in 100% of moisture!
+• ⏱️ **Rest for 4–5 Minutes:** Always rest cooked whole breasts or chicken cuts under loose foil before slicing.
+
+---
+
+### 3. Emergency Rescue: How to Save Already Overcooked Dry Chicken:
+• Shred the dry chicken finely and simmer it in a rich gravy (like Butter Chicken makhani or coconut chicken salna) for 5 minutes. The shredded fibers will soak up the sauce like a sponge!`,
+  },
+
+  // ── PERSONAL ASSISTANT: CURRY TOO SALTY OR TOO SPICY RESCUE ────
+  {
+    patterns: [
+      'too salty',
+      'curry too salty',
+      'fix salty',
+      'food too salty',
+      'too spicy',
+      'curry too spicy',
+      'reduce spice',
+      'curry too hot',
+      'less spicy',
+      'how to reduce salt',
+      'how to reduce spice in curry',
+      'chicken curry too spicy',
+      'salty',
+      'salty curry',
+      'fix salt',
+      'curry salty',
+      'how to fix salty',
+      'too hot',
+      'excess salt',
+    ],
+    response: `🚨 **Kitchen Emergency Assistant: How to Fix Too Salty or Too Spicy Curry!**
+
+Don't throw away your curry! As your personal kitchen assistant, here are 5 tried-and-tested master chef fixes to neutralize excess salt or fiery heat in minutes:
+
+### 1. If Your Chicken Curry is TOO SALTY:
+• 🥔 **The Raw Potato Hack (Best):** Peel and cut 1 large raw potato into thick halves. Drop into the simmering curry for **10–12 minutes**. Potatoes act like a natural salt magnet, absorbing excess sodium! Remove potato before serving.
+• 🥛 **Dairy / Cream Buffer:** Add 2–3 tbsp of fresh cream, thick curd (whisked), or unsalted butter. The dairy fats coat the tongue and cut sodium perception.
+• 🥥 **Coconut Milk (South Indian Style):** Stir in 1/2 cup of fresh thick coconut milk. It mellows salt and enhances traditional Chettinad flavor.
+• 🍞 **Dough Balls (Atta Hack):** Roll 2 small balls of kneaded chapati dough and drop into simmering curry for 5 mins. Discard before serving.
+
+---
+
+### 2. If Your Chicken Curry is TOO SPICY (Fiery Heat):
+• 🍯 **Sweet Balance:** Add 1 tsp of honey, jaggery, or brown sugar. Sweetness counteracts capsaicin (chilli heat).
+• 🍋 **Acid Balance:** Squeeze 1 tbsp of fresh lemon juice or add 1 pureed ripe tomato. Acid neutralizes fiery pepper.
+• 🥜 **Nut Paste:** Whisk in 2 tbsp of cashew or almond paste for a royal, velvety, mild gravy.
+• 🍚 **Serve with Cooling Sides:** Pair with chilled cucumber onion raita and hot ghee rice!`,
+  },
+
+  // ── PERSONAL ASSISTANT: FOOD SAFETY, STORAGE & DEFROST PROTOCOL ─
+  {
+    patterns: [
+      'how to store chicken',
+      'how long in fridge',
+      'can i refreeze',
+      'thaw chicken',
+      'defrost chicken',
+      'frozen chicken',
+      'how to keep fresh',
+      'shelf life',
+      'raw chicken storage',
+      'store chicken in freezer',
+      'chicken food safety',
+    ],
+    response: `🛡️ **Personal Assistant: Chicken Storage, Thawing & Food Safety Protocol**
+
+Keeping poultry hygienic and bacteria-free is vital for your family's health:
+
+### 1. Refrigerator & Freezer Shelf Life:
+| Storage Method | Ideal Temperature | Safe Duration |
+| :--- | :--- | :--- |
+| **Fresh Chilled Compartment** | 0°C to 4°C | **1 – 2 Days** (Best cooked fresh!) |
+| **Deep Freezer** | -18°C or below | **Up to 3 Months** (Airtight pack) |
+| **Marinated Chicken** | 0°C to 4°C | **24 – 36 Hours** in fridge |
+
+---
+
+### 2. The 3 Safe Ways to Defrost / Thaw Chicken:
+1. ❄️ **The Refrigerator Method (Safest & Best):** Transfer chicken from freezer to the lowest fridge shelf 12 hours before cooking. Keeps meat at a safe temperature while thawing uniformly.
+2. 💧 **The Cold Water Submersion (Quick — 30 mins):** Seal chicken in a leakproof ziplock bag and submerge in a bowl of cold tap water. Change the water every 20 minutes until thawed. Cook immediately.
+3. ⚡ **Microwave Defrost (Emergency Only):** Use defrost setting at 30% power. Cook immediately after thawing as parts may begin warming.
+
+> ⚠️ **FOOD SAFETY WARNING:** NEVER thaw chicken on the kitchen counter at room temperature or in hot water! Bacteria multiply exponentially in the 4°C – 60°C "Danger Zone".
+
+---
+
+### 3. Can I Refreeze Thawed Raw Chicken?
+• ❌ **Never refreeze thawed raw chicken.** Refreezing breaks down cellular walls, ruining texture, and increases bacterial contamination risks.
+• ✅ **Exception:** If you cook the thawed chicken into a curry or dish, the **cooked dish can safely be frozen** for up to 2 months!`,
+  },
+
+  // ── PERSONAL ASSISTANT: COOKING INGREDIENT SUBSTITUTES ───────────
+  {
+    patterns: [
+      'substitute for curd',
+      'substitute for yogurt',
+      'no curd',
+      'no yogurt',
+      'substitute for cornflour',
+      'no cornflour',
+      'substitute for egg',
+      'no egg in chicken 65',
+      'chicken without egg',
+      'ingredient substitute',
+      'replacement for',
+      'substitute for buttermilk',
+      'substitute',
+      'substitution',
+      'buttermilk substitute',
+      'replacement',
+      'alternative',
+      'substitutes',
+    ],
+    response: `🔄 **Personal Kitchen Assistant: Ingredient Substitutes & Smart Swaps**
+
+Missing an ingredient in your pantry? Here are chef-approved 1:1 direct substitutes for chicken recipes:
+
+### 1. Substitute for Curd / Yogurt in Chicken Marinade:
+• 🥛 **Buttermilk (Chaach):** Use equal quantity for tenderizing.
+• 🍋 **Lemon Juice + 2 tbsp Oil:** 1.5 tbsp lemon juice provides the acid needed to break down fibers.
+• 🥥 **Coconut Milk / Coconut Cream:** Excellent dairy-free tenderizer for South Indian curries.
+• 🍈 **Raw Papaya Paste:** 1 tsp per 500g chicken — the most potent natural enzyme tenderizer (papain).
+
+---
+
+### 2. Substitute for Cornflour (for Crispy Chicken 65 / Noodles):
+• 🌾 **Rice Flour (Arisi Maavu):** 1:1 replacement. Gives an even crispier, crunchier bite for Chicken 65!
+• 🥔 **Potato Starch / Arrowroot Powder:** 1:1 replacement for silky sauces and Chinese velveting.
+• 🌾 **Maida (All-Purpose Flour):** Works for frying batter, though slightly heavier than cornflour.
+
+---
+
+### 3. Substitute for Egg in Chicken 65 & Starters:
+• 💧 **Cornflour + Rice Flour Slurry:** Mix with thick curd and 1 tsp oil. It binds spices to the meat with zero egg required!`,
+  },
+
   // ── HALAL ───────────────────────────────────────────────────
   {
     patterns: ['halal', 'certified', 'organic', 'fresh', 'quality'],
@@ -724,6 +1269,7 @@ Feel free to ask anytime:
   {
     patterns: [
       'how to order',
+      'hoe to order',
       'how do i order',
       'how to buy',
       'order chicken',
@@ -733,34 +1279,107 @@ Feel free to ask anytime:
       'steps to order',
       'buy chicken online',
       'how to checkout',
+      'how to purchase',
+      'how to order online',
+      'order online',
+      'buy chicken',
     ],
     response: `📦 **How to Order on Mathina Chicken Center (Step-by-Step Guide)**
 
-Ordering fresh, 100% Halal chicken online is quick and effortless:
+Ordering fresh, 100% Halal-certified chicken online is quick and effortless:
 
 1. **Browse Cuts & Categories:**
-   • Visit our [Products Page](/products) or explore "Shop by Cut" on the Home page.
-   • Choose from 11+ chef-crafted cuts (Curry Cut, Cube Cut, Dragon Cut, Lollipop, Chicken 65, etc.) or Live Chicken.
+   • Visit our **[Products Page](/products)** or tap **Quick Help & Order** at the bottom-right.
+   • Choose from 11+ chef-crafted cuts (Curry Cut, Biryani Cut, Boneless Breast/Cubes, Dragon Cut, Lollipop, Chicken 65, etc.) or Live Chicken.
 
 2. **Select Weight & Quantity:**
-   • Choose your desired pack size: **250g, 500g, or 1kg** (or custom per kg).
-   • Transparent per-kg pricing is updated daily.
+   • Choose your desired pack size: **250g, 500g, or 1kg** (or custom kg).
+   • Transparent per-kg pricing is updated live daily.
 
 3. **Choose Checkout Method:**
    • ⚡ **Buy Now:** Instant 1-click express checkout for single items.
    • 🛒 **Add to Cart:** Add multiple cuts, eggs, or marinades and checkout together.
 
-4. **Review Cart & Enter Details:**
-   • Open [Cart](/cart) to review your items.
-   • Apply coupon **MATHINA2024** for 15% off Biryani & Big Curry Cut.
-   • Enter your Cuddalore delivery address and mobile number.
+4. **Review Cart & Apply Discount:**
+   • Open **[Cart](/cart)** to review your items.
+   • Apply coupon code \`MATHINA2024\` for 15% off Biryani & Big Curry Cut!
+   • Enter your delivery address and mobile number.
 
 5. **Select Payment:**
-   • 📲 **UPI Instant Pay:** Scan our Indian Bank QR code using Google Pay, PhonePe, Paytm, or BHIM.
-   • 💵 **Cash on Delivery (COD):** Pay cash at your doorstep upon delivery.
+   • 📲 **Smart UPI Instant Pay:** Scan our Indian Bank QR code (\`CF05100492@indianbk\`) using Google Pay, PhonePe, Paytm, or BHIM.
+   • 💵 **Cash on Delivery (COD):** Pay cash at your doorstep upon delivery with zero extra fees.
 
 6. **Order Placed & Live Tracking:**
-   • You receive an instant Order Confirmation with live tracking on [My Orders](/orders)!`,
+   • You receive an instant Order Confirmation with live tracking from fresh butchery to delivery on **[My Orders](/orders)**!
+
+⚡ **Prefer Ordering via WhatsApp or Phone?**
+• Tap the **Quick Help & Order** button on the bottom-right corner:
+  - Choose **Quick Order** to generate a pre-formatted WhatsApp order in 10 seconds.
+  - Choose **Call Directly** to order with store owner Shajan at **+91 77080 32726**!`,
+  },
+
+  // ── PRODUCTS AVAILABLE FOR SALE (COMPLETE CATALOGUE) ─────────────
+  {
+    patterns: [
+      'product for sale',
+      'products for sale',
+      'what are those product for sale',
+      'what are the products for sale',
+      'what products are for sale',
+      'what products do you sell',
+      'what do you sell',
+      'what products',
+      'products list',
+      'list of products',
+      'items for sale',
+      'what is available',
+      'available products',
+      'available items',
+      'what can i buy',
+      'all products',
+      'store products',
+      'chicken products',
+      'shop items',
+      'products available',
+      'menu',
+      'price list products',
+    ],
+    response: `🍗 **Mathina Chicken Center — Products Available for Sale**
+
+We take pride in offering 100% farm-fresh, Halal-certified poultry products with daily counter pricing:
+
+1. **🔪 11+ Chef-Crafted Fresh Chicken Cuts:**
+   • **Classic Curry Cut (Bone-in):** Medium chunks with bone marrow richness for gravies & salna.
+   • **Small Curry Cut:** Bite-sized bone-in pieces for quick-cooking curries & pepper fry.
+   • **Big Curry Cut / Biryani Cut:** Large bone-in cuts that lock in juicy flavor for Dum Biryani.
+   • **Boneless Cube Cut:** Clean 1-inch boneless breast cubes for Butter Chicken & Tikka.
+   • **Dragon Cut:** Pre-marinated long tender strips for crispy Indo-Chinese Dragon Chicken.
+   • **Butterfly Cut:** Symmetrical boneless breast fillets for grills, pan-searing & schnitzel.
+   • **Chicken 65 Pieces:** Specifically proportioned to absorb hot red marinades for deep frying.
+   • **Chicken Lollipop:** Frenched wing drumettes with meat wrapped to the crown.
+   • **Finger Cut:** Crispy slender tenders for homemade chicken fingers & snacks.
+   • **Julienne Cut:** Ultra-thin uniform strips that cook in 3 mins for Hakka noodles & stir-fries.
+   • **Chicken Wings & Drumsticks:** Juicy bone-in wings and plump drumsticks for BBQ & tandoor.
+   • **Boneless Breast & Thighs:** Lean, tender protein cuts for fitness meal prep.
+   • **Whole Fresh Chicken:** Cleaned and gutted whole birds (1.2kg – 1.8kg).
+
+2. **🐓 Live Counter Chicken:**
+   • Selected healthy live birds weighed and counter-dressed to your exact cutting preference.
+
+3. **🥚 Farm Fresh Eggs:**
+   • **Classic White Farm Eggs:** High protein, daily morning harvest.
+   • **Country Eggs (Nattu Kozhi Muttai):** Organic, nutrient-dense free-range eggs.
+
+4. **🌶️ Ready-to-Cook & House Marinades:**
+   • Tandoori Marinade, Peri Peri Glaze, and Classic Chicken 65 Masala mix.
+
+5. **📦 Fresh Organ Cuts & Specialty:**
+   • Fresh Chicken Liver (Eral) & Gizzard (Mani) — fresh, cleaned, and hygienic.
+
+🛒 **Shop Online Now:**
+• Browse all cuts with live prices on our **[Products Page](/products)**!
+• Use coupon code \`MATHINA2024\` for 15% off Biryani & Big Curry Cut.
+• Instant 1-click Express Buy Now with Indian Bank UPI or Cash on Delivery!`,
   },
 
   // ── ORDER TRACKING & LIVE UPDATES ─────────────────────────────
@@ -1176,48 +1795,139 @@ export const detectNavigation = (message) => {
 };
 
 // ── SLM Engine ───────────────────────────────────────────────
-export const slmRespond = (userMessage) => {
-  const msg = userMessage.toLowerCase().trim();
+export const slmRespond = (userMessage, lang = 'en') => {
+  if (!userMessage || !userMessage.trim()) return '';
 
-  // Check for "how to cook/make" patterns for ANY food
-  const howToPatterns = [
-    'how to cook',
-    'how to make',
-    'how to prepare',
-    'recipe for',
-    'cook',
-    'make',
-    'prepare',
-  ];
+  // 1. Clean and normalize input (fixing common typos like cock->cook, hoe->how, briyani->biryani, etc.)
+  let msg = userMessage.toLowerCase().trim();
+  msg = msg
+    .replace(/\b(cock|coock|coo|cookk)\b/g, 'cook')
+    .replace(/\b(hoe|howw|hw)\b/g, 'how')
+    .replace(/\b(briyani|biriyani|biriyaani|biryany)\b/g, 'biryani')
+    .replace(/\b(nodle|nodles|noddle|noddles|nudles|nudle)\b/g, 'noodles')
+    .replace(/\b(chiken|chikcen|chikken|chikin|chickn)\b/g, 'chicken')
+    .replace(/\b(prodcut|prodcuts|prouct|proucts|produc|producs)\b/g, 'product')
+    .replace(/\b(ordr|oder|odering|ordring)\b/g, 'order')
+    .replace(/\b(recpie|recepie|recepe|recipy)\b/g, 'recipe')
+    .replace(/\b(dishs|dished)\b/g, 'dishes');
 
-  for (const pattern of howToPatterns) {
-    if (msg.includes(pattern)) {
-      // Extract food item from query
-      const foodWords = msg
-        .replace(pattern, '')
-        .replace('?', '')
-        .trim()
-        .split(' ')
-        .filter((w) => w.length > 2);
+  // ── HIGH-PRIORITY PERSONAL ASSISTANT & EMERGENCY INTENTS ──────
+  // Explicitly handles emergency, troubleshooting, guest portions, diet and replacements before general matching.
 
-      if (foodWords.length > 0) {
-        const foodItem = foodWords.join(' ').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-        
-        // Detect cooking method from query
-        let method = 'curry';
-        if (msg.includes('fry') || msg.includes('dry')) method = 'fry';
-        else if (msg.includes('grill') || msg.includes('roast')) method = 'grill';
-        else if (msg.includes('bake') || msg.includes('oven')) method = 'bake';
-        else if (msg.includes('biryani') || msg.includes('pulao')) method = 'curry';
-        else if (msg.includes('curry') || msg.includes('gravy')) method = 'curry';
-        else if (msg.includes('stir fry') || msg.includes('noodles') || msg.includes('rice')) method = 'stirFry';
-
-        return generateRecipe(foodItem, method);
-      }
-    }
+  // A. Kitchen Emergency (Too salty / Too spicy)
+  if (
+    msg.includes('too salty') ||
+    msg.includes('curry salty') ||
+    msg.includes('fix salty') ||
+    msg.includes('too spicy') ||
+    msg.includes('curry too spicy') ||
+    msg.includes('reduce spice') ||
+    msg.includes('curry too hot') ||
+    msg.includes('less spicy') ||
+    msg.includes('reduce salt') ||
+    msg.includes('fix salt') ||
+    ((msg.includes('salty') || msg.includes('spicy') || msg.includes('too hot')) &&
+      (msg.includes('curry') || msg.includes('fix') || msg.includes('how') || msg.includes('what') || msg.includes('reduce') || msg.includes('save')))
+  ) {
+    const entry = KNOWLEDGE_BASE.find((e) => e.patterns.includes('too salty'));
+    if (entry) return entry.response;
   }
 
-  // Find best matching knowledge entry (prioritize the most specific pattern match)
+  // B. Kitchen Doctor (Rubbery, Dry, Tough, Chewy, Hard Chicken)
+  if (
+    msg.includes('rubbery') ||
+    msg.includes('tough') ||
+    msg.includes('chewy') ||
+    msg.includes('dry chicken') ||
+    msg.includes('chicken dry') ||
+    msg.includes('hard chicken') ||
+    msg.includes('chicken hard') ||
+    msg.includes('tenderize') ||
+    msg.includes('stringy') ||
+    msg.includes('make chicken soft') ||
+    msg.includes('chicken soft') ||
+    msg.includes('soft chicken') ||
+    msg.includes('why is chicken') ||
+    msg.includes('why is my chicken')
+  ) {
+    const entry = KNOWLEDGE_BASE.find((e) => e.patterns.includes('rubbery chicken'));
+    if (entry) return entry.response;
+  }
+
+  // C. Portion & Guest Calculator
+  if (
+    msg.includes('how much chicken') ||
+    msg.includes('how many kg') ||
+    msg.includes('how many guests') ||
+    msg.includes('portion') ||
+    msg.includes('calculator') ||
+    msg.includes('for guests') ||
+    msg.includes('guests coming') ||
+    msg.includes('dinner for') ||
+    msg.includes('lunch for') ||
+    ((msg.includes('guest') || msg.includes('guests') || msg.includes('people') || msg.includes('person') || msg.includes('servings') || msg.includes('serves')) &&
+      (msg.includes('how much') || msg.includes('order') || msg.includes('kg') || msg.includes('need') || msg.includes('buy') || msg.includes('quantity')))
+  ) {
+    const entry = KNOWLEDGE_BASE.find((e) => e.patterns.includes('how much chicken do i need') || e.patterns.includes('portion calculator'));
+    if (entry) return entry.response;
+  }
+
+  // D. Ingredient Substitutes & Replacements
+  if (
+    msg.includes('substitute') ||
+    msg.includes('substitution') ||
+    msg.includes('replacement') ||
+    msg.includes('alternative') ||
+    msg.includes('replace') ||
+    msg.includes("don't have") ||
+    msg.includes("dont have") ||
+    msg.includes('no curd') ||
+    msg.includes('no yogurt') ||
+    msg.includes('no buttermilk') ||
+    msg.includes('no cornflour') ||
+    msg.includes('no egg')
+  ) {
+    const entry = KNOWLEDGE_BASE.find((e) => e.patterns.includes('ingredient substitute') || e.patterns.includes('substitute for curd'));
+    if (entry) return entry.response;
+  }
+
+  // E. Gym Diet, Fitness & High Protein
+  if (
+    msg.includes('gym') ||
+    msg.includes('fitness') ||
+    msg.includes('workout') ||
+    msg.includes('bodybuilding') ||
+    msg.includes('high protein') ||
+    msg.includes('protein diet') ||
+    msg.includes('diet chicken') ||
+    msg.includes('weight loss') ||
+    msg.includes('macros') ||
+    ((msg.includes('protein') || msg.includes('calories') || msg.includes('lean')) && (msg.includes('cut') || msg.includes('eat') || msg.includes('chicken') || msg.includes('best')))
+  ) {
+    const entry = KNOWLEDGE_BASE.find((e) => e.patterns.includes('gym chicken'));
+    if (entry) return entry.response;
+  }
+
+  // F. Food Safety, Storage & Defrost Protocol
+  if (
+    msg.includes('how to store chicken') ||
+    msg.includes('store chicken') ||
+    msg.includes('defrost') ||
+    msg.includes('thaw') ||
+    msg.includes('shelf life') ||
+    msg.includes('how long in fridge') ||
+    msg.includes('can i refreeze') ||
+    msg.includes('refreeze') ||
+    msg.includes('frozen chicken') ||
+    msg.includes('food safety') ||
+    msg.includes('spoil') ||
+    msg.includes('smell')
+  ) {
+    const entry = KNOWLEDGE_BASE.find((e) => e.patterns.includes('how to store chicken'));
+    if (entry) return entry.response;
+  }
+
+  // 2. PRIORITY 1: Check curated KNOWLEDGE_BASE first (longest exact/substring match wins)
   let bestEntry = null;
   let longestMatchLength = 0;
 
@@ -1234,8 +1944,50 @@ export const slmRespond = (userMessage) => {
     return bestEntry.response;
   }
 
-  // Fuzzy fallback — check partial word matches
-  const words = msg.split(' ').filter((w) => w.length > 3);
+  // 3. PRIORITY 2: Check for "how to cook/make" patterns for ANY arbitrary food or custom dish
+  const howToPatterns = [
+    'how to cook',
+    'how to make',
+    'how to prepare',
+    'recipe for',
+    'how to fry',
+    'how to grill',
+    'how to roast',
+    'cook',
+    'make',
+    'prepare',
+  ];
+
+  for (const pattern of howToPatterns) {
+    if (msg.includes(pattern)) {
+      // Extract food item from query
+      const foodWords = msg
+        .replace(pattern, '')
+        .replace('?', '')
+        .trim()
+        .split(' ')
+        .filter((w) => w.length > 2 && !['chicken', 'the', 'some', 'dish', 'recipe'].includes(w));
+
+      if (foodWords.length > 0) {
+        const foodItem = foodWords.join(' ').split(' ').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+        
+        // Detect cooking method from query
+        let method = 'curry';
+        if (msg.includes('fry') || msg.includes('dry') || msg.includes('crispy')) method = 'fry';
+        else if (msg.includes('grill') || msg.includes('roast') || msg.includes('bbq')) method = 'grill';
+        else if (msg.includes('bake') || msg.includes('oven')) method = 'bake';
+        else if (msg.includes('biryani') || msg.includes('pulao') || msg.includes('rice')) method = 'curry';
+        else if (msg.includes('curry') || msg.includes('gravy') || msg.includes('salna')) method = 'curry';
+        else if (msg.includes('stir fry') || msg.includes('noodles') || msg.includes('chow')) method = 'stirFry';
+        else if (msg.includes('steam')) method = 'steam';
+
+        return generateRecipe(foodItem, method);
+      }
+    }
+  }
+
+  // 4. PRIORITY 3: Fuzzy fallback — check partial word matches against curated knowledge
+  const words = msg.split(' ').filter((w) => w.length > 3 && !['what', 'when', 'where', 'which', 'about', 'your', 'with', 'have', 'from'].includes(w));
   for (const word of words) {
     for (const entry of KNOWLEDGE_BASE) {
       if (entry.patterns.some((p) => p.includes(word) || word.includes(p.split(' ')[0]))) {
@@ -1244,26 +1996,32 @@ export const slmRespond = (userMessage) => {
     }
   }
 
-  // Default fallback with enhanced suggestions formatted like Claude / ChatGPT
-  return `👋 **Mathina AI Assistant at your service!** 🍗
+  // 5. Default fallback from Mathina AI Chef
+  return `👋 **Mathina AI Chef at your service!** 👨‍🍳🍗
 
-I'm your intelligent butchery and culinary concierge for **Mathina Chicken Center**. Here are the most popular topics I can assist you with right now:
+I'm your personal Master Chef and butchery guide for **Mathina Chicken Center**. Here are the most popular topics I can assist you with right now:
 
 📦 **Store & Ordering Guidance:**
 • *"How to order?"* — Step-by-step cut selection, weights, and express checkout
-• *"Track my order"* — Live butchery cutting, packaging, and rider updates
+• *"What products are for sale?"* — Complete catalogue of 11+ fresh cuts, eggs, live birds & marinades
+• *"Track my order"* — Live butchery cutting, packaging, and rider updates on [/orders](/orders)
 • *"How does QR code work?"* — Farm-to-table Halal & freshness verification
 • *"Payment methods"* — Indian Bank UPI QR, mobile deep link, and Cash on Delivery
 • *"Subscription plans"* — Automated weekly protein deliveries & savings
 
 🍗 **Cuts & Master Recipes:**
-• *"11+ Cuts Guide"* — Discover which cut is best for Biryani, Gravies, Grills, or Fries
-• *"How to cook [dish]?"* — Step-by-step recipe for Biryani, 65, Dragon Chicken, Shawarma, Tikka, Mutton, Fish, Veg
+• *"How to cook Biryani?"* — Authentic Dum Biryani with Big Curry / Biryani Cut
+• *"How to cook Chicken Noodles?"* — Restaurant-style Hakka Noodles with Julienne Cut
+• *"Chicken 65 Recipe"* — Crispy spicy chicken bites
+• *"Dragon Chicken Recipe"* — Indo-Chinese spicy glazed strips
+• *"Butter Chicken Recipe"* — Velvety makhani gravy with Boneless Cubes
+• *"Chettinad Pepper Chicken"* — Peppery dry roast with Small Curry Cut
+• *"11+ Cuts Guide"* — Discover which cut is best for your dish
 • *"Today's prices"* — Live price per kg for all cuts
 
 🏪 **Butchery Details & Fast Contact:**
 • **Location:** Cuddalore OT, Tamil Nadu (Open daily 6:00 AM – 10:00 PM)
-• **Call / WhatsApp:** **+91 77080 32726**
+• **Call / WhatsApp:** **+91 77080 32726** (Owner: Shajan)
 
 *Ask me any question or tap a suggestion chip below to begin!* 👨‍🍳`;
 };
@@ -1271,15 +2029,18 @@ I'm your intelligent butchery and culinary concierge for **Mathina Chicken Cente
 // Quick suggestion chips
 export const QUICK_SUGGESTIONS = [
   { label: '📦 How to Order', query: 'How to order chicken online?' },
+  { label: '🍗 Products for Sale', query: 'What are those products for sale?' },
+  { label: '🍛 Biryani Recipe', query: 'How to cook biryani?' },
+  { label: '🍜 Chicken Noodles', query: 'How to cook chicken noodles?' },
+  { label: '🥘 Butter Chicken', query: 'How to cook butter chicken?' },
+  { label: '🐉 Dragon Chicken', query: 'How to cook dragon chicken?' },
+  { label: '🌶️ Chicken 65', query: 'How to make chicken 65?' },
+  { label: '🥣 Chicken Soup', query: 'How to make country chicken soup?' },
+  { label: '💪 Gym Diet Chicken', query: 'How to cook grilled chicken breast for fitness?' },
+  { label: '🔪 11+ Cuts Guide', query: 'Tell me about all chicken cuts' },
   { label: '🚚 Track Order', query: 'How to track my order?' },
   { label: '🔍 QR Traceability', query: 'How does QR code traceability work?' },
   { label: '💳 Payment & UPI', query: 'What payment methods are available?' },
-  { label: '🍗 11+ Cuts Guide', query: 'Tell me about all chicken cuts' },
-  { label: '🏷️ Promo Coupon', query: 'What is the festival discount coupon?' },
-  { label: '📅 Weekly Plans', query: 'How do subscriptions work?' },
-  { label: '🐉 Dragon Chicken', query: 'How to cook dragon chicken?' },
-  { label: '🍛 Biryani Recipe', query: 'How to make chicken biryani?' },
-  { label: '🍭 Lollipop Cut', query: 'How to make chicken lollipop?' },
   { label: '💰 Today Prices', query: 'What are today chicken prices?' },
   { label: '🏪 Shop & Owner', query: 'Where is Mathina Chicken Center located?' },
 ];

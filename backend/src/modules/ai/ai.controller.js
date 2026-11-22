@@ -22,7 +22,7 @@ import Cart from '../../models/Cart.js';
  */
 export const chatHandler = async (req, res) => {
   try {
-    const { message } = req.body;
+    const { message, language } = req.body;
     const userId = req.user?._id?.toString() || req.ip || 'guest';
 
     // Validate message
@@ -47,6 +47,7 @@ export const chatHandler = async (req, res) => {
       products,
       history,
       userId,
+      language,
     });
 
     // Save conversation to memory

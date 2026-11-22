@@ -20,7 +20,7 @@ export const detectRecipeIntent = (message) => {
     curry: ['curry', 'குழம்பு', 'kuzhambu', 'gravy'],
     fry: ['fry', 'வறுவல்', 'varuval', 'fried', 'crispy'],
     grill: ['grill', 'கிரில்', 'grilled', 'barbecue', 'bbq', 'roast'],
-    biryani: ['biryani', 'பிரியாணி', 'biriyani', 'rice'],
+    biryani: ['biryani', 'பிரியாணி', 'biriyani', 'briyani', 'biriyaani', 'rice'],
     tandoori: ['tandoori', 'தந்தூரி', 'tandoor', 'oven'],
     kebab: ['kebab', 'கபாப்', 'kabab', 'tikka'],
     soup: ['soup', 'சூப்', 'sup', 'broth'],
@@ -30,13 +30,17 @@ export const detectRecipeIntent = (message) => {
     'dragon': ['dragon chicken', 'dragon cut'],
     'tikka': ['tikka', 'malai tikka'],
     'wings': ['wings', 'chicken wings'],
+    'noodles': ['noodles', 'noodle', 'chicken noodles', 'chicken noodle', 'hakka noodles', 'chowmein'],
+    'butter chicken': ['butter chicken', 'makhani', 'murgh makhani'],
+    'pepper': ['pepper chicken', 'milagu', 'chettinad pepper', 'pepper fry'],
+    'fried rice': ['fried rice', 'chicken fried rice'],
   };
 
   // Check for recipe type matches
   for (const [type, keywords] of Object.entries(recipeTypes)) {
     if (keywords.some((kw) => text.includes(kw))) {
-      // For '65', 'shawarma', 'lollipop', 'dragon', 'tikka', 'wings' — search by name
-      const nameSearchTypes = ['65', 'shawarma', 'lollipop', 'dragon', 'tikka', 'wings'];
+      // For specific dishes, search by name
+      const nameSearchTypes = ['65', 'shawarma', 'lollipop', 'dragon', 'tikka', 'wings', 'noodles', 'butter chicken', 'pepper', 'fried rice'];
       let matchingRecipes;
       if (nameSearchTypes.includes(type)) {
         matchingRecipes = searchRecipes(type === '65' ? 'chicken 65' : type);

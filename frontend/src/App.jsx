@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { LanguageProvider, RouteLanguageSync } from './context/LanguageContext';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 
 // Layout
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ChatWidget from './components/ChatWidget';
-import QuickOrderButton from './components/QuickOrderButton';
+import QuickActionsHub from './components/QuickActionsHub';
 
 // Pages
 import Home from './pages/Home';
@@ -36,13 +36,15 @@ import OrderDetails from './pages/OrderDetails';
 
 function App() {
   return (
-    <AuthProvider>
-      <CartProvider>
-        <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-grow">
-              <Routes>
+    <LanguageProvider>
+      <AuthProvider>
+        <CartProvider>
+          <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+            <RouteLanguageSync />
+            <div className="flex flex-col min-h-screen">
+              <Navbar />
+              <main className="flex-grow">
+                <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
@@ -200,12 +202,12 @@ function App() {
                 },
               }}
             />
-            <ChatWidget />
-            <QuickOrderButton />
+            <QuickActionsHub />
           </div>
         </Router>
       </CartProvider>
     </AuthProvider>
+    </LanguageProvider>
   );
 }
 

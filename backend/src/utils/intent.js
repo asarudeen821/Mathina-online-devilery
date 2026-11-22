@@ -24,6 +24,23 @@ export const isRecipeIntent = (message) => {
   if (!message) return false;
   const text = message.toLowerCase();
 
+  // If message is a troubleshooting or emergency question, it is NOT a basic recipe intent
+  if (
+    text.includes('rubbery') ||
+    text.includes('salty') ||
+    text.includes('too hot') ||
+    text.includes('too spicy') ||
+    text.includes('tough') ||
+    text.includes('dry') ||
+    text.includes('substitute') ||
+    text.includes('how much chicken') ||
+    text.includes('how many kg') ||
+    text.includes('guest') ||
+    text.includes('gym')
+  ) {
+    return false;
+  }
+
   const recipeKeywords = [
     'recipe', 'ரெசிபி', 'vidhai', 'cook', 'சமைக்க', 'make', 'prepare',
     'curry', 'குழம்பு', 'fry', 'வறுவல்', 'grill', 'கிரில்',
@@ -44,10 +61,10 @@ export const isCartIntent = (message) => {
   const text = message.toLowerCase();
 
   const cartKeywords = [
-    'add', 'buy', 'order', 'cart', 'purchase',
-    'சேர்', 'வாங்க', 'ஆர்டர்', 'கார்ட்',
-    'want to buy', 'i want', 'need', 'வேண்டும்',
     'add to cart', 'add cart', 'put in cart',
+    'buy now', 'purchase now',
+    'சேர்', 'கார்ட்',
+    'want to buy', 'add 1kg', 'add 500g',
   ];
 
   return cartKeywords.some((kw) => text.includes(kw));
@@ -63,10 +80,10 @@ export const isTrackingIntent = (message) => {
   const text = message.toLowerCase();
 
   const trackingKeywords = [
-    'track', 'tracking', 'where', 'status', 'order status',
-    'எங்கே', 'நிலை', 'டிராக்', 'ஆர்டர் நிலை',
+    'track order', 'order tracking', 'order status', 'track my',
+    'டிராக்', 'ஆர்டர் நிலை',
     'my order', 'order #', 'order number',
-    'delivery status', 'dispatched', 'out for delivery',
+    'delivery status', 'where is my order', 'where is order',
   ];
 
   return trackingKeywords.some((kw) => text.includes(kw));
@@ -83,10 +100,7 @@ export const isProductIntent = (message) => {
 
   const productKeywords = [
     'price', 'cost', 'rate', 'விலை', 'கட்டணம்',
-    'available', 'stock', 'இருப்பு', 'கிடைக்குமா',
-    'chicken', 'eggs', 'சிக்கன்', 'முட்டை',
-    'fresh', 'quality', 'புதிய', 'தரம்',
-    'category', 'types', 'வகைகள்',
+    'products for sale', 'what products', 'what do you sell', 'items for sale',
   ];
 
   return productKeywords.some((kw) => text.includes(kw));
@@ -99,15 +113,14 @@ export const isProductIntent = (message) => {
  */
 export const isGreeting = (message) => {
   if (!message) return false;
-  const text = message.toLowerCase();
+  const text = message.toLowerCase().trim();
 
-  const greetings = [
-    'hi', 'hello', 'hey', 'vanakkam', 'வணக்கம்',
-    'good morning', 'good evening', 'good afternoon',
-    'namaste', 'நமஸ்தே', 'start', 'begin',
-  ];
+  // If message has more than 4 words, it's a substantive query, not a greeting
+  const words = text.split(/\s+/).filter(Boolean);
+  if (words.length > 4) return false;
 
-  return greetings.some((kw) => text.includes(kw));
+  const greetingRegex = /\b(hi|hello|hey|vanakkam|namaste|start|begin)\b|good (morning|evening|afternoon)|வணக்கம்|நமஸ்தே/;
+  return greetingRegex.test(text);
 };
 
 /**

@@ -37,7 +37,7 @@ class OllamaService {
     if (!this.isInitialized) {
       const initialized = await this.initialize();
       if (!initialized) {
-        return this.getFallbackResponse(message);
+        throw new Error('Ollama service not available (server offline)');
       }
     }
 

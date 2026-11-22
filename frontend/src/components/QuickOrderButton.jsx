@@ -71,9 +71,23 @@ const OrderItem = ({ item, onChange, onRemove }) => {
 };
 
 // ── Main Component ──────────────────────────────────────────────
-const QuickOrderButton = () => {
+const QuickOrderButton = ({
+  isOpen: controlledIsOpen,
+  onClose: controlledOnClose,
+  hideFloatingButton = false,
+}) => {
   const [visible, setVisible] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [internalModal, setInternalModal] = useState(false);
+  const showModal = controlledIsOpen !== undefined ? controlledIsOpen : internalModal;
+
+  const handleClose = () => {
+    if (controlledOnClose) {
+      controlledOnClose();
+    } else {
+      setInternalModal(false);
+    }
+  };
+
   const [step, setStep] = useState('build'); // 'build' | 'confirm'
   const [orderItems, setOrderItems] = useState([]);
   const [selectedCut, setSelectedCut] = useState(CUTS[0]);
@@ -86,6 +100,24 @@ const QuickOrderButton = () => {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    const handleOpenOrder = () => {
+      openModal();
+    };
+    window.addEventListener('open-quick-order', handleOpenOrder);
+    return () => window.removeEventListener('open-quick-order', handleOpenOrder);
+  }, []);
+
+  useEffect(() => {
+    if (controlledIsOpen) {
+      setStep('build');
+      if (orderItems.length === 0) {
+        const weights = Object.keys(CUTS[0].prices);
+        setOrderItems([{ id: Date.now(), cut: CUTS[0], weight: weights[1] || weights[0], qty: 1 }]);
+      }
+    }
+  }, [controlledIsOpen]);
 
   const addItem = () => {
     const weights = Object.keys(selectedCut.prices);
@@ -140,44 +172,52 @@ const QuickOrderButton = () => {
   };
 
   const openModal = () => {
-    setShowModal(true);
+    if (controlledIsOpen === undefined) {
+      setInternalModal(true);
+    }
     setStep('build');
-    setOrderItems([]);
-    setCustomerName('');
-    setCustomerPhone('');
-    setAddress('');
+    if (orderItems.length === 0) {
+      const weights = Object.keys(selectedCut.prices);
+      const defaultWeight = weights[1] || weights[0];
+      setOrderItems([{ id: Date.now(), cut: selectedCut, weight: defaultWeight, qty: 1 }]);
+    }
   };
-
-  if (!visible) return null;
 
   return (
     <>
       {/* Floating Button */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-        {/* Quick direct call */}
-        <a
-          href={`tel:+91${CALL_NUMBER}`}
-          className="flex items-center gap-2 bg-white text-green-700 border-2 border-green-500 px-4 py-2 rounded-full shadow-lg hover:bg-green-50 transition-all text-sm font-semibold"
-          title="Call to Order"
-        >
-          <FiPhone className="w-4 h-4" />
-          Call Now
-        </a>
+      {!hideFloatingButton && visible && (
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+          {/* Quick direct call */}
+          <a
+            href={`tel:+91${CALL_NUMBER}`}
+            className="flex items-center gap-2 bg-white text-green-700 border-2 border-green-500 px-4 py-2 rounded-full shadow-lg hover:bg-green-50 transition-all text-sm font-semibold"
+            title="Call to Order"
+          >
+            <FiPhone className="w-4 h-4" />
+            Call Now
+          </a>
 
-        {/* Order via WhatsApp/Call modal */}
-        <button
-          onClick={openModal}
-          className="flex items-center gap-2.5 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-700 text-white px-5 py-3 rounded-full shadow-2xl hover:shadow-green-500/40 hover:scale-105 transition-all duration-300 font-bold group ring-4 ring-white/70"
-          title="Order via Call / WhatsApp"
-        >
-          <FiShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform" />
-          <span>Quick Order</span>
-        </button>
-      </div>
+          {/* Order via WhatsApp/Call modal */}
+          <button
+            onClick={openModal}
+            className="flex items-center gap-2.5 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-700 text-white px-5 py-3 rounded-full shadow-2xl hover:shadow-green-500/40 hover:scale-105 transition-all duration-300 font-bold group ring-4 ring-white/70"
+            title="Order via Call / WhatsApp"
+          >
+            <FiShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            <span>Quick Order</span>
+          </button>
+        </div>
+      )}
 
       {/* Order Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div
+          className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) handleClose();
+          }}
+        >
           <div className="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-2xl max-h-[92vh] flex flex-col">
 
             {/* Header */}
@@ -186,7 +226,7 @@ const QuickOrderButton = () => {
                 <h2 className="text-white font-bold text-lg">📞 Order by Call / WhatsApp</h2>
                 <p className="text-green-100 text-xs mt-0.5">Build your order, then call or WhatsApp us</p>
               </div>
-              <button onClick={() => setShowModal(false)} className="text-white hover:text-green-200">
+              <button onClick={handleClose} className="text-white hover:text-green-200">
                 <FiX className="w-6 h-6" />
               </button>
             </div>

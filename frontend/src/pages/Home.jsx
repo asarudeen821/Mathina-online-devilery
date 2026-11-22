@@ -4,6 +4,7 @@ import { FiArrowRight, FiTruck, FiShield, FiClock, FiStar, FiCheck, FiZap } from
 import ProductCard from '../components/ProductCard';
 import ChickenCutsShowcase from '../components/ChickenCutsShowcase';
 import ChickenLollipopShowcase from '../components/ChickenLollipopShowcase';
+import Hero3DSection from '../components/Hero3DSection';
 import { productAPI } from '../utils/api';
 
 const Home = () => {
@@ -134,48 +135,8 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Hero Section - Modern SaaS Style */}
-      <section className="bg-gradient-to-br from-red-700 via-rose-700 to-amber-700 text-white relative overflow-hidden">
-        {/* Decorative background glow */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-400/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-white/20 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span className="text-amber-200">100% Halal & Fresh Daily</span>
-              </div>
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight tracking-tight">
-                Mathina Chicken Center
-                <span className="block text-amber-200 text-2xl lg:text-3xl mt-2 font-medium">Cuddalore's Trusted Chicken Store</span>
-              </h1>
-              <p className="text-lg lg:text-xl mb-8 text-rose-100 max-w-xl leading-relaxed">
-                Farm-fresh chicken processed daily right in front of you. 11+ chef-crafted cuts delivered fresh or cut to order at our shop counter.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/products" className="btn-shimmer btn-lg rounded-xl flex items-center justify-center gap-2 shadow-xl hover:shadow-red-500/30">
-                  Browse Fresh Cuts <FiArrowRight className="w-5 h-5" />
-                </Link>
-                <Link to="/subscriptions" className="btn-lg border-2 border-white/40 text-white hover:bg-white/15 backdrop-blur-sm rounded-xl font-semibold transition-all">
-                  View Plans
-                </Link>
-              </div>
-            </div>
-            <div className="hidden lg:block">
-              <div className="relative">
-                <div className="absolute inset-0 bg-white/5 rounded-2xl blur-3xl"></div>
-                <img
-                  src="/images/products/chicken-breast-boneless.png"
-                  alt="Fresh Chicken Cuts"
-                  className="relative w-full h-96 object-cover rounded-2xl shadow-2xl border-2 border-white/10"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ═══════ Interactive 3D Hero Section ═══════ */}
+      <Hero3DSection />
 
       {/* Features Section */}
       <section className="py-12 bg-white border-b border-slate-200">

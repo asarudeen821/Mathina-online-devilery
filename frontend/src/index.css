@@ -508,4 +508,243 @@
     border-radius: 9999px;
     animation: scanSweep 2.5s infinite linear;
   }
+
+  /* 3D Animations & Transform Utilities */
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .perspective-1200 {
+    perspective: 1200px;
+  }
+
+  @keyframes float3d {
+    0%, 100% {
+      transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+      transform: translateY(-8px) rotateX(3deg) rotateY(-3deg);
+    }
+    50% {
+      transform: translateY(-14px) rotateX(-2deg) rotateY(2deg);
+    }
+    75% {
+      transform: translateY(-6px) rotateX(2deg) rotateY(3deg);
+    }
+  }
+
+  @keyframes holographicShine {
+    0% {
+      transform: translateX(-150%) skewX(-25deg);
+      opacity: 0;
+    }
+    30% {
+      opacity: 0.6;
+    }
+    60% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateX(250%) skewX(-25deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulseRing {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.08);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(0.95);
+      opacity: 0.8;
+    }
+  }
+
+  .animate-float-3d {
+    animation: float3d 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-ring {
+    animation: pulseRing 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-shine {
+    animation: holographicShine 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  /* Artisan Butcher Board & 3D Culinary Styling */
+  .wood-board-stage {
+    background: linear-gradient(145deg, #2c1810 0%, #1c0e08 50%, #140905 100%);
+    box-shadow: 
+      0 30px 60px -12px rgba(44, 24, 16, 0.45),
+      0 18px 36px -18px rgba(0, 0, 0, 0.5),
+      inset 0 1px 2px rgba(255, 255, 255, 0.2),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  .wood-board-stage-light {
+    background: linear-gradient(145deg, #fffdfa 0%, #fef8f0 40%, #fdf2e4 100%);
+    box-shadow: 
+      0 25px 50px -12px rgba(217, 119, 6, 0.15),
+      0 12px 24px -10px rgba(220, 38, 38, 0.12),
+      inset 0 2px 4px rgba(255, 255, 255, 0.9),
+      inset 0 -2px 6px rgba(217, 119, 6, 0.1);
+  }
+
+  @keyframes floatSlow1 {
+    0%, 100% { transform: translate3d(0, 0, 45px) rotate(0deg); }
+    50% { transform: translate3d(-6px, -12px, 55px) rotate(6deg); }
+  }
+
+  @keyframes floatSlow2 {
+    0%, 100% { transform: translate3d(0, 0, 50px) rotate(0deg); }
+    50% { transform: translate3d(8px, -10px, 60px) rotate(-8deg); }
+  }
+
+  .animate-float-herb-1 {
+    animation: floatSlow1 5s ease-in-out infinite;
+  }
+
+  .animate-float-herb-2 {
+    animation: floatSlow2 6.5s ease-in-out infinite;
+  }
+
+  /* ══ Fluid 2D Culinary Animations (Replaces 3D tilt with Organic Food Stage Motion) ══ */
+  @keyframes culinaryAura {
+    0%, 100% {
+      transform: scale(0.98);
+      opacity: 0.65;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.95;
+    }
+  }
+
+  @keyframes floatGentle {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes steamWisp {
+    0% {
+      transform: translateY(0px) scale(0.95);
+      opacity: 0;
+    }
+    30% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(-20px) scale(1.15);
+      opacity: 0;
+    }
+  }
+
+  .animate-culinary-aura {
+    animation: culinaryAura 4.5s ease-in-out infinite;
+  }
+
+  .animate-float-gentle {
+    animation: floatGentle 3.5s ease-in-out infinite;
+  }
+
+  .animate-steam-wisp {
+    animation: steamWisp 3s ease-out infinite;
+  }
+
+  .culinary-plate-shadow {
+    filter: drop-shadow(0 20px 30px rgba(180, 83, 9, 0.22));
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   MULTI-LANGUAGE & TRANSLATION ENGINE - ROOT SPECIFICITY
+   ═══════════════════════════════════════════════════════ */
+
+/* 100% Suppression of intrusive Google Translate top banner, tooltips & iframe */
+body > .skiptranslate,
+body > div.skiptranslate,
+body > iframe.skiptranslate,
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe[class*="goog-te-banner-frame"],
+iframe[class*="skiptranslate"],
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-ORHb,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+.VIpgJd-ZVi9od-aZ2wEe-OiiCO,
+.VIpgJd-ZVi9od-aZ2wEe,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+#goog-gt-vt,
+.goog-tooltip,
+.goog-tooltip:hover,
+.goog-te-spinner-pos {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0px !important;
+  width: 0px !important;
+  max-height: 0px !important;
+  overflow: hidden !important;
+  border: none !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  z-index: -999999 !important;
+}
+
+html, body {
+  top: 0px !important;
+  position: static !important;
+  margin-top: 0px !important;
+  padding-top: 0px !important;
+}
+
+/* Ensure navbar always stays cleanly visible on top */
+nav {
+  position: sticky !important;
+  top: 0px !important;
+  z-index: 999999 !important;
+}
+
+#google_translate_element {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.goog-text-highlight {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* RTL Support for Urdu & Arabic */
+[dir="rtl"] {
+  text-align: right;
+}
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
 }

@@ -1,13 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiMessageSquare, FiX, FiSend, FiTrash2, FiExternalLink } from 'react-icons/fi';
+import { GiChickenOven } from 'react-icons/gi';
 import api, { aiAPI } from '../utils/api';
 import { detectNavigation, slmRespond, QUICK_SUGGESTIONS } from '../utils/slmEngine';
+import { useLanguage } from '../context/LanguageContext';
 
 /**
- * Mathina AI Assistant
- * - Trained on complete project knowledge & documentation
- * - Dual Engine: Smart backend AI with instant offline SLM fallback (0% connection failure)
+ * Mathina AI Chef
+ * - Trained on complete project knowledge, butchery cuts, cooking temps & master recipes
+ * - Dual Engine: Smart backend AI with instant offline culinary SLM fallback (0% connection failure)
  * - Claude / ChatGPT formatted markdown rendering with links & tables
  * - Step-by-step guidance on ordering, tracking, QR traceability, cuts, recipes & payments
  */
@@ -97,25 +99,39 @@ const renderMarkdown = (text, navigate) => {
   });
 };
 
-const ChatWidget = () => {
+const ChatWidget = ({
+  isOpen: controlledIsOpen,
+  onClose: controlledOnClose,
+  hideFloatingButton = false,
+}) => {
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
+  const { currentLanguage, activeLangObj, isRTL, t } = useLanguage();
+  const [internalOpen, setInternalOpen] = useState(false);
+  const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalOpen;
+
+  const handleClose = () => {
+    if (controlledOnClose) {
+      controlledOnClose();
+    } else {
+      setInternalOpen(false);
+    }
+  };
+
   const [messages, setMessages] = useState([
     {
       role: 'bot',
-      text: `👋 Hi! Welcome to **Mathina AI Assistant** — your personal butchery concierge and chef! 🍗
+      text: `👋 Vanakkam! Welcome to **Mathina AI Chef** — your master culinary and fresh butchery guide! 👨‍🍳🍗
 
-I'm trained on everything at **Mathina Chicken Center** to give you instant, reliable answers:
+I'm here to give you expert cooking advice, cut recommendations, and store assistance:
 
-• 📦 **How to Order:** Step-by-step cut selection, weights & express checkout
-• 🚚 **Track Orders:** Check live cutting, packaging & rider updates on [/orders](/orders)
-• 🔍 **Farm-to-Table QR:** Verify 100% Halal certification, farm batch & freshness
-• 💳 **Payment & UPI:** Indian Bank QR standee (\`CF05100492@indianbk\`) & Cash on Delivery
-• 🍗 **11+ Cuts Guide:** Dragon Chicken, Biryani Cut, Butterfly, Lollipop, 65 & Julienne
-• 🏷️ **Festival Coupon:** Use \`MATHINA2024\` for 15% off Biryani & Big Curry Cut
-• 👨‍🍳 **Master Recipes:** Cooking steps, temperatures & times for ANY dish
+• 👨‍🍳 **Master Recipes:** Biryani, Dragon Chicken, Chicken 65, Lollipop, Tikka & Gravies
+• 🍗 **11+ Cuts Guide:** Which cut works best for your recipe (Biryani Cut, Boneless, Wings...)
+• 🔥 **Cooking Temps & Time:** Get juicy, tender chicken every single time
+• 📦 **Express Ordering:** How to select weights & checkout in seconds
+• 🚚 **Track Orders:** Live status from cutting to delivery on [/orders](/orders)
+• 🔍 **100% Halal & Fresh:** Verify farm batch and QR traceability
 
-💡 *Tip:* Ask me any question below or tap a quick topic!`,
+💡 *Ask me any recipe or butchery question, or tap a quick chip below!*`,
       timestamp: new Date().toISOString(),
     },
   ]);
@@ -125,27 +141,29 @@ I'm trained on everything at **Mathina Chicken Center** to give you instant, rel
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
-  // Listen for navbar button click
+  // Listen for navbar button click or custom event
   useEffect(() => {
     const handleOpenChat = () => {
-      setIsOpen(true);
+      setInternalOpen(true);
     };
     window.addEventListener('open-mathina-chat', handleOpenChat);
     return () => window.removeEventListener('open-mathina-chat', handleOpenChat);
   }, []);
 
   const quickActions = [
-    { label: '📦 How to Order', query: 'How to order chicken online?', icon: '📦' },
-    { label: '🚚 Track Order', query: 'How to track my order?', icon: '🚚' },
-    { label: '🔍 QR Traceability', query: 'How does QR code traceability work?', icon: '🔍' },
+    { label: '📦 How to Order', query: 'How to order chicken online step by step?', icon: '📦' },
+    { label: '🍗 Products for Sale', query: 'What are those products for sale?', icon: '🍗' },
+    { label: '👨‍🍳 Biryani Recipe', query: 'How to cook biryani step by step?', icon: '👨‍🍳' },
+    { label: '🍜 Chicken Noodles', query: 'How to cook chicken noodles?', icon: '🍜' },
+    { label: '🥘 Butter Chicken', query: 'How to cook butter chicken recipe?', icon: '🥘' },
+    { label: '🐉 Dragon Chicken', query: 'How to cook dragon chicken recipe?', icon: '🐉' },
+    { label: '🌶️ Chicken 65', query: 'How to make crispy chicken 65 at home?', icon: '🌶️' },
+    { label: '🔪 11+ Cuts Guide', query: 'Tell me about all chicken cuts and best cooking methods', icon: '🔪' },
+    { label: '🚚 Track Order', query: 'How to track my order status?', icon: '🚚' },
+    { label: '🔍 QR & Halal', query: 'How does QR code traceability and Halal verification work?', icon: '🔍' },
+    { label: '💰 Today Prices', query: 'What are today chicken prices per kg?', icon: '💰' },
     { label: '💳 Payment & UPI', query: 'What payment methods are available?', icon: '💳' },
-    { label: '🍗 11+ Cuts Guide', query: 'Tell me about all chicken cuts', icon: '🍗' },
-    { label: '🏷️ Promo Coupon', query: 'What is the festival discount coupon?', icon: '🏷️' },
-    { label: '📅 Weekly Plans', query: 'How do subscriptions work?', icon: '📅' },
-    { label: '🍳 Biryani Recipe', query: 'How to make chicken biryani?', icon: '🍳' },
-    { label: '🐉 Dragon Chicken', query: 'How to cook dragon chicken?', icon: '🐉' },
-    { label: '💰 Today Prices', query: 'What are today chicken prices?', icon: '💰' },
-    { label: '🏪 Shop & Owner', query: 'Where is Mathina Chicken Center located?', icon: '🏪' },
+    { label: '🏪 Shop & Owner', query: 'Where is Mathina Chicken Center located and owner contact?', icon: '🏪' },
   ];
 
   // Auto-scroll to bottom when messages change
@@ -210,7 +228,7 @@ I'm trained on everything at **Mathina Chicken Center** to give you instant, rel
       );
 
       const res = await Promise.race([
-        aiAPI.chat(trimmedMessage),
+        aiAPI.chat(trimmedMessage, currentLanguage),
         timeoutPromise,
       ]);
 
@@ -255,7 +273,7 @@ I'm trained on everything at **Mathina Chicken Center** to give you instant, rel
     setMessages([
       {
         role: 'bot',
-        text: '🧹 Chat cleared! How can **Mathina AI Assistant** help you today? Ask about cuts, how to order, tracking, or cooking recipes! 🍗',
+        text: '🧹 Chat cleared! How can **Mathina AI Chef** help you today? Ask about master recipes, ideal cuts, cooking temps, or order tracking! 👨‍🍳🍗',
         timestamp: new Date().toISOString(),
       },
     ]);
@@ -270,14 +288,20 @@ I'm trained on everything at **Mathina Chicken Center** to give you instant, rel
   return (
     <>
       {/* Floating Chat Button */}
-      {!isOpen && (
+      {!hideFloatingButton && !isOpen && (
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            if (controlledIsOpen !== undefined) {
+              // controlled
+            } else {
+              setInternalOpen(true);
+            }
+          }}
           className="fixed bottom-6 right-6 bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 hover:from-red-700 hover:to-amber-700 text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110 z-50 flex items-center justify-center border-2 border-white/20 shadow-red-500/30"
-          aria-label="Open Mathina AI Assistant"
-          title="Open Mathina AI Assistant"
+          aria-label="Open Mathina AI Chef"
+          title="Open Mathina AI Chef"
         >
-          <FiMessageSquare className="w-6 h-6" />
+          <GiChickenOven className="w-6 h-6" />
           <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-400 rounded-full border-2 border-white animate-pulse"></span>
         </button>
       )}
@@ -285,22 +309,28 @@ I'm trained on everything at **Mathina Chicken Center** to give you instant, rel
       {/* Chat Window */}
       {isOpen && (
         <div
-          className="fixed bottom-5 right-5 w-96 max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-2xl z-50 border border-slate-200 overflow-hidden flex flex-col transition-all duration-300"
-          style={{ maxHeight: '620px', height: 'calc(100vh - 90px)' }}
+          dir={isRTL ? 'rtl' : 'ltr'}
+          className="fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-5 sm:right-5 w-full sm:w-96 max-w-full sm:max-w-[calc(100vw-2rem)] bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl z-50 border border-slate-200 overflow-hidden flex flex-col transition-all duration-300"
+          style={{ maxHeight: '620px', height: 'calc(100vh - 65px)' }}
         >
           {/* Header */}
           <div className="bg-gradient-to-r from-red-700 via-rose-700 to-amber-700 text-white p-4 flex items-center justify-between flex-shrink-0 shadow-md">
             <div className="flex items-center space-x-3">
               <div className="bg-white/15 backdrop-blur-md p-2 rounded-xl border border-white/20">
-                <FiMessageSquare className="w-5 h-5 text-amber-200" />
+                <GiChickenOven className="w-5 h-5 text-amber-200" />
               </div>
               <div>
                 <h3 className="font-bold text-sm tracking-tight flex items-center gap-1.5">
-                  Mathina AI Assistant
+                  Mathina AI Chef 👨‍🍳
+                  {activeLangObj && (
+                    <span className="text-[10px] bg-white/20 px-1.5 py-0.5 rounded-full font-medium ml-1">
+                      {activeLangObj.flag} {activeLangObj.nativeName}
+                    </span>
+                  )}
                 </h3>
                 <p className="text-[11px] text-amber-100 flex items-center gap-1.5 font-medium">
                   <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                  Online • Knowledge Trained
+                  Online • Master Culinary & Butchery AI
                 </p>
               </div>
             </div>
@@ -314,7 +344,7 @@ I'm trained on everything at **Mathina Chicken Center** to give you instant, rel
                 <FiTrash2 className="w-4 h-4" />
               </button>
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={handleClose}
                 className="hover:bg-white/20 p-2 rounded-lg transition-colors text-white/90"
                 aria-label="Close chat"
               >
@@ -392,7 +422,7 @@ I'm trained on everything at **Mathina Chicken Center** to give you instant, rel
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Ask Mathina AI Assistant..."
+                placeholder="Ask Mathina AI Chef for recipes, cuts or order help..."
                 className="flex-1 border border-slate-300 rounded-xl px-3.5 py-2 text-xs focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none transition-all placeholder:text-slate-400"
                 disabled={isLoading}
               />
@@ -406,7 +436,7 @@ I'm trained on everything at **Mathina Chicken Center** to give you instant, rel
               </button>
             </div>
             <p className="text-[10px] text-slate-400 mt-1.5 text-center">
-              🍗 Mathina AI Assistant • Trained on store cuts, tracking & butchery recipes
+              👨‍🍳 Mathina AI Chef • Dual Engine: Smart AI + 100% Offline Culinary Knowledge
             </p>
           </div>
         </div>

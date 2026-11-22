@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 import { 
   FiShoppingCart, FiUser, FiMenu, FiX, FiHome, FiPackage, 
   FiAward, FiGrid, FiMessageCircle, FiChevronDown, FiBell, 
@@ -9,10 +10,12 @@ import {
 import { GiChickenOven } from 'react-icons/gi';
 import { useState } from 'react';
 import NotificationBell from './NotificationBell';
+import LanguageSelector from './LanguageSelector';
 
 const Navbar = () => {
   const { user, isAuthenticated, logout, isAdmin } = useAuth();
   const { getCartCount } = useCart();
+  const { t } = useLanguage();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
@@ -31,10 +34,10 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { to: '/', label: 'Home', icon: FiHome },
-    { to: '/products', label: 'Products', icon: FiPackage },
-    { to: '/subscriptions', label: 'Plans', icon: FiAward },
-    { to: '/qr-scan', label: 'QR Scan', icon: FiGrid },
+    { to: '/', label: t('nav_home', 'Home'), icon: FiHome },
+    { to: '/products', label: t('nav_products', 'Products'), icon: FiPackage },
+    { to: '/subscriptions', label: t('nav_plans', 'Plans'), icon: FiAward },
+    { to: '/qr-scan', label: t('nav_qr_scan', 'QR Scan'), icon: FiGrid },
   ];
 
   const adminLinks = [
@@ -45,12 +48,12 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <nav className="bg-white border-b border-slate-200 sticky top-0 z-[99999] shadow-sm pointer-events-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           
           {/* ═══════ LEFT: Logo & Primary Nav ═══════ */}
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6 lg:gap-8">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
               <div className="bg-gradient-to-br from-red-600 via-rose-600 to-amber-500 p-2.5 rounded-xl shadow-md group-hover:shadow-red-500/25 group-hover:scale-105 transition-all duration-300 ring-2 ring-red-100">
@@ -67,13 +70,13 @@ const Navbar = () => {
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
+            {/* Desktop & Tablet Navigation: Visible on all screens >= 768px */}
+            <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                  className="px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors whitespace-nowrap"
                 >
                   {link.label}
                 </Link>
@@ -84,14 +87,18 @@ const Navbar = () => {
           {/* ═══════ RIGHT: Actions ═══════ */}
           <div className="flex items-center gap-3">
             
-            {/* AI Chat Button */}
+            {/* Mathina AI Chef Button */}
             <button
               onClick={openChat}
-              className="hidden md:flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+              className="hidden md:flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors group"
+              title="Open Mathina AI Chef"
             >
-              <FiMessageCircle className="w-4 h-4" />
-              <span>AI Assistant</span>
+              <GiChickenOven className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform" />
+              <span>AI Chef 👨‍🍳</span>
             </button>
+
+            {/* Multi-Language Option Button */}
+            <LanguageSelector />
 
             {isAuthenticated ? (
               <>
@@ -186,7 +193,7 @@ const Navbar = () => {
                 <Link to="/login" className="hidden sm:block text-sm font-medium text-slate-700 hover:text-slate-900 px-3 py-2">
                   Sign In
                 </Link>
-                <Link to="/register" className="btn-primary btn-sm">
+                <Link to="/register" className="btn-primary btn-sm whitespace-nowrap">
                   Get Started
                 </Link>
               </>
@@ -195,7 +202,8 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+              className="md:hidden p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+              aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
             </button>
@@ -205,75 +213,89 @@ const Navbar = () => {
 
       {/* ═══════ MOBILE MENU ═══════ */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 bg-white">
-          <div className="px-4 py-4 space-y-1">
-            {/* AI Chat */}
-            <button
-              onClick={openChat}
-              className="w-full flex items-center gap-3 px-3 py-3 text-sm font-medium text-indigo-600 bg-indigo-50 rounded-lg"
-            >
-              <FiMessageCircle className="w-5 h-5" />
-              AI Assistant
-            </button>
-
-            {/* Nav Links */}
-            {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg"
-              >
-                <link.icon className="w-5 h-5 text-slate-400" />
-                {link.label}
-              </Link>
-            ))}
-
-            {/* Auth Links */}
-            {isAuthenticated && (
-              <>
-                <div className="border-t border-slate-200 pt-3 mt-3">
-                  {isAdmin ? (
-                    adminLinks.map((link) => (
-                      <Link key={link.to} to={link.to} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg">
-                        {link.label}
-                      </Link>
-                    ))
-                  ) : (
-                    <>
-                      <Link to="/cart" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg">
-                        <FiShoppingCart className="w-5 h-5" /> Cart ({getCartCount()})
-                      </Link>
-                      <Link to="/orders" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg">
-                        <FiPackage className="w-5 h-5" /> Orders
-                      </Link>
-                      <Link to="/profile" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg">
-                        <FiUser className="w-5 h-5" /> Profile
-                      </Link>
-                    </>
-                  )}
-                </div>
-                <button
-                  onClick={handleLogout}
-                  className="w-full flex items-center gap-3 px-3 py-3 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg"
-                >
-                  <FiLogOut className="w-5 h-5" /> Sign Out
-                </button>
-              </>
-            )}
-
-            {!isAuthenticated && (
-              <div className="border-t border-slate-200 pt-3 mt-3 space-y-2">
-                <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="block w-full text-center px-3 py-3 text-sm font-medium text-slate-700 border border-slate-300 rounded-lg">
-                  Sign In
-                </Link>
-                <Link to="/register" onClick={() => setMobileMenuOpen(false)} className="block w-full text-center btn-primary btn-sm">
-                  Get Started
-                </Link>
+        <>
+          {/* Backdrop overlay for mobile menu */}
+          <div
+            className="fixed inset-0 bg-black/30 backdrop-blur-xs z-40 md:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="relative z-50 md:hidden border-t border-slate-200 bg-white shadow-xl animate-in slide-in-from-top-2 duration-200">
+            <div className="px-4 py-4 space-y-1 max-h-[calc(100vh-4.5rem)] overflow-y-auto">
+              {/* Multi-Language Selector for Mobile */}
+              <div className="flex items-center justify-between px-3 py-2 bg-slate-50 rounded-lg mb-2 border border-slate-200/80">
+                <span className="text-xs font-bold text-slate-700">Language / மொழி:</span>
+                <LanguageSelector compact={false} />
               </div>
-            )}
+
+              {/* Mathina AI Chef */}
+              <button
+                onClick={openChat}
+                className="w-full flex items-center gap-3 px-3 py-3 text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 rounded-lg transition-colors"
+              >
+                <GiChickenOven className="w-5 h-5 text-red-600" />
+                Mathina AI Chef 👨‍🍳
+              </button>
+
+              {/* Nav Links */}
+              {navLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors"
+                >
+                  <link.icon className="w-5 h-5 text-slate-400" />
+                  {link.label}
+                </Link>
+              ))}
+
+              {/* Auth Links */}
+              {isAuthenticated && (
+                <>
+                  <div className="border-t border-slate-200 pt-3 mt-3">
+                    {isAdmin ? (
+                      adminLinks.map((link) => (
+                        <Link key={link.to} to={link.to} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg">
+                          {link.label}
+                        </Link>
+                      ))
+                    ) : (
+                      <>
+                        <Link to="/cart" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg">
+                          <FiShoppingCart className="w-5 h-5 text-slate-400" /> Cart ({getCartCount()})
+                        </Link>
+                        <Link to="/orders" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg">
+                          <FiPackage className="w-5 h-5 text-slate-400" /> Orders
+                        </Link>
+                        <Link to="/profile" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg">
+                          <FiUser className="w-5 h-5 text-slate-400" /> Profile
+                        </Link>
+                      </>
+                    )}
+                  </div>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full flex items-center gap-3 px-3 py-3 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors mt-1"
+                  >
+                    <FiLogOut className="w-5 h-5" /> Sign Out
+                  </button>
+                </>
+              )}
+
+              {!isAuthenticated && (
+                <div className="border-t border-slate-200 pt-3 mt-3 space-y-2">
+                  <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="block w-full text-center px-3 py-3 text-sm font-medium text-slate-700 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors">
+                    Sign In
+                  </Link>
+                  <Link to="/register" onClick={() => setMobileMenuOpen(false)} className="block w-full text-center btn-primary btn-sm">
+                    Get Started
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   );

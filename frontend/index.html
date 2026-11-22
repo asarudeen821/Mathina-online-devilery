@@ -9,6 +9,145 @@
     <title>Mathina Chicken Center - Fresh Chicken Delivery in Chennai & Cuddalore</title>
     <meta name="description" content="Order fresh, organic, and halal-certified chicken online from Mathina Chicken Center. Farm-to-table freshness with 11+ special cuts." />
     <meta name="theme-color" content="#dc2626" />
+
+    <!-- Google Translate Complete Stealth Engine: Hide Top Banner Frame, Tooltips & Offset -->
+    <style>
+      html, body {
+        top: 0px !important;
+        position: static !important;
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+      }
+
+      /* Keep site Navbar pinned cleanly on top at all times */
+      nav {
+        position: sticky !important;
+        top: 0px !important;
+        z-index: 999999 !important;
+      }
+
+      /* 100% Suppression of Google Translate top banner, tooltips & intrusive iframes */
+      body > .skiptranslate,
+      body > div.skiptranslate,
+      body > iframe.skiptranslate,
+      .goog-te-banner-frame,
+      iframe.goog-te-banner-frame,
+      .goog-te-banner-frame.skiptranslate,
+      iframe[class*="goog-te-banner-frame"],
+      iframe[class*="skiptranslate"],
+      .VIpgJd-ZVi9od-ORHb-OEVmcd,
+      .VIpgJd-ZVi9od-ORHb,
+      .VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+      .VIpgJd-ZVi9od-aZ2wEe-OiiCO,
+      .VIpgJd-ZVi9od-aZ2wEe,
+      .goog-te-balloon-frame,
+      #goog-gt-tt,
+      #goog-gt-vt,
+      .goog-tooltip,
+      .goog-tooltip:hover,
+      .goog-te-spinner-pos {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0px !important;
+        width: 0px !important;
+        max-height: 0px !important;
+        overflow: hidden !important;
+        border: none !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+        z-index: -999999 !important;
+      }
+
+      #google_translate_element {
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+        width: 1px !important;
+        height: 1px !important;
+        overflow: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      .goog-text-highlight {
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+    </style>
+
+    <!-- Keep body offset at 0 and instantly neutralize any injected top banner -->
+    <script>
+      (function() {
+        function enforceStealth() {
+          try {
+            if (document.body) {
+              if (document.body.style.top && document.body.style.top !== '0px') {
+                document.body.style.setProperty('top', '0px', 'important');
+              }
+              if (document.body.style.position && document.body.style.position !== 'static') {
+                document.body.style.setProperty('position', 'static', 'important');
+              }
+              if (document.body.style.marginTop && document.body.style.marginTop !== '0px') {
+                document.body.style.setProperty('margin-top', '0px', 'important');
+              }
+            }
+            if (document.documentElement) {
+              if (document.documentElement.style.top && document.documentElement.style.top !== '0px') {
+                document.documentElement.style.setProperty('top', '0px', 'important');
+              }
+            }
+
+            var banners = document.querySelectorAll(
+              'body > .skiptranslate, body > div.skiptranslate, body > iframe.skiptranslate, .goog-te-banner-frame, iframe.goog-te-banner-frame, .VIpgJd-ZVi9od-ORHb-OEVmcd, .VIpgJd-ZVi9od-aZ2wEe-wOHMyf'
+            );
+            for (var i = 0; i < banners.length; i++) {
+              banners[i].style.setProperty('display', 'none', 'important');
+              banners[i].style.setProperty('visibility', 'hidden', 'important');
+              banners[i].style.setProperty('height', '0px', 'important');
+              banners[i].style.setProperty('width', '0px', 'important');
+              banners[i].style.setProperty('position', 'absolute', 'important');
+              banners[i].style.setProperty('top', '-9999px', 'important');
+              banners[i].style.setProperty('pointer-events', 'none', 'important');
+              banners[i].style.setProperty('z-index', '-999999', 'important');
+            }
+          } catch(e) {}
+        }
+
+        enforceStealth();
+        var observer = new MutationObserver(enforceStealth);
+        observer.observe(document.documentElement, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['style', 'class']
+        });
+        setInterval(enforceStealth, 200);
+      })();
+    </script>
+
+    <!-- Hidden mount target for Google Translate Widget -->
+    <div id="google_translate_element" style="position: absolute; top: -9999px; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none;" aria-hidden="true"></div>
+
+    <!-- Google Translate Script & Initialization: Preloaded in head for instantaneous availability -->
+    <script type="text/javascript">
+      window.googleTranslateElementInit = function() {
+        try {
+          if (window.google && window.google.translate) {
+            new window.google.translate.TranslateElement({
+              pageLanguage: 'en',
+              includedLanguages: 'ta,ml,hi,ur,ar,en',
+              autoDisplay: false
+            }, 'google_translate_element');
+          }
+        } catch(e) {
+          console.warn('Translate init:', e);
+        }
+      };
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
   </head>
   <body>
     <div id="root"></div>

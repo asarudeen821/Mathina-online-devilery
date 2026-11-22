@@ -87,7 +87,7 @@ export const subscriptionAPI = {
 export const aiAPI = {
   generateRecipe: (data) => api.post('/ai/chat/recipe', data),
   getSuggestions: () => api.get('/ai/suggestions'),
-  chat: (message) => api.post('/ai/chat', { message }),
+  chat: (message, language = 'en') => api.post('/ai/chat', { message, language }),
   recommend: (data) => api.post('/ai/recommend', data),
 };
 

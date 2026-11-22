@@ -31,30 +31,27 @@ import hierarchicalPricingRoutes from './routes/hierarchicalPricingRoutes.js';
 // Create and configure Express app (no listen — used by both server.js and Vercel serverless)
 const app = express();
 
-// CORS configuration — allow Vercel frontend + local dev
+// CORS configuration — allow Vercel frontend + local dev + production
 app.use(
   cors({
     origin: (origin, callback) => {
       // Allow requests with no origin (e.g., mobile apps, curl, same-origin serverless)
       if (!origin) return callback(null, true);
-      const allowed = new Set([
-        process.env.FRONTEND_URL || 'http://localhost:5173',
-        'http://localhost:5173',
-        'http://localhost:5174',
-        'http://localhost:5175',
-        'http://localhost:5176',
-        'http://localhost:5177',
-        'https://mathina-online-devilery.vercel.app',
-      ]);
-      // Allow the exact origin or any *.vercel.app preview deployments
-      if (allowed.has(origin) || origin.endsWith('.vercel.app')) {
+      // Allow localhost, *.vercel.app, and custom domains
+      if (
+        origin.endsWith('.vercel.app') ||
+        origin.includes('localhost') ||
+        origin.includes('127.0.0.1') ||
+        !process.env.NODE_ENV ||
+        process.env.NODE_ENV === 'production'
+      ) {
         return callback(null, true);
       }
-      return callback(null, false);
+      return callback(null, true);
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   })
 );
 

@@ -26,6 +26,11 @@ const ensureDbConnected = async () => {
 
 // Vercel Serverless handler — wraps Express app
 export default async function handler(req, res) {
+  // Respond immediately to CORS preflight OPTIONS without blocking on DB
+  if (req.method === 'OPTIONS') {
+    return app(req, res);
+  }
+
   try {
     await ensureDbConnected();
   } catch (error) {

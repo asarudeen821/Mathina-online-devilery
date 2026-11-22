@@ -8,6 +8,11 @@
 import { exec } from 'child_process';
 import { platform } from 'os';
 
+// If running in Vercel or cloud container, port freeing is not needed
+if (process.env.VERCEL || process.env.NODE_ENV === 'production') {
+  process.exit(0);
+}
+
 const PORT = 5000;
 
 function killProcessOnPort() {

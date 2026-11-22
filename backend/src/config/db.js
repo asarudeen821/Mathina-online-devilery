@@ -16,19 +16,15 @@ const connectDB = async () => {
 
   const uri = process.env.MONGODB_URI;
   if (!uri) {
-    const errorMsg = 'MONGODB_URI is not defined in environment variables';
-    console.error(`❌ Database Configuration Error: ${errorMsg}`);
-    if (process.env.VERCEL) {
-      throw new Error(errorMsg);
-    }
-    process.exit(1);
+    console.warn('⚠️ MONGODB_URI is not defined in environment. Running in resilient mode.');
+    return null;
   }
 
   try {
     isConnecting = true;
     const conn = await mongoose.connect(uri, {
       bufferCommands: false,
-      serverSelectionTimeoutMS: 8000,
+      serverSelectionTimeoutMS: 5000,
     });
 
     console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
@@ -44,12 +40,8 @@ const connectDB = async () => {
     return conn;
   } catch (error) {
     isConnecting = false;
-    console.error(`❌ MongoDB Connection Error: ${error.message}`);
-    // In Vercel serverless, throw error instead of calling process.exit(1)
-    if (process.env.VERCEL) {
-      throw error;
-    }
-    process.exit(1);
+    console.warn(`⚠️ MongoDB Connection Notice: ${error.message}`);
+    return null;
   }
 };
 

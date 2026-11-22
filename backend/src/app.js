@@ -104,18 +104,22 @@ const apiStatusHandler = (req, res) => {
 
 app.get('/api', apiStatusHandler);
 
-// If frontend/dist is present in the build, serve it statically for all non-API paths
-const distPath = path.resolve(__dirname, '../../frontend/dist');
-if (fs.existsSync(distPath)) {
-  app.use(express.static(distPath));
-  app.get('*', (req, res, next) => {
-    if (req.url.startsWith('/api')) {
-      return next();
-    }
-    res.sendFile(path.join(distPath, 'index.html'));
-  });
+// If frontend/dist is present and not on Vercel, serve it statically for standalone Node server
+if (!process.env.VERCEL) {
+  const distPath = path.resolve(__dirname, '../../frontend/dist');
+  if (fs.existsSync(distPath)) {
+    app.use(express.static(distPath));
+    app.get('*', (req, res, next) => {
+      if (req.url.startsWith('/api')) {
+        return next();
+      }
+      res.sendFile(path.join(distPath, 'index.html'));
+    });
+  } else {
+    // If dist is not present (standalone backend service), respond with API status instead of 404
+    app.get('/', apiStatusHandler);
+  }
 } else {
-  // If dist is not present (standalone backend service), respond with API status instead of 404
   app.get('/', apiStatusHandler);
 }
 

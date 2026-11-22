@@ -78,28 +78,29 @@
       }
     </style>
 
-    <!-- Hidden mount target for Google Translate Widget -->
-    <div id="google_translate_element" style="position: absolute; top: -9999px; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none;" aria-hidden="true"></div>
-
     <!-- Google Translate Script & Initialization: Preloaded in head for instantaneous availability -->
     <script type="text/javascript">
       window.googleTranslateElementInit = function() {
+        if (window.__googleTranslateInitialized) return;
         try {
-          if (window.google && window.google.translate) {
+          if (window.google && window.google.translate && window.google.translate.TranslateElement) {
             new window.google.translate.TranslateElement({
               pageLanguage: 'en',
               includedLanguages: 'ta,ml,hi,ur,ar,en',
               autoDisplay: false
             }, 'google_translate_element');
+            window.__googleTranslateInitialized = true;
           }
         } catch(e) {
           console.warn('Translate init:', e);
         }
       };
     </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
+    <script id="google-translate-script" type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
   </head>
   <body>
+    <!-- Hidden mount target for Google Translate Widget -->
+    <div id="google_translate_element" style="position: absolute; top: -9999px; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none;" aria-hidden="true"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

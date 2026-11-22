@@ -505,8 +505,9 @@ export const LanguageProvider = ({ children }) => {
     // If not already defined by index.html, safeguard-attach init
     if (!window.googleTranslateElementInit) {
       window.googleTranslateElementInit = () => {
+        if (window.__googleTranslateInitialized) return;
         try {
-          if (window.google && window.google.translate) {
+          if (window.google && window.google.translate && window.google.translate.TranslateElement) {
             new window.google.translate.TranslateElement(
               {
                 pageLanguage: 'en',
@@ -515,6 +516,7 @@ export const LanguageProvider = ({ children }) => {
               },
               'google_translate_element'
             );
+            window.__googleTranslateInitialized = true;
           }
         } catch (err) {
           console.warn('Translate init safeguard:', err);
@@ -522,7 +524,7 @@ export const LanguageProvider = ({ children }) => {
       };
     }
 
-    if (!document.getElementById('google-translate-script')) {
+    if (!document.getElementById('google-translate-script') && !window.__googleTranslateInitialized) {
       const script = document.createElement('script');
       script.id = 'google-translate-script';
       script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
@@ -541,9 +543,6 @@ export const LanguageProvider = ({ children }) => {
           if (select.value !== currentLanguage) {
             select.value = currentLanguage;
             select.dispatchEvent(new Event('change', { bubbles: true }));
-            if (typeof select.onchange === 'function') {
-              try { select.onchange(); } catch(e) {}
-            }
           }
         } else if (attempts < 30) {
           setTimeout(initialApply, 100);

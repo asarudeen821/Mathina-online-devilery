@@ -281,15 +281,8 @@ const Login = () => {
         navigate(from, { replace: true });
       }
     } catch (err) {
-      let errorMessage = 'Invalid credentials. Please try again.';
-      if (err.response?.status === 401) {
-        errorMessage = 'Incorrect email or password';
-      } else if (err.response?.status === 404) {
-        errorMessage = 'Account not found. Please register first.';
-      } else if (err.response?.data?.message) {
-        errorMessage = err.response.data.message;
-      }
-      toast.error(errorMessage);
+      // Error is already notified with toast in AuthContext.login
+      console.warn('Login attempt failed:', err.message);
     } finally {
       setLoading(false);
     }

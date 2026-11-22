@@ -65,7 +65,18 @@ export const AuthProvider = ({ children }) => {
       toast.success(`Welcome back, ${data.data.user.name}!`);
       return data.data.user;
     } catch (error) {
-      const message = error.response?.data?.message || error.message || 'Login failed';
+      let message = error.response?.data?.message;
+      if (!message) {
+        if (error.response?.status === 405) {
+          message = 'API Method Not Allowed (405). Please check backend routing.';
+        } else if (error.response?.status === 404) {
+          message = 'API service not found (404). Please ensure server is running.';
+        } else if (error.response?.status === 401) {
+          message = 'Invalid email or password';
+        } else {
+          message = error.message || 'Login failed';
+        }
+      }
       toast.error(message);
       throw error;
     }

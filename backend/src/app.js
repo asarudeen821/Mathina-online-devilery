@@ -1,7 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
 import { errorHandler, notFound } from './middleware/error.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Route imports
 import authRoutes from './routes/authRoutes.js';
@@ -85,13 +91,16 @@ app.use('/api/coupons', couponRoutes);
 app.use('/api/dashboard/ai', aiDashboardRoutes);
 app.use('/api/hierarchical-pricing', hierarchicalPricingRoutes);
 
-// Root API endpoint
-app.get('/api', (req, res) => {
-  res.json({
+// Root API status endpoint
+const apiStatusHandler = (req, res) => {
+  res.status(200).json({
     success: true,
-    message: 'Welcome to Mathina Chicken Center API',
+    message: 'Mathina Chicken Center API is running',
     version: '1.0.0',
+    status: 'online',
+    timestamp: new Date().toISOString(),
     endpoints: {
+      health: '/api/health',
       auth: '/api/auth',
       products: '/api/products',
       orders: '/api/orders',
@@ -104,9 +113,26 @@ app.get('/api', (req, res) => {
       payment: '/api/payment',
     },
   });
-});
+};
 
-// Error handling
+app.get('/api', apiStatusHandler);
+
+// If frontend/dist is present in the build, serve it statically for all non-API paths
+const distPath = path.resolve(__dirname, '../../frontend/dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.get('*', (req, res, next) => {
+    if (req.url.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.join(distPath, 'index.html'));
+  });
+} else {
+  // If dist is not present (standalone backend service), respond with API status instead of 404
+  app.get('/', apiStatusHandler);
+}
+
+// Error handling for unmatched /api routes
 app.use(notFound);
 app.use(errorHandler);
 

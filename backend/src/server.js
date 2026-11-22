@@ -19,27 +19,6 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-// Root endpoint
-app.get('/', (req, res) => {
-  res.json({
-    success: true,
-    message: 'Welcome to CluckFresh Hub API',
-    version: '1.0.0',
-    endpoints: {
-      auth: '/api/auth',
-      products: '/api/products',
-      orders: '/api/orders',
-      subscriptions: '/api/subscriptions',
-      ai: '/api/ai',
-      qr: '/api/qr',
-      dashboard: '/api/dashboard',
-      chat: '/api/chat',
-      utils: '/api/utils',
-      payment: '/api/payment',
-    },
-  });
-});
-
 // Start server
 const PORT = process.env.PORT || 5000;
 
